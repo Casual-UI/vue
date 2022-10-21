@@ -1,0 +1,25 @@
+{
+  "name": "@casual-ui/vuepress-plugin-casual-code",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "The casual ui docs vuepress plugin for demo code",
+  "dependencies": {
+    "@casual-ui/vue": "workspace:*",
+    "monaco-editor": "^0.33.0",
+    "typedoc": "^0.22.15",
+    "uid": "^2.0.0",
+    "vue": "^3.2.31"
+  },
+  "main": "./src/index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@mdit-vue/plugin-frontmatter": "^0.11.1",
+    "@quasar/extras": "^1.13.4",
+    "@vuepress/client": "2.0.0-beta.51",
+    "markdown-it": "^13.0.1",
+    "vue-docgen-api": "^4.54.2"
+  }
+}

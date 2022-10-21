@@ -1,0 +1,157 @@
+/* stylelint-disable */
+@use "sass:color";
+
+$table-striped-bg-dark: color.adjust(#282c34, $lightness: 10%);
+
+:root {
+  --content-width: 880px;
+  --c-brand: var(--casual-primary);
+  --c-brand-light: var(--casual-primary-lighter);
+  --c-bg: #f7f8fa;
+  --doc-demo-bg: #ffff;
+  --c-tip-bg: var(--casual-primary-pale);
+  --c-tip: var(--casual-primary);
+  --font-family-code: DM, Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+}
+
+html.dark {
+  --c-brand: var(--casual-primary);
+  --c-brand-light: var(--casual-primary-lighter);
+  --casual-table-striped-bg: #{$table-striped-bg-dark};
+  --doc-demo-bg: #333;
+  --casual-input-bg: #282c34;
+  --casual-input-bg-darker: #262626;
+  --casual-input-bg-darker2: #222;
+  --casual-copywriting-normal: #999;
+  --c-tip: var(--casual-primary);
+}
+
+.custom-container {
+  border-radius: 8px;
+  .custom-container-title {
+    font-weight: bold;
+  }
+  &.warning {
+    color: inherit;
+    border-color: var(--casual-warning);
+    background-color: var(--casual-warning-pale);
+    .custom-container-title {
+      color: var(--casual-warning);
+    }
+  }
+}
+
+.theme-default-content:not(.custom) > h3 {
+  margin-bottom: 12px;
+}
+
+.doc-table {
+  code {
+    display: inline-block;
+
+    & + code {
+      margin-left: 2px;
+    }
+  }
+}
+
+table {
+  background-color: var(--casual-table-bg);
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: left;
+  table-layout: auto;
+  font-size: 14px;
+  display: table;
+  line-height: 1.5em;
+
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    border: none;
+  }
+
+  td,
+  th {
+    border-bottom: 1px solid var(--casual-normal-bg);
+  }
+
+  code + code {
+    margin-left: 8px;
+  }
+
+  tr {
+    background-color: transparent;
+
+    &:nth-child(2n) {
+      background-color: transparent;
+    }
+  }
+}
+
+.c-doc-demo {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  background-color: var(--doc-demo-bg);
+}
+
+.theme-default-content pre,
+.theme-default-content pre[class*="language-"] {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: DM;
+}
+
+@font-face {
+  font-family: DM;
+  src: url("/fonts/Dank Mono Regular.otf");
+}
+@font-face {
+  font-family: DM;
+  src: url("/fonts/Dank Mono Italic.otf");
+  font-style: italic;
+}
+
+.home .hero {
+  img {
+    margin: 0 auto;
+  }
+  .action-button.primary {
+    transition: all .3s var(--casual-ease-in-out-cubic);
+    background-image: linear-gradient(45deg, #8952fd, #31e6b5);
+    background-size: 200% 200%;
+    background-position: 0 0;
+    border: none;
+    &:hover {
+      background-position: 100% 100%;
+    }
+  } 
+}
+.c-button+.c-button {
+  margin-left: 12px;
+}
+
+code {
+  font-size: 1em;
+}
+.mtk1,
+.mtk4 {
+  font-style: italic;
+}
+.view-lines.monaco-mouse-cursor-text {
+  font-size: 16px !important;
+  font-family: var(--font-family-code) !important;
+}
+
+
+.demo-code .c-expansion--header {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+}

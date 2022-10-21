@@ -1,0 +1,38 @@
+{
+  "name": "@casaul-ui/vue-docs",
+  "version": "0.0.1",
+  "description": "Casual UI Vue Docs",
+  "main": "index.js",
+  "keywords": [],
+  "private": true,
+  "author": "Dongsheng Zhao <1197160272@qq.com>",
+  "repository": {
+    "url": "git+https://github.com/Blackman99/casual-ui.git",
+    "directory": "/packages/vue/docs"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@casual-ui/styles": "latest",
+    "@casual-ui/vue": "workspace:*",
+    "@casual-ui/vuepress-plugin-casual-code": "workspace:*",
+    "@iconify/json": "^2.1.77",
+    "@quasar/extras": "^1.13.4",
+    "@vuepress/bundler-vite": "2.0.0-beta.51",
+    "@vuepress/client": "2.0.0-beta.51",
+    "@vuepress/plugin-docsearch": "^2.0.0-beta.51",
+    "@vuepress/plugin-google-analytics": "^2.0.0-beta.51",
+    "@vuepress/plugin-shiki": "2.0.0-beta.51",
+    "dayjs": "^1.11.0",
+    "unocss": "^0.43.1",
+    "vue-styleguidist": "^4.44.28",
+    "vuepress": "2.0.0-beta.51"
+  },
+  "scripts": {
+    "dev": "npx vuepress dev . --clean-temp --clean-cache",
+    "build": "vuepress build . --clean-temp --clean-cache"
+  },
+  "bugs": {
+    "url": "https://github.com/Blackman99/casual-ui/issues"
+  },
+  "homepage": "https://github.com/Blackman99/casual-ui#readme"
+}

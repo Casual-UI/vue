@@ -1,0 +1,56 @@
+{
+  "name": "@casual-ui/vue",
+  "version": "0.0.1",
+  "description": "The Vue version of casual ui",
+  "main": "src/index.ts",
+  "license": "MIT",
+  "type": "module",
+  "author": {
+    "email": "1197160272@qq.com",
+    "name": "Dongsheng Zhao"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build"
+  },
+  "keywords": [
+    "vue",
+    "vue components",
+    "ui components",
+    "vue3",
+    "vue3 components",
+    "vue3 ui components"
+  ],
+  "repository": {
+    "url": "https://github.com/Blackman99/casual-ui.git",
+    "directory": "/packages/vue/ui"
+  },
+  "devDependencies": {
+    "@casual-ui/i18n": "latest",
+    "@casual-ui/styles": "latest",
+    "@casual-ui/types": "latest",
+    "@casual-ui/vue": "workspace:*",
+    "@quasar/extras": "^1.13.4",
+    "@vitejs/plugin-vue": "^3.1.2",
+    "dayjs": "^1.11.0",
+    "vite": "^3.1.8",
+    "vite-plugin-vue-auto-name": "latest",
+    "vue": "^3.2.31"
+  },
+  "publishConfig": {
+    "main": "./dist/casual-ui-vue.umd.js",
+    "module": "./dist/casual-ui-vue.es.js",
+    "exports": {
+      ".": {
+        "import": "./dist/casual-ui-vue.es.js",
+        "require": "./dist/casual-ui-vue.umd.js"
+      },
+      "./dist/style.css": {
+        "import": "./dist/style.css",
+        "require": "./dist/style.css"
+      }
+    }
+  }
+}

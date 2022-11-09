@@ -1,10 +1,10 @@
-# The vue version of Casual UI
+## Introduction 
+The vue version repo of Casual UI
 Include these parts:
 - The ui components source code
 - The docs site
 - The vuepress relative plugins
 
-# Development Notice
+## Contributing
 
-* Node version >= 16.18.0  
-* Use PNPM 
+[Contributing](./CONTRIBUTING.md)

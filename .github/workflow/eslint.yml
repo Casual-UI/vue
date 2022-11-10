@@ -1,8 +1,5 @@
 name: CI
-on:
-  pull_request:
-    branches:
-      - main
+on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,3 +18,6 @@ jobs:
         run: pnpm i
       - name: Run eslint with reviewdog
         uses: reviewdog/action-eslint@v1.16.1
+        with:
+          github_token: ${secrets.G_TOKEN}
+          reporter: Eslint Bot

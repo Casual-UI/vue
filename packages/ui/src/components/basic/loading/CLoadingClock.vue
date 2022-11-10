@@ -13,7 +13,7 @@
       strokeWidth="4"
       strokeMiterlimit="10"
       stroke="currentColor"
-    ></circle>
+    />
     <line
       strokeLinecap="round"
       strokeWidth="4"
@@ -31,7 +31,7 @@
         to="360 50 50"
         dur="2s"
         repeatCount="indefinite"
-      ></animateTransform>
+      />
     </line>
     <line
       strokeLinecap="round"
@@ -50,7 +50,7 @@
         to="360 50 50"
         dur="15s"
         repeatCount="indefinite"
-      ></animateTransform>
+      />
     </line>
   </svg>
 </template>

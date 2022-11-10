@@ -6,27 +6,22 @@ defineProps<{
 }>()
 
 defineEmits<{
-  (e: 'itemClick', item: any): void
+  (e: 'item-click', item: any): void
 }>()
 </script>
+
 <template>
-  <div :class="['c-date-picker--panel']">
+  <div class="c-date-picker--panel">
     <div
-      :class="[
-        `c-date-picker--panel-body`,
-        'c-grid',
-        'c-grid-col-4',
-        'c-grid-row-3',
-      ]"
+      class="c-date-picker--panel-body c-grid c-grid-col-4 c-grid-row-3"
     >
       <div
         v-for="item in items"
         :key="item"
-        :class="[
-          'c-date-picker--panel-cell',
+        class="c-date-picker--panel-cell" :class="[
           { 'c-date-picker--panel-cell--is-selected': isActive(item) },
         ]"
-        @click.stop="$emit('itemClick', item)"
+        @click.stop="$emit('item-click', item)"
       >
         <div class="c-date-picker--panel-cell--inner">
           {{ displayFormatter(item) }}

@@ -46,7 +46,7 @@ const props = withDefaults(defineProps<OItemProps>(), {
   divider: false,
 })
 
-defineEmits<{
+const emit = defineEmits<{
   /**
    * Emit when the the item is clicked. Only working when the clickable is true.
    * @zh 列表项点击时触发，仅在clickable设置为true时可用
@@ -55,29 +55,36 @@ defineEmits<{
 }>()
 
 const { provideSize: size } = useInjectSize(props)
+
+const handleItemClick = (item: any) => {
+  emit('item-click', item)
+}
 </script>
+
 <template>
-  <div :class="['c-list', { 'c-list--with-divider': divider }]">
-    <!-- 
+  <div class="c-list" :class="[{ 'c-list--with-divider': divider }]">
+    <!--
       @slot Customize the content for no data.
       @zh 没有数据时自定义内容 -->
     <slot
       v-if="items.length === 0"
       name="empty"
     >
-      <div :class="['c-list--empty', `c-px-${size}`]">No Data</div>
+      <div class="c-list--empty" :class="[`c-px-${size}`]">
+        No Data
+      </div>
     </slot>
     <template v-else>
-      <c-item
+      <CItem
         v-for="item in items"
         :key="item[itemKey]"
         :clickable="clickable"
         :active="activeFn(item)"
-        @click="$emit('item-click', item)"
+        @click="handleItemClick"
       >
-        <!-- 
-          @slot Customize the item content. 
-          @zh 自定义列表项 
+        <!--
+          @slot Customize the item content.
+          @zh 自定义列表项
           @binding {any} item The item config.
           @item_zh 当前列表项数据
           @binding {boolean} isActive Determine whether the item is in active status or not.
@@ -91,7 +98,7 @@ const { provideSize: size } = useInjectSize(props)
         >
           {{ item.label }}
         </slot>
-      </c-item>
+      </CItem>
     </template>
   </div>
 </template>

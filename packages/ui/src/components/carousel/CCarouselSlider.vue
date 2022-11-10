@@ -2,23 +2,22 @@
   lang="ts"
   setup
 >
-import { ref, inject, onMounted } from 'vue'
+import { computed, inject, onMounted, ref } from 'vue'
 import type { Ref } from 'vue'
 import {
-  toNextKey,
   activeIndexKey,
   directionKey,
+  hoveringKey,
   intervalKey,
-  slidesKey,
-  timeoutKey,
-  verticalKey,
   pauseFunctionsKey,
   resumeFunctionsKey,
+  slidesKey,
   slidingKey,
-  hoveringKey,
+  timeoutKey,
+  toNextKey,
+  verticalKey,
 } from './CCarousel.vue'
 import type { Direction } from './CCarousel.vue'
-import { computed } from 'vue'
 
 const slides = inject<Ref<number[]>>(slidesKey, ref([]))
 const activeIndex = inject<Ref<number>>(activeIndexKey, ref(0))
@@ -41,9 +40,9 @@ slides?.value.push(currentIndex)
 const onTransitionEnd = () => {
   remain = interval.value
   if (interval.value && toNext && !hovering.value) {
-    if (timeoutFlag.value) {
+    if (timeoutFlag.value)
       clearTimeout(timeoutFlag.value)
-    }
+
     start = Date.now()
     timeoutFlag.value = setTimeout(toNext, interval.value)
   }
@@ -51,7 +50,8 @@ const onTransitionEnd = () => {
 }
 
 const pause = () => {
-  if (currentIndex !== activeIndex.value) return
+  if (currentIndex !== activeIndex.value)
+    return
   if (timeoutFlag.value) {
     clearTimeout(timeoutFlag.value)
     remain = interval.value - (Date.now() - start)
@@ -59,11 +59,13 @@ const pause = () => {
 }
 
 const resume = () => {
-  if (currentIndex !== activeIndex.value) return
-  if (remain < 4) return
-  if (remain === interval.value) {
+  if (currentIndex !== activeIndex.value)
+    return
+  if (remain < 4)
+    return
+  if (remain === interval.value)
     start = Date.now()
-  }
+
   timeoutFlag.value = setTimeout(toNext, remain)
 }
 
@@ -78,13 +80,14 @@ const transitionName = computed(() =>
       ? 'c-carousel-slider-vertical-reverse'
       : 'c-carousel-slider-vertical'
     : reverse.value
-    ? 'c-carousel-slider-reverse'
-    : 'c-carousel-slider'
+      ? 'c-carousel-slider-reverse'
+      : 'c-carousel-slider',
 )
 const onBeforeEnter = () => {
   sliding.value = true
 }
 </script>
+
 <template>
   <Transition
     :name="transitionName"
@@ -95,9 +98,9 @@ const onBeforeEnter = () => {
       v-if="activeIndex === currentIndex"
       class="c-carousel--slider-item"
     >
-      <!-- 
+      <!--
         @slot The content
-        @zh 内容 
+        @zh 内容
       -->
       <slot />
     </div>

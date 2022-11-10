@@ -13,19 +13,18 @@ interface BaseUnitEmit {
 }
 
 export default <
-  T extends BaseUnitEmit = BaseUnitEmit,
-  S extends BaseUnitProps = BaseUnitProps
+  T extends BaseUnitEmit = BaseUnitEmit, S extends BaseUnitProps = BaseUnitProps,
 >(
   emit: T,
-  props: Readonly<S>
+  props: Readonly<S>,
 ) => {
   const { unit } = toRefs(props)
   const { innerValue: innerUnit } = useVModel(
     unit as Ref<Unit>,
     (unit as Ref<Unit>).value,
-    newUnit => {
+    (newUnit) => {
       emit('update:unit', newUnit)
-    }
+    },
   )
 
   return innerUnit

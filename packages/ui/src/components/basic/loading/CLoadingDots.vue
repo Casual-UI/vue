@@ -15,7 +15,7 @@
         values="15;9;15"
         calcMode="linear"
         repeatCount="indefinite"
-      ></animate>
+      />
       <animate
         attributeName="fill-opacity"
         from="1"
@@ -25,7 +25,7 @@
         values="1;.5;1"
         calcMode="linear"
         repeatCount="indefinite"
-      ></animate>
+      />
     </circle>
     <circle cx="60" cy="15" r="9" fill-opacity=".3">
       <animate
@@ -37,7 +37,7 @@
         values="9;15;9"
         calcMode="linear"
         repeatCount="indefinite"
-      ></animate>
+      />
       <animate
         attributeName="fill-opacity"
         from=".5"
@@ -47,7 +47,7 @@
         values=".5;1;.5"
         calcMode="linear"
         repeatCount="indefinite"
-      ></animate>
+      />
     </circle>
     <circle cx="105" cy="15" r="15">
       <animate
@@ -59,7 +59,7 @@
         values="15;9;15"
         calcMode="linear"
         repeatCount="indefinite"
-      ></animate>
+      />
       <animate
         attributeName="fill-opacity"
         from="1"
@@ -69,7 +69,7 @@
         values="1;.5;1"
         calcMode="linear"
         repeatCount="indefinite"
-      ></animate>
+      />
     </circle>
   </svg>
 </template>

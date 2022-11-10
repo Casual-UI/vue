@@ -19,19 +19,21 @@ defineEmits<{
 }>()
 
 const svgInfo = computed(() => {
-  if (typeof props.content !== 'string')
+  if (typeof props.content !== 'string') {
     return {
       viewBox: '0 0 24 24',
       paths: [],
     }
+  }
   const svgDef = props.content.split('|')
-  if (!Array.isArray(svgDef))
+  if (!Array.isArray(svgDef)) {
     return {
       viewBox: '0 0 24 24',
       paths: [],
     }
+  }
   const [def, viewBox = '0 0 24 24'] = svgDef
-  const paths = def.split('&&').map(path => {
+  const paths = def.split('&&').map((path) => {
     const [d, style, transform] = path.split('@@')
     return {
       d,
@@ -57,7 +59,7 @@ const svgInfo = computed(() => {
           style,
           transform,
         }"
-      ></path>
+      />
     </svg>
   </span>
 </template>

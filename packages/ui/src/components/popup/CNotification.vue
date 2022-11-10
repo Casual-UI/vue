@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { matClose } from '@quasar/extras/material-icons/index'
-import { CIcon, useNotifications, CPopup } from '@casual-ui/vue'
+import { CIcon, CPopup, useNotifications } from '@casual-ui/vue'
 
 const { closeByPositionGroupAndID, notifications } = useNotifications()
 </script>
+
 <template>
   <div class="c-notification">
-    <c-popup
+    <CPopup
       v-for="({ x, y, items }, groupName) in notifications"
       :key="groupName"
       :model-value="false"
@@ -19,8 +20,7 @@ const { closeByPositionGroupAndID, notifications } = useNotifications()
           <div
             v-for="noItem in items"
             :key="noItem.id"
-            :class="[
-              'c-notification--item-card',
+            class="c-notification--item-card" :class="[
               `c-notification--item-theme-${noItem.theme}`,
             ]"
           >
@@ -50,7 +50,7 @@ const { closeByPositionGroupAndID, notifications } = useNotifications()
                     }"
                   />
                 </svg>
-                <c-icon
+                <CIcon
                   :content="matClose"
                   class="c-notification--close-icon-icon"
                 />
@@ -62,6 +62,6 @@ const { closeByPositionGroupAndID, notifications } = useNotifications()
           </div>
         </transition-group>
       </div>
-    </c-popup>
+    </CPopup>
   </div>
 </template>

@@ -3,7 +3,7 @@
   lang="ts"
 >
 import { useClickOutside, useVModel } from '@casual-ui/vue'
-import { toRefs, ref } from 'vue'
+import { ref, toRefs } from 'vue'
 
 interface CDropdownProps {
   /**
@@ -44,7 +44,7 @@ const emit = defineEmits<{
 
 const { modelValue } = toRefs(props)
 
-const { innerValue } = useVModel(modelValue, modelValue.value, newValue => {
+const { innerValue } = useVModel(modelValue, modelValue.value, (newValue) => {
   emit('update:modelValue', newValue)
 })
 
@@ -52,34 +52,36 @@ const dropdownDom = ref<HTMLDivElement | null>(null)
 useClickOutside({
   elRef: dropdownDom,
   cbOutside: () => {
-    if (props.disabled || props.manual) return
+    if (props.disabled || props.manual)
+      return
     innerValue.value = false
   },
   cbInside: () => {
-    if (props.disabled || props.manual) return
+    if (props.disabled || props.manual)
+      return
     innerValue.value = true
   },
 })
 </script>
+
 <template>
   <div
     ref="dropdownDom"
-    :class="['c-dropdown', { 'c-dropdown--dropped': innerValue }]"
+    class="c-dropdown" :class="[{ 'c-dropdown--dropped': innerValue }]"
   >
     <div class="c-dropdown--trigger">
-      <!-- 
-        @slot The trigger content 
+      <!--
+        @slot The trigger content
         @zh 用于触发下拉的内容 -->
       <slot />
     </div>
     <div
-      :class="[
-        'c-dropdown--drop-content',
+      class="c-dropdown--drop-content" :class="[
         { 'c-dropdown--drop-content-auto-width': !widthWithinParent },
       ]"
     >
-      <!-- 
-        @slot The dropdown content. 
+      <!--
+        @slot The dropdown content.
         @zh 下拉内容 -->
       <slot name="drop-content" />
     </div>

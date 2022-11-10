@@ -4,8 +4,8 @@
 >
 import {
   matKeyboardArrowLeft,
-  matKeyboardDoubleArrowLeft,
   matKeyboardArrowRight,
+  matKeyboardDoubleArrowLeft,
   matKeyboardDoubleArrowRight,
 } from '@quasar/extras/material-icons/index'
 import type { CSize } from '@casual-ui/types'
@@ -32,14 +32,14 @@ const props = withDefaults(defineProps<OMonthPanelProps>(), {
   unitSwitchable: true,
 })
 
-const { provideSize: size } = useInjectSize(props)
-
 const emit = defineEmits<{
   (e: 'update:yearRange', yearRange: [number, number]): void
   (e: 'update:year', newValue: number): void
   (e: 'update:month', newValue: number): void
   (e: 'update:unit', newValue: Unit): void
 }>()
+
+const { provideSize: size } = useInjectSize(props)
 
 const { year, month, unit } = toRefs(props)
 
@@ -97,10 +97,12 @@ const { displayMonth } = useDisplayMonth(month)
 const isDay = computed(() => unit.value === 'day')
 const isMonth = computed(() => unit.value === 'month')
 const setUnit = (newUnit: Unit) => {
-  if (!props.unitSwitchable) return
+  if (!props.unitSwitchable)
+    return
   emit('update:unit', newUnit)
 }
 </script>
+
 <template>
   <div
     class="c-date-panel--header"

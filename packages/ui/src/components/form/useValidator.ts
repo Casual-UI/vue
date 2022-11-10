@@ -1,5 +1,5 @@
 import type { CRule } from '@casual-ui/types'
-import { inject, computed, type ComputedRef } from 'vue'
+import { type ComputedRef, computed, inject } from 'vue'
 import { clearValidateKey, hasErrorKey, validateKey } from './CFormItem.vue'
 
 interface UseValidatorReturn {
@@ -27,7 +27,7 @@ interface UseValidatorReturn {
 const useFormValidator: () => UseValidatorReturn = () => ({
   hasError: inject(
     hasErrorKey,
-    computed(() => false)
+    computed(() => false),
   ),
   validate: inject(validateKey, () => false),
   clearValidate: inject(clearValidateKey, () => {

@@ -19,7 +19,7 @@
           values="50;5;50;50"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
         <animate
           attributeName="cx"
           begin="0s"
@@ -27,7 +27,7 @@
           values="5;27;49;5"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
       </circle>
       <circle cx="27" cy="5" r="5">
         <animate
@@ -39,7 +39,7 @@
           values="5;50;50;5"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
         <animate
           attributeName="cx"
           begin="0s"
@@ -49,7 +49,7 @@
           values="27;49;5;27"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
       </circle>
       <circle cx="49" cy="50" r="5">
         <animate
@@ -59,7 +59,7 @@
           values="50;50;5;50"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
         <animate
           attributeName="cx"
           from="49"
@@ -69,7 +69,7 @@
           values="49;5;27;49"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
       </circle>
     </g>
   </svg>

@@ -17,19 +17,20 @@ const years = computed(() => {
   const start = yearRange.value[0]
   const end = yearRange.value[1]
   const years = []
-  for (let i = start; i <= end; i++) {
+  for (let i = start; i <= end; i++)
     years.push(i)
-  }
+
   return years
 })
 
 const isSelected = (year: number) => {
   return props.modelValue?.getFullYear() === year
 }
-const displayFormatter = (year: number) => year + ''
+const displayFormatter = (year: number) => `${year}`
 </script>
+
 <template>
-  <c-date-grid-panel
+  <CDateGridPanel
     :is-active="isSelected"
     :items="years"
     :display-formatter="displayFormatter"
@@ -40,8 +41,8 @@ const displayFormatter = (year: number) => year + ''
           new Date(
             year,
             modelValue?.getMonth() || 0,
-            modelValue?.getDate() || 1
-          )
+            modelValue?.getDate() || 1,
+          ),
         )
       }
     "

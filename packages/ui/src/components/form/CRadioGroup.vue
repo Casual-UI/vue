@@ -52,6 +52,7 @@ const onUpdateModelValue = (newValue: string | number) => {
   validate(newValue)
 }
 </script>
+
 <template>
   <div
     class="c-flex c-items-center c-wrap"
@@ -70,4 +71,5 @@ const onUpdateModelValue = (newValue: string | number) => {
     </div>
   </div>
 </template>
+
 <style lang="scss" scoped></style>

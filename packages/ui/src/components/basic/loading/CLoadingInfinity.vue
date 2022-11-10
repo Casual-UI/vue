@@ -16,7 +16,7 @@
         dur="2s"
         repeatCount="indefinite"
         fill="freeze"
-      ></animate>
+      />
     </path>
   </svg>
 </template>

@@ -19,7 +19,7 @@
           values="6;22"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
         <animate
           attributeName="stroke-opacity"
           begin="1.5s"
@@ -27,7 +27,7 @@
           values="1;0"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
         <animate
           attributeName="stroke-width"
           begin="1.5s"
@@ -35,7 +35,7 @@
           values="2;0"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
       </circle>
       <circle cx="22" cy="22" r="6">
         <animate
@@ -45,7 +45,7 @@
           values="6;22"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
         <animate
           attributeName="stroke-opacity"
           begin="3s"
@@ -53,7 +53,7 @@
           values="1;0"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
         <animate
           attributeName="stroke-width"
           begin="3s"
@@ -61,7 +61,7 @@
           values="2;0"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
       </circle>
       <circle cx="22" cy="22" r="8">
         <animate
@@ -71,7 +71,7 @@
           values="6;1;2;3;4;5;6"
           calcMode="linear"
           repeatCount="indefinite"
-        ></animate>
+        />
       </circle>
     </g>
   </svg>

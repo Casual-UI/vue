@@ -3,8 +3,8 @@
   setup
 >
 import { toRefs } from 'vue'
-import { useSizeThemeClass, CLoading, useInjectTheme } from '@casual-ui/vue'
-import type { CTheme, CSize } from '@casual-ui/types'
+import { CLoading, useInjectTheme, useSizeThemeClass } from '@casual-ui/vue'
+import type { CSize, CTheme } from '@casual-ui/types'
 
 interface CButtonProps {
   /**
@@ -78,6 +78,14 @@ const props = withDefaults(defineProps<CButtonProps>(), {
   flat: false,
 })
 
+defineEmits<{
+  /**
+   * Emit when the button clicked.
+   * @zh 点击事件触发
+   */
+  (e: 'click'): void
+}>()
+
 const { size } = toRefs(props)
 
 const { provideTheme: theme } = useInjectTheme(props)
@@ -87,19 +95,11 @@ const sizeThemeClasses = useSizeThemeClass({
   theme,
   prefix: 'c-button',
 })
-
-defineEmits<{
-  /**
-   * Emit when the button clicked.
-   * @zh 点击事件触发
-   */
-  (e: 'click'): void
-}>()
 </script>
+
 <template>
   <button
-    :class="[
-      'c-button',
+    class="c-button" :class="[
       { 'c-button--flat': flat },
       { 'c-button--outlined': outlined },
       { 'c-button--round': round },
@@ -115,9 +115,9 @@ defineEmits<{
     :disabled="disabled"
     @click="$emit('click')"
   >
-    <div class="c-button--focus-helper"></div>
-    <div :class="['c-button--content-wrapper']">
-      <!-- 
+    <div class="c-button--focus-helper" />
+    <div class="c-button--content-wrapper">
+      <!--
         @slot Default content. It will override the label prop.
         @zh 默认插槽，如果设置了该插槽，则会覆盖<code>label</code>内容
       -->
@@ -126,12 +126,12 @@ defineEmits<{
       </slot>
       <template v-if="loading">
         <span>&nbsp;</span>
-        <!-- 
+        <!--
           @slot Customize the loading content.
-          @zh 自定义加载状态动画 
+          @zh 自定义加载状态动画
         -->
         <slot name="loading">
-          <c-loading />
+          <CLoading />
         </slot>
       </template>
     </div>

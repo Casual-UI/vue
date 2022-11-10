@@ -30,7 +30,8 @@ const getDisplayMonth = (month: number) => {
 }
 
 const isSelected = (month: number) => {
-  if (!modelValue.value) return false
+  if (!modelValue.value)
+    return false
   const d = new Date(modelValue.value?.getTime())
   d.setFullYear(year.value)
   d.setMonth(month)
@@ -40,18 +41,19 @@ const isSelected = (month: number) => {
 const items = computed(() =>
   Array(12)
     .fill(0)
-    .map((_, i) => i)
+    .map((_, i) => i),
 )
 
 const onMonthClick = (month: number) => {
   emit(
     'update:modelValue',
-    new Date(year.value, month, modelValue.value?.getDate() || 1)
+    new Date(year.value, month, modelValue.value?.getDate() || 1),
   )
 }
 </script>
+
 <template>
-  <c-date-grid-panel
+  <CDateGridPanel
     :is-active="isSelected"
     :items="items"
     :display-formatter="getDisplayMonth"

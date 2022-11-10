@@ -15,18 +15,18 @@ interface CTooltipProps {
    * @zh 弹出位置
    */
   position?:
-    | 'top-left'
-    | 'top-right'
-    | 'top'
-    | 'left-top'
-    | 'left'
-    | 'left-bottom'
-    | 'bottom-left'
-    | 'bottom'
-    | 'bottom-right'
-    | 'right-top'
-    | 'right'
-    | 'right-bottom'
+  | 'top-left'
+  | 'top-right'
+  | 'top'
+  | 'left-top'
+  | 'left'
+  | 'left-bottom'
+  | 'bottom-left'
+  | 'bottom'
+  | 'bottom-right'
+  | 'right-top'
+  | 'right'
+  | 'right-bottom'
   /**
    * The trigger method.
    * @zh 触发方式
@@ -39,6 +39,13 @@ interface CTooltipProps {
   show?: boolean
 }
 
+const props = withDefaults(defineProps<CTooltipProps>(), {
+  content: '',
+  position: 'top',
+  trigger: 'hover',
+  show: false,
+})
+
 defineEmits<{
   /**
    * Emit when the show status change.
@@ -47,33 +54,24 @@ defineEmits<{
   (e: 'update:show', newShow: boolean): void
 }>()
 
-const props = withDefaults(defineProps<CTooltipProps>(), {
-  content: '',
-  position: 'top',
-  trigger: 'hover',
-  show: false,
-})
-
 const innerShow = ref(props.show)
 const tooltipDom = ref<HTMLDivElement | null>(null)
 
 watch(
   () => props.show,
-  newShow => {
+  (newShow) => {
     innerShow.value = newShow
-  }
+  },
 )
 
 const onMouseEnter = () => {
-  if (props.trigger === 'hover') {
+  if (props.trigger === 'hover')
     innerShow.value = true
-  }
 }
 
 const onMouseLeave = () => {
-  if (props.trigger === 'hover') {
+  if (props.trigger === 'hover')
     innerShow.value = false
-  }
 }
 
 if (props.trigger === 'click') {
@@ -88,6 +86,7 @@ if (props.trigger === 'click') {
   })
 }
 </script>
+
 <template>
   <div
     ref="tooltipDom"
@@ -97,7 +96,7 @@ if (props.trigger === 'click') {
     @mouseleave="onMouseLeave"
   >
     <div class="c-tooltip--trigger-content">
-      <!-- 
+      <!--
         @slot The trigger content.
         @zh 默认内容，用于触发tooltip -->
       <slot />
@@ -107,8 +106,8 @@ if (props.trigger === 'click') {
       :class="[`c-tooltip--position-${position}`]"
       @click.stop
     >
-      <!-- 
-        @slot The popup content. Will override the content prop. 
+      <!--
+        @slot The popup content. Will override the content prop.
         @zh 弹出层内容，如果设置了该插槽，会覆盖<code>content</code>属性 -->
       <slot name="popup">
         <div class="c-tooltip--popper-content">

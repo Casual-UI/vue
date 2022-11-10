@@ -16,7 +16,7 @@
           repeatCount="indefinite"
           keyTimes="0;0.5;1"
           values="0;1;1"
-        ></animate>
+        />
       </circle>
       <path
         d="M90,150h30c0-49.7-40.3-90-90-90v30C63.1,90,90,116.9,90,150z"
@@ -31,7 +31,7 @@
           repeatCount="indefinite"
           keyTimes="0;0.5;1"
           values="0;1;1"
-        ></animate>
+        />
       </path>
       <path
         d="M150,150h30C180,67.2,112.8,0,30,0v30C96.3,30,150,83.7,150,150z"
@@ -46,7 +46,7 @@
           repeatCount="indefinite"
           keyTimes="0;0.5;1"
           values="0;1;1"
-        ></animate>
+        />
       </path>
     </g>
   </svg>

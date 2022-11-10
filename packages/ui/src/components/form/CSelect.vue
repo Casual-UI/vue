@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import {
-  CTag,
-  CList,
-  useInjectSize,
-  useVModel,
+  CDropdown,
   CIcon,
   CInput,
-  CDropdown,
+  CList,
+  CTag,
+  useBEM,
+  useInjectSize,
+  useVModel,
 } from '@casual-ui/vue'
 import { matKeyboardArrowDown } from '@quasar/extras/material-icons/index'
-import { watch, nextTick, computed, onMounted, ref, toRefs } from 'vue'
+import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue'
 import useValidator from './useValidator'
-import { useBEM } from '@casual-ui/vue'
 
 interface OOption {
   label: string
@@ -68,6 +68,15 @@ interface CSelectProps {
   rounded?: boolean
 }
 
+const props = withDefaults(defineProps<CSelectProps>(), {
+  placeholder: '',
+  size: undefined,
+  options: () => [],
+  multiple: false,
+  disabled: false,
+  rounded: false,
+})
+
 const emit = defineEmits<{
   /**
    * Emit when the select value is changed.
@@ -78,22 +87,14 @@ const emit = defineEmits<{
   (e: 'update:modelValue', v: CSelectModelValue): void
 }>()
 
-const props = withDefaults(defineProps<CSelectProps>(), {
-  placeholder: '',
-  size: undefined,
-  options: () => [],
-  multiple: false,
-  disabled: false,
-  rounded: false,
-})
-
 const selectDom = ref<HTMLDivElement | null>(null)
 const tagsContainer = ref<HTMLDivElement | null>(null)
 const initialSelectDomHeight = ref(0)
 const selectDomHeight = ref(-1)
 
 const selectDomStyle = computed(() => {
-  if (selectDomHeight.value < 1) return {}
+  if (selectDomHeight.value < 1)
+    return {}
   return {
     height: `${selectDomHeight.value}px`,
   }
@@ -114,17 +115,17 @@ const { validate, hasError } = useValidator()
 const { innerValue } = useVModel<CSelectModelValue>(
   modelValue,
   modelValue.value,
-  v => {
+  (v) => {
     validate(v)
     emit('update:modelValue', v)
-  }
+  },
 )
 
 const inputValue = ref(modelValue.value as string)
 
 watch(
   innerValue,
-  newInnerValue => {
+  (newInnerValue) => {
     if (multiple.value) {
       nextTick(() => {
         const newHeight = tagsContainer.value?.clientHeight || -1
@@ -137,23 +138,25 @@ watch(
 
       return
     }
-    inputValue.value =
-      props.options.find(item => item.value === newInnerValue)?.label || ''
+    inputValue.value
+      = props.options.find(item => item.value === newInnerValue)?.label || ''
   },
   {
     deep: true,
-  }
+  },
 )
 
 const selectedMultipleOptions = computed(() => {
-  if (!multiple.value) return []
+  if (!multiple.value)
+    return []
   return props.options.filter(op =>
-    (innerValue.value as Array<any>).some(v => v === op.value)
+    (innerValue.value as Array<any>).includes(op.value),
   )
 })
 
 const realPlaceholder = computed(() => {
-  if (!multiple.value) return props.placeholder
+  if (!multiple.value)
+    return props.placeholder
   return (innerValue.value as any[]).length > 0 ? '' : props.placeholder
 })
 
@@ -161,11 +164,11 @@ const onItemClick = (item: any) => {
   if (multiple.value) {
     const selectedValues = innerValue.value as Array<any>
     const idx = selectedValues.findIndex(v => v === item.value)
-    if (idx === -1) {
+    if (idx === -1)
       selectedValues.push(item.value)
-    } else {
+    else
       selectedValues.splice(idx, 1)
-    }
+
     return
   }
   innerValue.value = item.value
@@ -173,9 +176,9 @@ const onItemClick = (item: any) => {
 }
 
 const isItemActive = computed(() => (item: any) => {
-  if (multiple.value) {
-    return (innerValue.value as Array<any>).some(v => v === item.value)
-  }
+  if (multiple.value)
+    return (innerValue.value as Array<any>).includes(item.value)
+
   return item.value === innerValue.value
 })
 
@@ -188,21 +191,22 @@ const onClear = () => {
 }
 
 const onSelectClick = () => {
-  if (props.disabled) return
-  if (multiple.value) {
+  if (props.disabled)
+    return
+  if (multiple.value)
     focused.value = !focused.value
-  }
 }
 
 const onArrowClick = () => {
-  if (props.disabled) return
-  if (!multiple.value) {
+  if (props.disabled)
+    return
+  if (!multiple.value)
     focused.value = !focused.value
-  }
 }
 </script>
+
 <template>
-  <c-dropdown
+  <CDropdown
     v-model="focused"
     :disabled="disabled"
   >
@@ -226,15 +230,14 @@ const onArrowClick = () => {
       >
         <div
           v-if="multiple"
-          :class="[
-            'c-select--placeholder',
+          class="c-select--placeholder" :class="[
             `c-h-${provideSize}`,
             `c-px-${provideSize}`,
           ]"
         >
           {{ realPlaceholder }}
         </div>
-        <c-input
+        <CInput
           v-else
           v-model="inputValue"
           v-model:focused="focused"
@@ -248,25 +251,24 @@ const onArrowClick = () => {
           @clear="onClear"
         />
         <div
-          :class="[
-            'c-select--arrow',
+          class="c-select--arrow" :class="[
             `c-mr-${provideSize}`,
             { 'c-select--arrow-show-options': focused },
           ]"
           @click.stop="onArrowClick"
         >
-          <c-icon :content="matKeyboardArrowDown" />
+          <CIcon :content="matKeyboardArrowDown" />
         </div>
         <div
           v-if="multiple"
           ref="tagsContainer"
-          :class="['c-select--multiple-tags', `c-px-sm`]"
+          class="c-select--multiple-tags c-px-sm"
         >
           <div
             v-for="{ label, value } in selectedMultipleOptions"
             :key="value"
           >
-            <c-tag
+            <CTag
               :label="label"
               size="xs"
               rounded
@@ -279,7 +281,7 @@ const onArrowClick = () => {
     </div>
     <template #drop-content>
       <div :class="[`c-py-${provideSize}`]">
-        <c-list
+        <CList
           :items="options"
           :active-fn="isItemActive"
           item-key="value"
@@ -288,5 +290,5 @@ const onArrowClick = () => {
         />
       </div>
     </template>
-  </c-dropdown>
+  </CDropdown>
 </template>

@@ -1,14 +1,13 @@
-import { defineUserConfig } from 'vuepress'
 import path from 'path'
+import { defaultTheme, defineUserConfig } from 'vuepress'
 import casualCode from '@casual-ui/vuepress-plugin-casual-code'
 import docSearch from '@vuepress/plugin-docsearch'
-import { defaultTheme } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
-import nightOwlTheme from './config/night-owl.json'
 import Unocss from 'unocss/vite'
 import { presetIcons } from 'unocss'
+import nightOwlTheme from './config/night-owl.json'
 
 export default defineUserConfig({
   title: 'Casual UI - Vue',
@@ -301,14 +300,14 @@ export default defineUserConfig({
     }),
     casualCode({
       componentsBasePath:
-        path.resolve(__dirname, '../ui/src/components/') + '/',
+        `${path.resolve(__dirname, '../ui/src/components/')}/`,
       importMap: {
         imports: {
           '@quasar/extras/material-icons':
             'https://unpkg.com/@quasar/extras/material-icons/index.mjs',
           'casual-ui-vue':
             'https://unpkg.com/casual-ui-vue/dist/casual-ui-vue.es.js',
-          vue: 'https://unpkg.com/@vue/runtime-dom@3.2.36/dist/runtime-dom.esm-browser.js',
+          'vue': 'https://unpkg.com/@vue/runtime-dom@3.2.36/dist/runtime-dom.esm-browser.js',
         },
       },
     }),

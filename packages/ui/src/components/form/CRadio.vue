@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CSize } from '@casual-ui/types'
-import { useInjectSize, useDefaultVModel } from '@casual-ui/vue'
+import { useDefaultVModel, useInjectSize } from '@casual-ui/vue'
 import useValidator from './useValidator'
 
 type CRadioModel = boolean | string | number
@@ -55,18 +55,19 @@ const { provideSize } = useInjectSize(props)
 const innerValue = useDefaultVModel(props, emit)
 
 const onClick = () => {
-  if (props.disabled) return
-  if (props.value === innerValue.value) {
+  if (props.disabled)
     return
-  }
+  if (props.value === innerValue.value)
+    return
+
   innerValue.value = props.value
 }
 const { hasError } = useValidator()
 </script>
+
 <template>
   <div
-    :class="[
-      'c-radio',
+    class="c-radio" :class="[
       `c-font-${provideSize}`,
       `c-h-${provideSize}`,
       `c-radio--size-${provideSize}`,
@@ -86,11 +87,11 @@ const { hasError } = useValidator()
     >
       <path
         d="M12,22a10,10 0 0 1 -10,-10a10,10 0 0 1 10,-10a10,10 0 0 1 10,10a10,10 0 0 1 -10,10m0,-22a12,12 0 0 0 -12,12a12,12 0 0 0 12,12a12,12 0 0 0 12,-12a12,12 0 0 0 -12,-12"
-      ></path>
+      />
       <path
         class="c-radio--inner-circle"
         d="M12,6a6,6 0 0 0 -6,6a6,6 0 0 0 6,6a6,6 0 0 0 6,-6a6,6 0 0 0 -6,-6"
-      ></path>
+      />
     </svg>
     <div class="c-radio--label">
       {{ label }}

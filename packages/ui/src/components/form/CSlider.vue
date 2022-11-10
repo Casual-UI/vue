@@ -2,8 +2,8 @@
   setup
   lang="ts"
 >
-import { useBEM } from '../../usable/useBEM'
 import { ref } from 'vue'
+import { useBEM } from '../../usable/useBEM'
 import useInjectSize from '../../usable/useInjectSize'
 import { useDefaultVModel } from '../../usable/useVModel'
 
@@ -69,6 +69,7 @@ function computedLeft() {
   left.value = `${(100 * (innerValue.value - props.min)) / props.max}%`
 }
 </script>
+
 <template>
   <div
     :class="
@@ -78,7 +79,7 @@ function computedLeft() {
       })
     "
   >
-    <div class="c-slider--track"></div>
+    <div class="c-slider--track" />
     <div>
       <c-tooltip
         :content="innerValue"
@@ -86,8 +87,7 @@ function computedLeft() {
         :style="{
           left,
         }"
-      >
-      </c-tooltip>
+      />
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CTheme, CSize } from '@casual-ui/types'
+import type { CSize, CTheme } from '@casual-ui/types'
 import { useDefaultVModel, useInjectSize, useInjectTheme } from '@casual-ui/vue'
 import useValidator from './useValidator'
 
@@ -45,9 +45,6 @@ const props = withDefaults(defineProps<CCheckboxProps>(), {
   disabled: false,
 })
 
-const { provideTheme: theme } = useInjectTheme(props)
-const { provideSize: size } = useInjectSize(props)
-
 const emit = defineEmits<{
   /**
    * Emit when the checkbox value changed.
@@ -58,20 +55,24 @@ const emit = defineEmits<{
   (e: 'update:modelValue', newValue: CCheckboxModel): void
 }>()
 
+const { provideTheme: theme } = useInjectTheme(props)
+const { provideSize: size } = useInjectSize(props)
+
 const innerValue = useDefaultVModel(props, emit)
 
 const onClick = () => {
-  if (props.disabled) return
-  innerValue.value =
-    innerValue.value === props.checkedValue ? false : props.checkedValue
+  if (props.disabled)
+    return
+  innerValue.value
+    = innerValue.value === props.checkedValue ? false : props.checkedValue
 }
 
 const { hasError } = useValidator()
 </script>
+
 <template>
   <div
-    :class="[
-      'c-checkbox',
+    class="c-checkbox" :class="[
       `c-checkbox--theme-${theme}`,
       `c-h-${size}`,
       `c-font-${size}`,
@@ -96,10 +97,12 @@ const { hasError } = useValidator()
         class="c-checkbox--checker"
         fill="none"
         d="M1.73,12.91 8.1,19.28 22.79,4.59"
-      ></path>
+      />
       <!-- TODO: 半选态 -->
       <!-- <path d="M4,14H20V10H4"></path> -->
     </svg>
-    <div class="c-checkbox--label">{{ label }}</div>
+    <div class="c-checkbox--label">
+      {{ label }}
+    </div>
   </div>
 </template>

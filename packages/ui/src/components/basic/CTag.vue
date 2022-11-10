@@ -54,10 +54,10 @@ const { provideTheme } = useInjectTheme(props)
 
 const { provideSize: size } = useInjectSize(props)
 </script>
+
 <template>
   <div
-    :class="[
-      'c-tag',
+    class="c-tag" :class="[
       `c-tag--theme-${provideTheme}`,
       `c-h-${size}`,
       `c-font-${size}`,
@@ -66,9 +66,9 @@ const { provideSize: size } = useInjectSize(props)
     ]"
   >
     <div class="c-tag--prefix">
-      <!-- 
+      <!--
         @slot Customize prefix content
-        @zh 自定义前置内容 
+        @zh 自定义前置内容
       -->
       <slot name="prefix" />
     </div>
@@ -77,10 +77,10 @@ const { provideSize: size } = useInjectSize(props)
     </div>
     <div
       v-if="closeable"
-      :class="['c-tag--close-icon', `c-ml-xs`]"
+      class="c-tag--close-icon c-ml-xs"
       @click.stop="$emit('close')"
     >
-      <c-icon :content="matClose" />
+      <CIcon :content="matClose" />
     </div>
   </div>
 </template>

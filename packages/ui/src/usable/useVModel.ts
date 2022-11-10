@@ -1,4 +1,4 @@
-import { ref, watch, toRefs } from 'vue'
+import { ref, toRefs, watch } from 'vue'
 import type { Ref, UnwrapRef } from 'vue'
 interface BaseVModelProps<T> {
   modelValue: T
@@ -10,13 +10,13 @@ interface BaseVModelEmit<T> {
 const useVModel = <T>(
   propValue: Ref<T>,
   defaultValue: T,
-  emitFunction: (newInnerValue: UnwrapRef<T>) => void
+  emitFunction: (newInnerValue: UnwrapRef<T>) => void,
 ) => {
   const innerValue = ref(defaultValue)
 
   watch(innerValue, emitFunction)
 
-  watch(propValue, newPropValue => {
+  watch(propValue, (newPropValue) => {
     innerValue.value = newPropValue as UnwrapRef<T>
   })
 
@@ -30,15 +30,14 @@ interface VModelHooks<T> {
 }
 
 export const useDefaultVModel = <
-  T,
-  S extends BaseVModelEmit<T> = BaseVModelEmit<T>
+  T, S extends BaseVModelEmit<T> = BaseVModelEmit<T>,
 >(
-  props: Readonly<BaseVModelProps<T>>,
-  emit: S,
-  hooks?: VModelHooks<T>
-) => {
+    props: Readonly<BaseVModelProps<T>>,
+    emit: S,
+    hooks?: VModelHooks<T>,
+  ) => {
   const { modelValue } = toRefs(props)
-  const { innerValue } = useVModel(modelValue, modelValue.value, newValue => {
+  const { innerValue } = useVModel(modelValue, modelValue.value, (newValue) => {
     if (hooks) {
       const { beforeEmit } = hooks
       beforeEmit?.(newValue)

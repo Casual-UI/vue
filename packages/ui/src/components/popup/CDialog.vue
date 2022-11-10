@@ -3,10 +3,10 @@
   lang="ts"
 >
 import { CButton, CIcon, CPopup, useDefaultVModel } from '@casual-ui/vue'
-import { toRefs, onMounted, onUnmounted, computed } from 'vue'
+import { computed, onMounted, onUnmounted, toRefs } from 'vue'
 import { ionCloseOutline } from '@quasar/extras/ionicons-v5/index'
-import usePosition from './usePosition'
 import type { PositionGroup } from '@casual-ui/types'
+import usePosition from './usePosition'
 
 interface CDialogProps {
   /**
@@ -129,8 +129,6 @@ const props = withDefaults(defineProps<CDialogProps>(), {
   closeOnClickBackdrop: true,
 })
 
-const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
-
 const emit = defineEmits<{
   /**
    * Emit when the open status change.
@@ -144,12 +142,13 @@ const emit = defineEmits<{
   (e: 'opened'): void
 }>()
 
+const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
+
 const innerValue = useDefaultVModel(props, emit)
 
 const listenKeyboard = (e: KeyboardEvent) => {
-  if (e.key === 'Escape' && innerValue.value && props.closeOnEsc) {
+  if (e.key === 'Escape' && innerValue.value && props.closeOnEsc)
     innerValue.value = false
-  }
 }
 
 onMounted(() => {
@@ -163,7 +162,7 @@ onUnmounted(() => {
 const onAfterEnter = () => emit('opened')
 const roundedClass = computed(() => {
   const classMap = new Map<PositionGroup, string>([
-    ['start start', `c-rounded-br-md`],
+    ['start start', 'c-rounded-br-md'],
     ['start center', 'c-rounded-r-md'],
     ['start end', 'c-rounded-tr-md'],
     ['center start', 'c-rounded-b-md'],
@@ -176,14 +175,15 @@ const roundedClass = computed(() => {
 
   return (
     classMap.get(
-      `${provideHorizontalAlign.value} ${provideVerticalAlign.value}` as PositionGroup
+      `${provideHorizontalAlign.value} ${provideVerticalAlign.value}` as PositionGroup,
     ) || ''
   )
 })
 </script>
+
 <template>
   <Teleport to="body">
-    <c-popup
+    <CPopup
       v-model="innerValue"
       addition-class="c-popup--dialog"
       :close-on-click-backdrop="closeOnClickBackdrop"
@@ -194,18 +194,18 @@ const roundedClass = computed(() => {
       >
         <div
           v-if="innerValue"
-          :class="['c-dialog', rounded ? roundedClass : '', customClass]"
+          class="c-dialog" :class="[rounded ? roundedClass : '', customClass]"
           :style="{
             width,
             ...customStyle,
           }"
         >
           <div class="c-dialog--header">
-            <!-- 
+            <!--
               @slot Customize the header content.
               @zh 自定义对话框头部内容 -->
             <slot name="header">
-              <!-- 
+              <!--
                 @slot Customize the title content.
                 @zh 自定义标题内容 -->
               <div class="c-dialog--title">
@@ -218,41 +218,41 @@ const roundedClass = computed(() => {
                 class="c-dialog--close-btn"
                 @click="innerValue = false"
               >
-                <!-- 
+                <!--
                   @slot Customize the close icon.
                   @zh 自定义关闭图标 -->
                 <slot name="close-icon">
-                  <c-icon :content="ionCloseOutline" />
+                  <CIcon :content="ionCloseOutline" />
                 </slot>
               </div>
             </slot>
           </div>
           <div
-            :class="['c-dialog--content', { 'c-px-md c-pb-md': bodyPadding }]"
+            class="c-dialog--content" :class="[{ 'c-px-md c-pb-md': bodyPadding }]"
             :style="{
               height: bodyHeight,
               ...customBodyStyle,
             }"
           >
-            <!-- 
+            <!--
               @slot The dialog content.
               @zh 默认内容 -->
             <slot />
           </div>
           <div class="c-dialog--footer">
-            <!-- 
-              @slot Customize the footer content. 
+            <!--
+              @slot Customize the footer content.
               @zh 自定义对话框底部内容 -->
             <slot name="footer">
               <div class="c-row c-gutter-x-sm">
-                <!-- 
+                <!--
                     @slot Customize the footer actions.
                     @zh 自定义底部操作按钮
                   -->
                 <slot name="footer-actions">
                   <div class="c-row c-gutter-x-sm">
                     <div>
-                      <c-button
+                      <CButton
                         v-if="showCancelBtn"
                         :label="cancelBtnLabel"
                         flat
@@ -260,7 +260,7 @@ const roundedClass = computed(() => {
                       />
                     </div>
                     <div>
-                      <c-button
+                      <CButton
                         v-if="showConfirmBtn"
                         :label="confirmBtnLabel"
                         :rounded="rounded"
@@ -273,6 +273,6 @@ const roundedClass = computed(() => {
           </div>
         </div>
       </Transition>
-    </c-popup>
+    </CPopup>
   </Teleport>
 </template>

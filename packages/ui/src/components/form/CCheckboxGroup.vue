@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CSize } from '@casual-ui/types'
-import { useVModel, CCheckbox } from '@casual-ui/vue'
+import { CCheckbox, useVModel } from '@casual-ui/vue'
 import { computed, toRefs } from 'vue'
 import useFormProps from './useFormProps'
 import useValidator from './useValidator'
@@ -52,31 +52,32 @@ const { modelValue } = toRefs(props)
 const { innerValue } = useVModel<CCheckboxModel[]>(
   modelValue,
   modelValue.value,
-  newValue => {
+  (newValue) => {
     emit('update:modelValue', newValue)
-  }
+  },
 )
 
 const optionsWithCheckStatus = computed(() =>
   props.options.map(op => ({
     ...op,
     value: op.value as string,
-    checked: innerValue.value.some(v => v === op.value),
-  }))
+    checked: innerValue.value.includes(op.value),
+  })),
 )
 const { validate } = useValidator()
 const onCheckStatusChange = (val: CCheckboxModel) => {
   const idx = innerValue.value.findIndex(v => v === val)
-  if (idx === -1) {
+  if (idx === -1)
     innerValue.value.push(val)
-  } else {
+  else
     innerValue.value.splice(idx, 1)
-  }
+
   validate(innerValue.value)
 }
 
 const { gutterSize } = useFormProps(props)
 </script>
+
 <template>
   <div
     class="c-checkbox-group c-row c-items-center c-wrap"
@@ -86,7 +87,7 @@ const { gutterSize } = useFormProps(props)
       v-for="op in optionsWithCheckStatus"
       :key="op.value"
     >
-      <c-checkbox
+      <CCheckbox
         :label="op.label"
         :model-value="op.checked"
         @update:model-value="onCheckStatusChange(op.value)"

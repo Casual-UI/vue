@@ -4,7 +4,7 @@
 >
 import type { CSize } from '@casual-ui/types'
 import { useInjectSize } from '@casual-ui/vue'
-import { watch, onMounted, ref, nextTick } from 'vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 
 interface CItem {
   name: string
@@ -65,14 +65,14 @@ const header = ref<HTMLDivElement | null>(null)
 
 const updateModelValue = (newModelValue: string) => {
   const currentIdx = props.items.findIndex(
-    item => item.name === props.modelValue
+    item => item.name === props.modelValue,
   )
   const newIdx = props.items.findIndex(item => item.name === newModelValue)
-  if (newIdx < currentIdx) {
+  if (newIdx < currentIdx)
     isForward.value = true
-  } else {
+  else
     isForward.value = false
-  }
+
   emit('update:modelValue', newModelValue)
 }
 
@@ -81,9 +81,10 @@ const activeBarWidth = ref('0')
 
 const setActiveBarStatus = () => {
   const activeItem = header.value?.querySelector<HTMLDivElement>(
-    '.c-tabs--header-item-active'
+    '.c-tabs--header-item-active',
   )
-  if (!activeItem) return
+  if (!activeItem)
+    return
   activeBarLeft.value = `${activeItem.offsetLeft}px`
   activeBarWidth.value = `${activeItem.offsetWidth}px`
 }
@@ -96,6 +97,7 @@ watch([() => props.modelValue, () => props.size], () => {
   nextTick(setActiveBarStatus)
 })
 </script>
+
 <template>
   <div class="c-tabs">
     <div
@@ -105,8 +107,7 @@ watch([() => props.modelValue, () => props.size], () => {
       <div
         v-for="tabItem in items"
         :key="tabItem.name"
-        :class="[
-          'c-tabs--header-item',
+        class="c-tabs--header-item" :class="[
           `c-h-${realSize}`,
           `c-font-${realSize}`,
           `c-px-${realSize}`,
@@ -131,7 +132,7 @@ watch([() => props.modelValue, () => props.size], () => {
           left: activeBarLeft,
           width: activeBarWidth,
         }"
-      ></div>
+      />
     </div>
     <div
       class="c-tabs--body"
@@ -143,9 +144,9 @@ watch([() => props.modelValue, () => props.size], () => {
       >
         <div
           :key="modelValue"
-          :class="['c-tabs--body-item']"
+          class="c-tabs--body-item"
         >
-          <!-- 
+          <!--
             @slot
             @name body-[item.name] - The content of the item.
             @name_zh 对应名称面板的内容

@@ -1,19 +1,17 @@
 import type { Directive } from 'vue'
 
 const vDrag: Directive = {
-  beforeMount: el => {
+  beforeMount: (el) => {
     el._casualDragContext = {
       previous: {},
     }
     el.setAttribute('draggable', '')
-    el.addEventListener('dragstart', (e: any) => {
-      console.log('drag start: ', e)
+    // TODO: implement the rest
+    el.addEventListener('dragstart', (_e: any) => {
     })
-    el.addEventListener('drag', (e: any) => {
-      console.log('drag: ', e)
+    el.addEventListener('drag', (_e: any) => {
     })
-    el.addEventListener('dragend', (e: any) => {
-      console.log('drag end: ', e)
+    el.addEventListener('dragend', (_e: any) => {
     })
   },
 }

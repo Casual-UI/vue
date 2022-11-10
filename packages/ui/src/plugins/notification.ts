@@ -1,8 +1,8 @@
 import { createNotificationGroups } from '@casual-ui/types'
 import type {
+  Notification,
   NotificationGroups,
   PositionGroup,
-  Notification,
 } from '@casual-ui/types'
 import { useScreen } from '@casual-ui/vue'
 import { reactive } from 'vue'
@@ -13,14 +13,13 @@ const notifications = reactive<NotificationGroups>(createNotificationGroups())
 
 const closeByPositionGroupAndID = (
   positionGroup: PositionGroup,
-  id: number
+  id: number,
 ) => {
   const idx = notifications[positionGroup].items.findIndex(
-    noItem => noItem.id === id
+    noItem => noItem.id === id,
   )
-  if (idx !== -1) {
+  if (idx !== -1)
     notifications[positionGroup].items.splice(idx, 1)
-  }
 }
 
 const changeContentByPositionGroupAndID = (
@@ -29,10 +28,10 @@ const changeContentByPositionGroupAndID = (
   newContent: Pick<
     Notification,
     'message' | 'title' | 'closeIcon' | 'theme' | 'timeout'
-  >
+  >,
 ) => {
   const idx = notifications[positionGroup].items.findIndex(
-    noItem => noItem.id === id
+    noItem => noItem.id === id,
   )
   if (idx !== -1) {
     notifications[positionGroup].items.splice(idx, 1, {
@@ -61,7 +60,7 @@ const open = (
     theme: 'primary',
     alignX: 'end',
     alignY: 'start',
-  }
+  },
 ) => {
   const id = ++notificationsCounter
   const positionKey = `${alignX} ${alignY}` as PositionGroup
@@ -75,17 +74,15 @@ const open = (
     alignY,
     timeout,
   }
-  if (positionKey.endsWith('end')) {
+  if (positionKey.endsWith('end'))
     notifications[positionKey].items.unshift(newItem)
-  } else {
+  else
     notifications[positionKey].items.push(newItem)
-  }
 
   const close = () => closeByPositionGroupAndID(positionKey, id)
   let flag: NodeJS.Timeout
-  if (timeout > 0) {
+  if (timeout > 0)
     flag = setTimeout(close, timeout)
-  }
 
   return {
     close,
@@ -93,7 +90,7 @@ const open = (
       content: Pick<
         Notification,
         'message' | 'title' | 'closeIcon' | 'theme' | 'timeout'
-      >
+      >,
     ) => {
       changeContentByPositionGroupAndID(positionKey, id, content)
       const { timeout } = content

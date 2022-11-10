@@ -44,6 +44,7 @@ const props = withDefaults(defineProps<TableProps>(), {
 
 provide('columns', props.columns)
 </script>
+
 <template>
   <div
     class="c-table"
@@ -54,11 +55,11 @@ provide('columns', props.columns)
         <col
           v-for="{ field } in columns"
           :key="field"
-        />
+        >
       </colgroup>
       <thead>
-        <c-tr>
-          <c-th
+        <CTr>
+          <CTh
             v-for="{ field, title, width } in columns"
             :key="field"
             :width="width"
@@ -69,26 +70,26 @@ provide('columns', props.columns)
             >
               {{ title }}
             </slot>
-          </c-th>
-        </c-tr>
+          </CTh>
+        </CTr>
       </thead>
       <tbody>
-        <c-tr
+        <CTr
           v-for="row in data"
           :key="row[rowKey]"
         >
-          <c-td
+          <CTd
             v-for="({ field, width }, idx) in columns"
             :key="field"
           >
-            <!-- 
-              @slot 
+            <!--
+              @slot
               @zh 自定义单元格
               @name td-[field] - Customize the field column content.
               @name_zh 自定义对应<code>field</code>单元格渲染
                 @binding {any} row - row data
                 @row_zh 当前行数据
-                @binding {any} val - The cell value 
+                @binding {any} val - The cell value
                 @val_zh 当前单元格数据
                 @binding {number} idx - The row index.
                 @idx_zh 当前单元格所在行下标
@@ -101,8 +102,8 @@ provide('columns', props.columns)
             >
               {{ row[field] }}
             </slot>
-          </c-td>
-        </c-tr>
+          </CTd>
+        </CTr>
       </tbody>
     </table>
     <div

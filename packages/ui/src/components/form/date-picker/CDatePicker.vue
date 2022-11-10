@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import {
-  CIcon,
   CDatePanel,
-  useVModel,
-  useInjectSize,
-  CInput,
-  CDropdown,
-  useDefaultVModel,
-  CYearPanel,
-  CMonthPanel,
   CDatePanelHeader,
+  CDropdown,
+  CIcon,
+  CInput,
+  CMonthPanel,
+  CYearPanel,
+  useDefaultVModel,
+  useInjectSize,
+  useVModel,
 } from '@casual-ui/vue'
-import { toRefs, watch, ref, computed } from 'vue'
+import { computed, ref, toRefs, watch } from 'vue'
 import type { CSize } from '@casual-ui/types'
 import { matCalendarToday } from '@quasar/extras/material-icons/index'
-import useUnit from './useUnit'
 import useValidator from '../useValidator'
+import useUnit from './useUnit'
 
 type Unit = 'year' | 'month' | 'day'
 
@@ -88,7 +88,8 @@ interface ODatePickerProps {
 const props = withDefaults(defineProps<ODatePickerProps>(), {
   format: 'YYYY-MM-DD',
   formatter: (d: Date | null, f: string) => {
-    if (!d) return ''
+    if (!d)
+      return ''
     return dayjs(d).format(f)
   },
   size: undefined,
@@ -102,12 +103,6 @@ const props = withDefaults(defineProps<ODatePickerProps>(), {
   disabled: false,
   unit: 'day',
 })
-
-const innerFormatter = (d: Date | null) => props.formatter(d, props.format)
-
-const { provideSize: size } = useInjectSize(props)
-
-const { formattedValue, dateRange, formattedDateRange } = toRefs(props)
 
 const emit = defineEmits<{
   /**
@@ -151,6 +146,12 @@ const emit = defineEmits<{
   (e: 'update:unit', newUnit: Unit): void
 }>()
 
+const innerFormatter = (d: Date | null) => props.formatter(d, props.format)
+
+const { provideSize: size } = useInjectSize(props)
+
+const { formattedValue, dateRange, formattedDateRange } = toRefs(props)
+
 const { validate } = useValidator()
 
 const innerUnit = useUnit(emit, props)
@@ -160,33 +161,33 @@ const innerValue = useDefaultVModel(props, emit)
 const { innerValue: innerFormattedValue } = useVModel(
   formattedValue,
   innerFormatter(innerValue.value),
-  newValue => {
+  (newValue) => {
     emit('update:formattedValue', newValue)
-  }
+  },
 )
 
 const { innerValue: innerRange } = useVModel<[Date | null, Date | null]>(
   dateRange,
   dateRange.value,
-  newRange => {
+  (newRange) => {
     emit('update:dateRange', newRange)
-  }
+  },
 )
 
 const { innerValue: innerFormattedRangeValue } = useVModel(
   formattedDateRange,
   formattedDateRange.value,
-  newFormattedRange => {
+  (newFormattedRange) => {
     emit('update:formattedDateRange', newFormattedRange)
-  }
+  },
 )
 
 // 侦听单选值更改后，改变格式化后的值
-watch(innerValue, newDate => {
+watch(innerValue, (newDate) => {
   innerFormattedValue.value = innerFormatter(newDate)
 })
 
-watch(innerRange, newRange => {
+watch(innerRange, (newRange) => {
   const [start, end] = newRange
   innerFormattedRangeValue.value = [innerFormatter(start), innerFormatter(end)]
 })
@@ -197,7 +198,8 @@ const show = ref(false)
 const displayValue = computed(() => {
   if (props.range) {
     const [start, end] = innerFormattedRangeValue.value
-    if (!start && !end) return ''
+    if (!start && !end)
+      return ''
     return `${start} - ${end}`
   }
   return innerFormattedValue.value
@@ -209,20 +211,22 @@ const yearRange = ref<[number, number]>([year.value, year.value + 11])
 const transitionName = ref('c-date-panel')
 const initialUnit = innerUnit.value
 const onDateSet = () => {
-  if (props.hideOnSelect) {
+  if (props.hideOnSelect)
     show.value = false
-  }
 }
 const onUpdateUnit = (newUnit: Unit) => {
   if (newUnit === 'day') {
     transitionName.value = 'c-date-panel'
-  } else if (newUnit === 'year') {
+  }
+  else if (newUnit === 'year') {
     transitionName.value = 'c-date-panel-reverse'
-  } else {
+  }
+  else {
     if (innerUnit.value === 'day') {
       // day to month
       transitionName.value = 'c-date-panel-reverse'
-    } else {
+    }
+    else {
       // year to month
       transitionName.value = 'c-date-panel'
     }
@@ -249,28 +253,27 @@ const onYearSet = (newDate: Date | null) => {
 const datePickerContainer = ref<HTMLDivElement | null>(null)
 
 const onModelValueChange = (newValue: Date | null) => {
-  if (!newValue) {
+  if (!newValue)
     validate(innerValue)
-  }
 }
 </script>
+
 <template>
   <div
     ref="datePickerContainer"
-    :class="[
-      'c-date-picker',
+    class="c-date-picker" :class="[
       `c-font-${size}`,
       `c-date-picker--size-${size}`,
       { 'c-date-picker--disabled': disabled },
     ]"
   >
-    <c-dropdown
+    <CDropdown
       v-model="show"
       :width-within-parent="false"
       :disabled="disabled"
       @update:model-value="() => onModelValueChange(null)"
     >
-      <c-input
+      <CInput
         :model-value="displayValue"
         readonly
         :placeholder="placeholder"
@@ -286,11 +289,11 @@ const onModelValueChange = (newValue: Date | null) => {
         "
       >
         <template #suffix>
-          <c-icon :content="matCalendarToday" />
+          <CIcon :content="matCalendarToday" />
         </template>
-      </c-input>
+      </CInput>
       <template #drop-content>
-        <c-date-panel-header
+        <CDatePanelHeader
           v-model:year="year"
           v-model:month="month"
           v-model:yearRange="yearRange"
@@ -303,7 +306,7 @@ const onModelValueChange = (newValue: Date | null) => {
           :class="[`c-px-${size}`, `c-pb-${size}`]"
         >
           <transition-group :name="transitionName">
-            <c-date-panel
+            <CDatePanel
               v-if="innerUnit === 'day'"
               key="day"
               v-model="innerValue"
@@ -314,14 +317,14 @@ const onModelValueChange = (newValue: Date | null) => {
               :month="month"
               @update:model-value="onDateSet"
             />
-            <c-month-panel
+            <CMonthPanel
               v-else-if="innerUnit === 'month'"
               key="month"
               v-model="innerValue"
               :year="year"
               @update:model-value="onMonthSet"
             />
-            <c-year-panel
+            <CYearPanel
               v-else-if="innerUnit === 'year'"
               key="year"
               v-model="innerValue"
@@ -331,6 +334,6 @@ const onModelValueChange = (newValue: Date | null) => {
           </transition-group>
         </div>
       </template>
-    </c-dropdown>
+    </CDropdown>
   </div>
 </template>

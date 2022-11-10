@@ -3,15 +3,36 @@ export const hasErrorKey = Symbol('hasError')
 export const validateKey = Symbol('validate')
 export const clearValidateKey = Symbol('clearValidate')
 </script>
-<script
-  lang="ts"
-  setup
->
-import type { CSize, CRule } from '@casual-ui/types'
+
+<script lang="ts" setup>
+import type { CRule, CSize } from '@casual-ui/types'
 import { computed, inject, provide, ref } from 'vue'
 import type { Ref } from 'vue'
 import useFormProps, { type LabelDirection } from './useFormProps'
 import { errorKey, validatorsKey } from './CForm.vue'
+const props = withDefaults(defineProps<CFormItemProps>(), {
+  label: '',
+  labelWidth: undefined,
+  col: undefined,
+  size: undefined,
+  rules: () => [],
+  field: undefined,
+  labelDirection: undefined,
+  labelAlign: undefined,
+})
+const emit = defineEmits<{
+  /**
+   * Emit when the form item begin validating.
+   * @zh 开始验证触发
+   */
+  (e: 'validate-start'): void
+  /**
+   * Emit when the form item end validating.
+   * @zh 结束验证触发
+   */
+  (e: 'validate-end'): void
+}>()
+
 interface CFormItemProps {
   /**
    * The filed key of whole form data.
@@ -59,32 +80,8 @@ interface CFormItemProps {
   labelAlign?: 'left' | 'center' | 'right'
 }
 
-const props = withDefaults(defineProps<CFormItemProps>(), {
-  label: '',
-  labelWidth: undefined,
-  col: undefined,
-  size: undefined,
-  rules: () => [],
-  field: undefined,
-  labelDirection: undefined,
-  labelAlign: undefined,
-})
-
-const emit = defineEmits<{
-  /**
-   * Emit when the form item begin validating.
-   * @zh 开始验证触发
-   */
-  (e: 'validate-start'): void
-  /**
-   * Emit when the form item end validating.
-   * @zh 结束验证触发
-   */
-  (e: 'validate-end'): void
-}>()
-
-const { col, labelDirection, size, labelWidth, labelAlign } =
-  useFormProps(props)
+const { col, labelDirection, size, labelWidth, labelAlign }
+  = useFormProps(props)
 
 const isLabelVertical = (direction: LabelDirection) => {
   return direction === 'column' || direction === 'column-reverse'
@@ -109,10 +106,13 @@ const errorStatus = inject<
 >(errorKey, ref({}))
 
 const hasError = computed(() => {
-  if (!errorStatus.value) return false
+  if (!errorStatus.value)
+    return false
   const errorObj = errorStatus.value[props.field]
-  if (!errorObj) return false
-  if (errorObj.error) return errorObj.message
+  if (!errorObj)
+    return false
+  if (errorObj.error)
+    return errorObj.message
   return false
 })
 
@@ -120,13 +120,15 @@ provide(hasErrorKey, hasError)
 
 const validators = inject(
   validatorsKey,
-  [] as ((formData: any) => Promise<void>)[]
+  [] as ((formData: any) => Promise<void>)[],
 )
 
 const validate = async (v: any) => {
-  if (!props.rules) return
+  if (!props.rules)
+    return
   const errorObj = errorStatus.value[props.field]
-  if (!errorObj) return
+  if (!errorObj)
+    return
   errorObj.error = false
   errorObj.message = ''
   emit('validate-start')
@@ -144,9 +146,11 @@ const validate = async (v: any) => {
 validators.push(fd => validate(fd[props.field]))
 
 const clearValidate = () => {
-  if (!errorStatus.value) return
+  if (!errorStatus.value)
+    return
   const errorObj = errorStatus.value[props.field]
-  if (!errorObj) return
+  if (!errorObj)
+    return
   errorObj.error = false
   errorObj.message = ''
 }
@@ -155,10 +159,12 @@ provide(validateKey, validate)
 
 provide(clearValidateKey, clearValidate)
 </script>
+
+<script></script>
+
 <template>
   <div
-    :class="[
-      'c-form-item',
+    class="c-form-item" :class="[
       `c-col-${col}`,
       `c-${labelDirection}`,
       isLabelVertical(labelDirection) ? 'c-items-start' : 'c-items-center',
@@ -166,8 +172,7 @@ provide(clearValidateKey, clearValidate)
     ]"
   >
     <div
-      :class="[
-        'c-form-item--label',
+      class="c-form-item--label" :class="[
         `c-font-${size}`,
         `c-m${getLabelMarginPosition(labelDirection)}-${size}`,
         `c-text-${labelAlign}`,
@@ -179,9 +184,9 @@ provide(clearValidateKey, clearValidate)
       {{ label }}
     </div>
     <div class="c-form-item--content-wrapper c-flex c-items-center">
-      <!-- 
+      <!--
         @slot The content.
-        @name_zh 表单项内容 
+        @name_zh 表单项内容
           @binding {Function} validate The function to validate current item.
           @validate_zh 当前表单项验证方法
           @binding {Function} clear-validate The function to clear current validate status.

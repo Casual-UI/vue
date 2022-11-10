@@ -16,7 +16,7 @@
           keyTimes="0; 1"
           keySplines="0.165, 0.84, 0.44, 1"
           repeatCount="indefinite"
-        ></animate>
+        />
         <animate
           attributeName="stroke-opacity"
           begin="0s"
@@ -26,7 +26,7 @@
           keyTimes="0; 1"
           keySplines="0.3, 0.61, 0.355, 1"
           repeatCount="indefinite"
-        ></animate>
+        />
       </circle>
       <circle cx="22" cy="22" r="1">
         <animate
@@ -38,7 +38,7 @@
           keyTimes="0; 1"
           keySplines="0.165, 0.84, 0.44, 1"
           repeatCount="indefinite"
-        ></animate>
+        />
         <animate
           attributeName="stroke-opacity"
           begin="-0.9s"
@@ -48,7 +48,7 @@
           keyTimes="0; 1"
           keySplines="0.3, 0.61, 0.355, 1"
           repeatCount="indefinite"
-        ></animate>
+        />
       </circle>
     </g>
   </svg>

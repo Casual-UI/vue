@@ -11,6 +11,7 @@ withDefaults(defineProps<LoadingProps>(), {
   thickness: 5,
 })
 </script>
+
 <template>
   <svg
     class="c-loading c-loading--mat"
@@ -27,6 +28,6 @@ withDefaults(defineProps<LoadingProps>(), {
       stroke="currentColor"
       :stroke-width="thickness"
       stroke-miterlimit="10"
-    ></circle>
+    />
   </svg>
 </template>

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { ref, toRefs } from 'vue'
 import {
-  useInjectTheme,
-  useVModel,
-  useInjectSize,
-  useSizeThemeClass,
-  CLoading,
   CIcon,
-  useDefaultVModel,
+  CLoading,
   useBEM,
+  useDefaultVModel,
+  useInjectSize,
+  useInjectTheme,
+  useSizeThemeClass,
+  useVModel,
 } from '@casual-ui/vue'
 import { matHighlightOff } from '@quasar/extras/material-icons/index'
 import type { CSize, CTheme } from '@casual-ui/types'
@@ -102,6 +102,25 @@ interface OInputProps {
   clearValidateOnFocus?: boolean
 }
 
+const props = withDefaults(defineProps<OInputProps>(), {
+  theme: undefined,
+  disabled: false,
+  placeholder: '',
+  rounded: false,
+  loading: false,
+  clearable: false,
+  readonly: false,
+  prefixDivider: true,
+  suffixDivider: true,
+  size: undefined,
+  focused: false,
+  autoBlur: true,
+  type: 'text',
+  customColor: false,
+  validateTrigger: 'blur',
+  clearValidateOnFocus: true,
+})
+
 const emit = defineEmits<{
   /**
    * Emit when the input value changed.
@@ -124,25 +143,6 @@ const emit = defineEmits<{
   (e: 'clear'): void
 }>()
 
-const props = withDefaults(defineProps<OInputProps>(), {
-  theme: undefined,
-  disabled: false,
-  placeholder: '',
-  rounded: false,
-  loading: false,
-  clearable: false,
-  readonly: false,
-  prefixDivider: true,
-  suffixDivider: true,
-  size: undefined,
-  focused: false,
-  autoBlur: true,
-  type: 'text',
-  customColor: false,
-  validateTrigger: 'blur',
-  clearValidateOnFocus: true,
-})
-
 const { focused } = toRefs(props)
 const { provideSize: innerSize } = useInjectSize(props)
 
@@ -154,7 +154,7 @@ const sizeThemeClasses = useSizeThemeClass({
   prefix: 'c-input',
 })
 
-const { innerValue: innerFocused } = useVModel(focused, false, newFocused => {
+const { innerValue: innerFocused } = useVModel(focused, false, (newFocused) => {
   emit('update:focused', newFocused)
 })
 
@@ -167,19 +167,18 @@ const innerValue = useDefaultVModel(props, emit, {
 const inputDom = ref<HTMLInputElement | null>(null)
 
 const onFocus = () => {
-  if (props.clearValidateOnFocus) {
+  if (props.clearValidateOnFocus)
     clearValidate()
-  }
+
   innerFocused.value = true
 }
 
 const onBlur = () => {
-  if (props.autoBlur) {
+  if (props.autoBlur)
     innerFocused.value = false
-  }
-  if (props.validateTrigger === 'blur') {
+
+  if (props.validateTrigger === 'blur')
     validate(innerValue.value)
-  }
 }
 
 const focusInput = () => {
@@ -191,6 +190,7 @@ const onClearIconClick = () => {
   emit('clear')
 }
 </script>
+
 <template>
   <div
     :class="[
@@ -209,18 +209,17 @@ const onClearIconClick = () => {
       `c-px-${innerSize}`,
     ]"
   >
-    <div :class="['c-input--content-wrapper']">
+    <div class="c-input--content-wrapper">
       <div
-        :class="[
-          'c-input--prefix',
+        class="c-input--prefix" :class="[
           { 'c-input--prefix-with-divider': prefixDivider },
           { 'c-pr-sm c-input--prefix-with-content': $slots.prefix },
         ]"
         @click="focusInput"
       >
-        <!-- 
+        <!--
           @slot Customize prefix content.
-          @zh 输入框前置内容 
+          @zh 输入框前置内容
         -->
         <slot name="prefix" />
       </div>
@@ -235,22 +234,20 @@ const onClearIconClick = () => {
           :class="[{ 'c-pl-sm': $slots.prefix }, { 'c-pr-sm': $slots.suffix }]"
           @focus="onFocus"
           @blur="onBlur"
-        />
+        >
       </div>
       <div
         v-if="clearable"
-        :class="[
-          'c-input--clear-icon',
+        class="c-input--clear-icon" :class="[
           { 'c-mr-sm': $slots.suffix || loading },
           { 'c-input--clear-icon-show': innerValue },
         ]"
         @click.stop="onClearIconClick"
       >
-        <c-icon :content="matHighlightOff" />
+        <CIcon :content="matHighlightOff" />
       </div>
       <div
-        :class="[
-          'c-input--suffix',
+        class="c-input--suffix" :class="[
           { 'c-input--suffix-with-divider': suffixDivider },
           {
             'c-pl-sm c-input--suffix-with-content': $slots.suffix,
@@ -259,21 +256,21 @@ const onClearIconClick = () => {
         @click="focusInput"
       >
         <div :class="[{ 'c-mr-sm': loading }]">
-          <!-- 
+          <!--
             @slot Customize suffix content.
-            @zh 输入框后置内容 
+            @zh 输入框后置内容
           -->
           <slot name="suffix" />
         </div>
-        <!-- 
+        <!--
           @slot Customize loading content.
-          @zh 自定义加载中 
+          @zh 自定义加载中
         -->
         <slot
           v-if="loading"
           name="loading"
         >
-          <c-loading />
+          <CLoading />
         </slot>
       </div>
     </div>

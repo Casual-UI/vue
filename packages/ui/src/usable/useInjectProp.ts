@@ -1,4 +1,4 @@
-import { inject, ref, computed, provide, onMounted } from 'vue'
+import { computed, inject, onMounted, provide, ref } from 'vue'
 
 type DefaultValueFunction = () => any
 
@@ -17,7 +17,7 @@ export default <T>({
 }) => {
   const injectProp = inject(
     propName,
-    ref(typeof defaultValue === 'function' ? undefined : defaultValue)
+    ref(typeof defaultValue === 'function' ? undefined : defaultValue),
   )
 
   const provideProp = computed(() => {

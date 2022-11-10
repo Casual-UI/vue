@@ -2,7 +2,7 @@
   setup
   lang="ts"
 >
-import { ref, onMounted, computed } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { CIcon } from '@casual-ui/vue'
 import { matKeyboardArrowDown } from '@quasar/extras/material-icons/index'
 import { useDefaultVModel } from '../../usable/useVModel'
@@ -61,7 +61,7 @@ onMounted(() => {
 })
 
 const realtimeBodyHeigh = computed(() =>
-  innerValue.value ? initialBodyHeight.value : 0
+  innerValue.value ? initialBodyHeight.value : 0,
 )
 
 const setHeight = (h: number) => {
@@ -72,9 +72,10 @@ defineExpose({
   setHeight,
 })
 </script>
+
 <template>
   <div
-    :class="['c-expansion', { 'c-expansion--expanded': innerValue }]"
+    class="c-expansion" :class="[{ 'c-expansion--expanded': innerValue }]"
     :style="`--casual-expansion-height:${realtimeBodyHeigh};`"
   >
     <div
@@ -82,8 +83,8 @@ defineExpose({
       ref="bodyDom"
       class="c-expansion--body"
     >
-      <!-- 
-        @slot The expanded content. 
+      <!--
+        @slot The expanded content.
         @zh 默认展开内容 -->
       <slot v-bind="{ setHeight }" />
     </div>
@@ -95,30 +96,29 @@ defineExpose({
         v-if="icon || $slots.icon"
         class="c-expansion--icon"
       >
-        <!-- 
+        <!--
           @slot Customize the icon content.
           @zh 自定义图标 -->
         <slot name="icon">
-          <c-icon :content="icon" />
+          <CIcon :content="icon" />
         </slot>
       </div>
       <div class="c-expansion--title">
-        <!-- 
-          @slot Customize the title content. 
+        <!--
+          @slot Customize the title content.
           @zh 自定义标题 -->
         <slot name="title">
           {{ title }}
         </slot>
       </div>
       <div
-        :class="[
-          'c-expansion--arrow',
+        class="c-expansion--arrow" :class="[
           { 'c-expansion--arrow-expanded': innerValue },
         ]"
       >
-        <!-- 
-          @slot Customize the arrow 
-          @zh 自定义箭头 
+        <!--
+          @slot Customize the arrow
+          @zh 自定义箭头
             @binding {boolean} expand-status 当前展开状态
             @expandStatus_zh 当前展开状态
           -->
@@ -126,7 +126,7 @@ defineExpose({
           name="arrow"
           :expand-status="innerValue"
         >
-          <c-icon
+          <CIcon
             class=""
             :content="matKeyboardArrowDown"
           />
@@ -138,7 +138,7 @@ defineExpose({
       ref="bodyDom"
       class="c-expansion--body"
     >
-      <!-- 
+      <!--
         @slot The expanded content.
         @zh 默认展开内容 -->
       <slot v-bind="{ setHeight }" />

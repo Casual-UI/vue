@@ -7,6 +7,7 @@ withDefaults(defineProps<CTdProps>(), {
   width: 'auto',
 })
 </script>
+
 <template>
   <td class="c-table--td" :style="{ width }">
     <slot />

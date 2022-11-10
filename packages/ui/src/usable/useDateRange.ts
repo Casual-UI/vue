@@ -3,9 +3,7 @@ import type { Ref } from 'vue'
 
 type DateRange = [Date | null, Date | null]
 export default (customRange?: Ref<DateRange>) => {
-  const range = customRange
-    ? customRange
-    : ref<DateRange>([new Date(), new Date()])
+  const range = customRange || ref<DateRange>([new Date(), new Date()])
 
   const setStart = (startDate: Date) => {
     const [, endDate] = range.value

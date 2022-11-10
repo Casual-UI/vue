@@ -1,5 +1,6 @@
 import '@casual-ui/styles/dist/style.css'
-import { key, type Locale } from '@casual-ui/i18n'
+import { type Locale, key } from '@casual-ui/i18n'
+import { type App, type Plugin, ref } from 'vue'
 import CButton from './components/basic/button/CButton.vue'
 import CIcon from './components/basic/icon/CIcon.vue'
 import CLoading from './components/basic/loading/CLoading.vue'
@@ -18,7 +19,6 @@ import CSelect from './components/form/CSelect.vue'
 import CTag from './components/basic/CTag.vue'
 import CRadio from './components/form/CRadio.vue'
 import useClickOutside from './usable/useClickOutside'
-import { ref, type App, type Plugin } from 'vue'
 import useInjectSize from './usable/useInjectSize'
 import CCheckbox from './components/form/CCheckbox.vue'
 import CCheckboxGroup from './components/form/CCheckboxGroup.vue'
@@ -80,7 +80,7 @@ const CasualUI: Plugin = {
       locale: Locale
     } = {
       locale: 'en',
-    }
+    },
   ) => {
     app.component('CSlider', CSlider)
     app.component('CCarousel', CCarousel)

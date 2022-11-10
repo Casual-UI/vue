@@ -3,9 +3,9 @@
   lang="ts"
 >
 import { computed } from 'vue'
+import { ionCloseOutline } from '@quasar/extras/ionicons-v5/index'
 import { useDefaultVModel } from '../../usable/useVModel'
 import CDialog from './CDialog.vue'
-import { ionCloseOutline } from '@quasar/extras/ionicons-v5/index'
 
 interface Props {
   /**
@@ -73,11 +73,12 @@ const vMap = new Map([
 ])
 
 const isLeftOrRight = computed(
-  () => props.position === 'left' || props.position === 'right'
+  () => props.position === 'left' || props.position === 'right',
 )
 
 const innerValue = useDefaultVModel(props, emit)
 </script>
+
 <template>
   <CDialog
     v-model="innerValue"
@@ -91,14 +92,16 @@ const innerValue = useDefaultVModel(props, emit)
     :close-on-click-backdrop="closeOnClickBackdrop"
   >
     <template #title>
-      <!-- 
+      <!--
         @slot Customize the title content
         @zh 自定义标题内容 -->
-      <slot name="title"> {{ title }} </slot>
+      <slot name="title">
+        {{ title }}
+      </slot>
     </template>
 
     <template #close-icon>
-      <!-- 
+      <!--
         @slot Customize the close icon
         @zh 自定义关闭图标 -->
       <slot name="close-icon">
@@ -106,8 +109,8 @@ const innerValue = useDefaultVModel(props, emit)
       </slot>
     </template>
 
-    <!-- 
-      @slot The drawer content. 
+    <!--
+      @slot The drawer content.
       @zh 抽屉内容 -->
     <slot />
   </CDialog>

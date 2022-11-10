@@ -35,18 +35,19 @@ const useClickOutside = ({
   let el: any
 
   const clickHandler = (e: MouseEvent) => {
-    if (!e.target || !el) return
-    if (el.contains(e.target as any)) {
+    if (!e.target || !el)
+      return
+    if (el.contains(e.target as any))
       cbInside?.()
-    } else {
+    else
       cbOutside?.()
-    }
   }
 
   onMounted(() => {
     // elRef can be a dom element or a Vue component
     el = elRef.value?.$el || elRef.value
-    if (!el) return
+    if (!el)
+      return
 
     window.addEventListener('click', clickHandler)
   })

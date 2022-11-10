@@ -28,6 +28,13 @@ interface CItemProps {
   active?: boolean
 }
 
+const props = withDefaults(defineProps<CItemProps>(), {
+  label: '',
+  size: undefined,
+  clickable: false,
+  active: false,
+})
+
 const emit = defineEmits<{
   /**
    * Emit when the item is clicked. Only working when the clickable is true.
@@ -36,25 +43,17 @@ const emit = defineEmits<{
   (e: 'click'): void
 }>()
 
-const props = withDefaults(defineProps<CItemProps>(), {
-  label: '',
-  size: undefined,
-  clickable: false,
-  active: false,
-})
-
 const { provideSize } = useInjectSize(props)
 
 const onClick = () => {
-  if (props.clickable) {
+  if (props.clickable)
     emit('click')
-  }
 }
 </script>
+
 <template>
   <div
-    :class="[
-      'c-item',
+    class="c-item" :class="[
       { 'c-item--clickable': clickable },
       { 'c-item--active': active },
       `c-font-${provideSize}`,
@@ -62,7 +61,7 @@ const onClick = () => {
     ]"
     @click.stop="onClick"
   >
-    <!-- 
+    <!--
       @slot The content of item.
       @zh 默认内容，会覆盖<code>label</code>属性 -->
     <slot>

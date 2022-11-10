@@ -22,7 +22,7 @@ const useBEM: BEM = (base, bemCondition) =>
 
       return [...bemClass, { [className]: v }]
     },
-    [`c-${base}`]
+    [`c-${base}`],
   )
 
 export { useBEM, camelToKebab }

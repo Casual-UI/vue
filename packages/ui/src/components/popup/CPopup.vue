@@ -44,24 +44,22 @@ const emit = defineEmits<{
 
 const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
 const onBackdropClick = () => {
-  if (props.closeOnClickBackdrop) {
-    console.log('close')
+  if (props.closeOnClickBackdrop)
     emit('update:modelValue', false)
-  }
 }
 </script>
+
 <template>
-  <div :class="['c-popup', { 'c-popup--show': modelValue }, additionClass]">
+  <div class="c-popup" :class="[{ 'c-popup--show': modelValue }, additionClass]">
     <Transition name="c-dialog-backdrop">
       <div
         v-if="modelValue"
         class="c-popup--backdrop"
         @click="onBackdropClick"
-      ></div>
+      />
     </Transition>
     <div
-      :class="[
-        'c-popup--content-wrapper',
+      class="c-popup--content-wrapper" :class="[
         `c-items-${provideHorizontalAlign}`,
         `c-justify-${provideVerticalAlign}`,
       ]"

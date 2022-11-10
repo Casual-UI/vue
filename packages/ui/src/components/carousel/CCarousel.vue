@@ -13,17 +13,32 @@ export const resumeFunctionsKey = Symbol('resumes')
 
 export type Direction = 'forward' | 'backward'
 </script>
-<script
-  setup
-  lang="ts"
->
+
+<script setup lang="ts">
 import { computed, nextTick, onMounted, provide, ref, toRefs } from 'vue'
-import CButton from '../basic/button/CButton.vue'
-import CIcon from '../basic/icon/CIcon.vue'
 import {
   outlinedNavigateBefore,
   outlinedNavigateNext,
 } from '@quasar/extras/material-icons-outlined/index'
+import CButton from '../basic/button/CButton.vue'
+import CIcon from '../basic/icon/CIcon.vue'
+
+const props = withDefaults(defineProps<Props>(), {
+  modelValue: 0,
+  height: '300px',
+  theme: 'primary',
+  interval: 0,
+  indicatorsPositionHorizontal: 'center',
+  indicatorsPositionVertical: 'end',
+  indicatorsAlignDirection: 'row',
+  vertical: false,
+  infinity: false,
+  arrowTiming: 'always',
+  pauseOnHover: true,
+})
+const emit = defineEmits<{
+  (e: 'update:modelValue', newIndex: number): void
+}>()
 
 interface Props {
   /**
@@ -82,22 +97,6 @@ interface Props {
    */
   pauseOnHover?: boolean
 }
-const props = withDefaults(defineProps<Props>(), {
-  modelValue: 0,
-  height: '300px',
-  theme: 'primary',
-  interval: 0,
-  indicatorsPositionHorizontal: 'center',
-  indicatorsPositionVertical: 'end',
-  indicatorsAlignDirection: 'row',
-  vertical: false,
-  infinity: false,
-  arrowTiming: 'always',
-  pauseOnHover: true,
-})
-const emit = defineEmits<{
-  (e: 'update:modelValue', newIndex: number): void
-}>()
 const slides = ref([])
 const direction = ref<Direction>('forward')
 const timeoutFlag = ref(null)
@@ -126,26 +125,24 @@ provide(hoveringKey, hovering)
 
 const onContainerMouseEnter = () => {
   hovering.value = true
-  if (props.arrowTiming === 'hover') {
+  if (props.arrowTiming === 'hover')
     showArrow.value = true
-  }
-  if (props.pauseOnHover) {
+
+  if (props.pauseOnHover)
     pauses.forEach(p => p())
-  }
 }
 const onContainerMouseLeave = () => {
   hovering.value = false
 
-  if (props.arrowTiming === 'hover') {
+  if (props.arrowTiming === 'hover')
     showArrow.value = false
-  }
-  if (props.pauseOnHover) {
+
+  if (props.pauseOnHover)
     resumes.forEach(r => r())
-  }
 }
 
 const indicatorsAnimationPlayState = computed(() =>
-  (props.pauseOnHover && hovering.value) || sliding.value ? 'paused' : 'running'
+  (props.pauseOnHover && hovering.value) || sliding.value ? 'paused' : 'running',
 )
 
 const toIndex = (idx: number) => {
@@ -182,12 +179,12 @@ const toPrev = () => toIndex(props.modelValue - 1)
 const toNext = () => toIndex(props.modelValue + 1)
 
 const showPrev = computed(
-  () => showArrow.value && (props.infinity || props.modelValue > 0)
+  () => showArrow.value && (props.infinity || props.modelValue > 0),
 )
 const showNext = computed(
   () =>
-    showArrow.value &&
-    (props.infinity || props.modelValue < slides.value.length - 1)
+    showArrow.value
+    && (props.infinity || props.modelValue < slides.value.length - 1),
 )
 
 provide(toNextKey, toNext)
@@ -202,9 +199,13 @@ defineExpose({
   toNext,
 })
 </script>
+
+<script>
+</script>
+
 <template>
   <div
-    :class="['c-carousel', { 'c-carousel--vertical': vertical }]"
+    class="c-carousel" :class="[{ 'c-carousel--vertical': vertical }]"
     :style="{
       height,
     }"
@@ -212,24 +213,19 @@ defineExpose({
     @mouseleave="onContainerMouseLeave"
   >
     <div
-      :class="[
-        'c-carousel--indicators',
-        'c-flex',
+      class="c-carousel--indicators c-flex" :class="[
         `c-items-${indicatorsPositionVertical}`,
         `c-justify-${indicatorsPositionHorizontal}`,
       ]"
     >
       <div
-        :class="[
-          'c-carousel--indicators-container',
-          'c-gutter-sm',
-          'c-flex',
+        class="c-carousel--indicators-container c-gutter-sm c-flex" :class="[
           `c-${indicatorsAlignDirection}`,
         ]"
       >
-        <!-- 
-          @slot Customize the indicators content. 
-          @zh 自定义指示器内容 
+        <!--
+          @slot Customize the indicators content.
+          @zh 自定义指示器内容
         -->
         <slot name="indicators">
           <div
@@ -237,8 +233,7 @@ defineExpose({
             :key="i"
           >
             <div
-              :class="[
-                'c-carousel--indicator-item',
+              class="c-carousel--indicator-item" :class="[
                 `c-carousel--indicator-item--${theme}`,
                 { 'c-carousel--indicator-item--active': i === modelValue },
               ]"
@@ -250,9 +245,9 @@ defineExpose({
                 :style="
                   i === modelValue && interval
                     ? {
-                        animationPlayState: indicatorsAnimationPlayState,
-                        animationDuration: `${interval}ms`,
-                      }
+                      animationPlayState: indicatorsAnimationPlayState,
+                      animationDuration: `${interval}ms`,
+                    }
                     : {}
                 "
               />
@@ -268,18 +263,18 @@ defineExpose({
         class="c-carousel--control c-carousel--control--prev"
         @click="toPrev"
       >
-        <!-- 
-          @slot Customize the to previous control arrow. 
-          @zh 自定义向前箭头控制器内容 
+        <!--
+          @slot Customize the to previous control arrow.
+          @zh 自定义向前箭头控制器内容
         -->
         <slot name="control-prev">
-          <c-button
+          <CButton
             icon
             flat
             :theme="theme"
           >
-            <c-icon :content="outlinedNavigateBefore" />
-          </c-button>
+            <CIcon :content="outlinedNavigateBefore" />
+          </CButton>
         </slot>
       </div>
     </Transition>
@@ -290,24 +285,24 @@ defineExpose({
         class="c-carousel--control c-carousel--control--next"
         @click="toNext"
       >
-        <!-- 
-          @slot Customize the to next control arrow. 
-          @zh 自定义向后箭头控制器内容 
+        <!--
+          @slot Customize the to next control arrow.
+          @zh 自定义向后箭头控制器内容
         -->
         <slot name="control-next">
-          <c-button
+          <CButton
             icon
             flat
             :theme="theme"
           >
-            <c-icon :content="outlinedNavigateNext" />
-          </c-button>
+            <CIcon :content="outlinedNavigateNext" />
+          </CButton>
         </slot>
       </div>
     </Transition>
 
     <div class="c-carousel--sliders">
-      <!-- 
+      <!--
         @slot The content of carousel. It is recommended to use <code>c-carousel-slider</code>.
         @zh 轮播内容，推荐使用<code>c-carousel-slider</code>
       -->

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { CSize } from '@casual-ui/types'
-import { useInjectSize, useDefaultVModel } from '@casual-ui/vue'
+import { useDefaultVModel, useInjectSize } from '@casual-ui/vue'
 
 interface CToggleProps {
   /**
@@ -58,7 +58,8 @@ const innerValue = useDefaultVModel(props, emit)
 const { provideSize: size } = useInjectSize(props)
 
 const toggle = () => {
-  if (props.disabled) return
+  if (props.disabled)
+    return
   if (innerValue.value === props.checkValue) {
     innerValue.value = props.uncheckValue
     return
@@ -66,10 +67,10 @@ const toggle = () => {
   innerValue.value = props.checkValue
 }
 </script>
+
 <template>
   <div
-    :class="[
-      'c-toggle',
+    class="c-toggle" :class="[
       `c-toggle--size-${size}`,
       `c-h-${size}`,
       `c-font-${size}`,
@@ -79,9 +80,9 @@ const toggle = () => {
     @click="toggle"
   >
     <div class="c-toggle--track">
-      <div class="c-toggle--dot"></div>
+      <div class="c-toggle--dot" />
     </div>
-    <div :class="['c-toggle--label']">
+    <div class="c-toggle--label">
       {{ label }}
     </div>
   </div>

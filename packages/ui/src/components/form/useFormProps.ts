@@ -1,4 +1,4 @@
-import { useInjectSize, useInjectProp } from '@casual-ui/vue'
+import { useInjectProp, useInjectSize } from '@casual-ui/vue'
 
 type LabelDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse'
 

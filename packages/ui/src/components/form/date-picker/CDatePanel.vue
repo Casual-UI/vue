@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { toRefs, computed, ref } from 'vue'
+import { computed, ref, toRefs } from 'vue'
 import dayjs from 'dayjs'
 import { useMessage } from '../../../usable/useI18n'
 
@@ -16,15 +16,6 @@ interface ODatePanelProps {
   range?: boolean
 }
 
-const messages = useMessage()
-
-/**
- * 比较两个日期是否相等
- */
-const isSameDate = (d1: Date | null, d2: Date | null) => {
-  return innerFormatter(d1) === innerFormatter(d2)
-}
-
 const props = withDefaults(defineProps<ODatePanelProps>(), {
   year: new Date().getFullYear(),
   month: new Date().getMonth(),
@@ -33,17 +24,27 @@ const props = withDefaults(defineProps<ODatePanelProps>(), {
   formattedDateRange: () => ['', ''],
   format: 'YYYY-MM-DD',
   formatter: (d: Date | null, f: string) => {
-    if (!d) return ''
+    if (!d)
+      return ''
     return dayjs(d).format(f)
   },
   range: false,
 })
-const innerFormatter = (d: Date | null) => props.formatter(d, props.format)
 
 const emit = defineEmits<{
   (e: 'update:modelValue', modelValue: Date | null): void
   (e: 'update:dateRange', dateRange: [Date | null, Date | null]): void
 }>()
+
+const messages = useMessage()
+
+const innerFormatter = (d: Date | null) => props.formatter(d, props.format)
+/**
+ * 比较两个日期是否相等
+ */
+const isSameDate = (d1: Date | null, d2: Date | null) => {
+  return innerFormatter(d1) === innerFormatter(d2)
+}
 
 const { month, year, modelValue, dateRange, formattedDateRange } = toRefs(props)
 
@@ -123,18 +124,20 @@ const setHoveringDate = (date: number) => {
 // 日期段选择时，判断目标日期是否在所选择时间段内
 const isDateInRange = (date: number) => {
   const [startDate, endDate] = formattedDateRange.value
-  if (!startDate) return false
-  if (!endDate && !hoveringDate.value) return false
+  if (!startDate)
+    return false
+  if (!endDate && !hoveringDate.value)
+    return false
   const d = getCurrentYearMonthDate()
   d.setDate(date)
   const hovering = innerFormatter(hoveringDate.value)
   const target = innerFormatter(d)
-  if (endDate) {
+  if (endDate)
     return target >= startDate && target <= endDate
-  }
+
   return (
-    (target >= startDate && target <= hovering) ||
-    (target >= hovering && target <= startDate)
+    (target >= startDate && target <= hovering)
+    || (target >= hovering && target <= startDate)
   )
 }
 
@@ -145,9 +148,9 @@ const isStart = (date: number) => {
   const [start, end] = formattedDateRange.value
   const hovering = innerFormatter(hoveringDate.value)
   const target = innerFormatter(d)
-  if (!end) {
+  if (!end)
     return hovering <= start ? target === hovering : target === start
-  }
+
   return start === target
 }
 
@@ -158,18 +161,18 @@ const isEnd = (date: number) => {
   const [start, end] = formattedDateRange.value
   const hovering = innerFormatter(hoveringDate.value)
   const target = innerFormatter(d)
-  if (!end) {
+  if (!end)
     return hovering < start ? target === start : target === hovering
-  }
+
   return end === target
 }
 
 // 目标日期是否展示选中态样式
 const isSelected = (date: number) => {
   const checkTarget = new Date(year.value, month.value, date)
-  if (props.range) {
+  if (props.range)
     return dateRange.value.some(d => isSameDate(d, checkTarget))
-  }
+
   return isSameDate(modelValue.value, checkTarget)
 }
 
@@ -180,8 +183,9 @@ const getDisplayDateNum = (date: number) => {
   return d.getDate()
 }
 </script>
+
 <template>
-  <div :class="['c-date-panel', 'c-date-picker--panel']">
+  <div class="c-date-panel c-date-picker--panel">
     <div class="c-date-panel--body">
       <div
         v-for="w in messages.weeks"
@@ -209,8 +213,7 @@ const getDisplayDateNum = (date: number) => {
         @mouseenter="setHoveringDate(d)"
       >
         <div
-          :class="[
-            'c-date-panel--date-item--inner',
+          class="c-date-panel--date-item--inner" :class="[
             {
               'c-date-panel--date-item--inner-selected': isSelected(d),
             },

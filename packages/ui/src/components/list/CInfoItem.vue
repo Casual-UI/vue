@@ -51,6 +51,7 @@ const props = withDefaults(defineProps<CInfoItemProps>(), {
 
 const { provideSize } = useInjectSize(props)
 </script>
+
 <template>
   <div
     class="c-info-item c-flex c-justify-between"
@@ -61,28 +62,28 @@ const { provideSize } = useInjectSize(props)
       :class="[`c-items-${iconAlign}`]"
     >
       <div :class="[`c-mr-${provideSize}`]">
-        <!-- 
-          @slot Customize the icon content. 
+        <!--
+          @slot Customize the icon content.
           @zh 图标内容 -->
         <slot name="icon">
           <c-icon
-            class="c-info-item--icon"
             v-if="icon"
+            class="c-info-item--icon"
             :content="icon"
           />
         </slot>
       </div>
       <div class="c-flex-grow">
-        <!-- 
-          @slot Customize the title content. 
+        <!--
+          @slot Customize the title content.
           @zh 自定义标题内容 -->
         <slot name="title">
           <div class="c-info-item--title">
             {{ title }}
           </div>
         </slot>
-        <!-- 
-          @slot Customize the subtitle content. 
+        <!--
+          @slot Customize the subtitle content.
           @zh 自定义副标题内容 -->
         <slot name="subtitle">
           <div class="c-info-item--subtitle c-mt-sm">
@@ -91,9 +92,9 @@ const { provideSize } = useInjectSize(props)
         </slot>
       </div>
     </div>
-    <!-- 
-      @slot Customize the append content. 
+    <!--
+      @slot Customize the append content.
       @zh 自定义尾部内容 -->
-    <slot name="append"> </slot>
+    <slot name="append" />
   </div>
 </template>

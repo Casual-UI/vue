@@ -1,13 +1,13 @@
 <script
-  setup
-  lang="ts"
+setup
+lang="ts"
 >
 import { ionCodeOutline } from '@quasar/extras/ionicons-v5/index'
 import { matPlayArrow } from '@quasar/extras/material-icons/index'
-import { ref, computed } from 'vue'
-import createSandboxApp from './createSandboxApp'
+import { computed, ref } from 'vue'
 import { usePageFrontmatter, usePageLang } from '@vuepress/client'
-import { CExpansion, CButton, CDialog, CIcon, CTooltip } from '@casual-ui/vue'
+import { CButton, CDialog, CExpansion, CIcon, CTooltip } from '@casual-ui/vue'
+import createSandboxApp from './createSandboxApp'
 import nightOwlTheme from './night-owl.json'
 
 const props = withDefaults(
@@ -18,7 +18,7 @@ const props = withDefaults(
   {
     path: '',
     content: '',
-  }
+  },
 )
 
 const showDialog = ref(false)
@@ -38,8 +38,9 @@ const run = () => {
 }
 
 const onReplDialogOpened = () => {
-  // @ts-ignore
-  window.require(['vs/editor/editor.main'], function () {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
+  window.require(['vs/editor/editor.main'], () => {
     const monaco = window.monaco
     const source = (frontmatter.value.sandboxCodes as any)[props.path]
     iframe = document.createElement('iframe')
@@ -66,12 +67,13 @@ const lang = usePageLang()
 
 const isChinese = computed(() => lang.value === 'zh-CN')
 </script>
+
 <template>
   <div class="demo-code c-mt-md">
     <div class="c-pa-md">
       <slot />
     </div>
-    <c-expansion
+    <CExpansion
       v-model="show"
       reverse
     >
@@ -79,35 +81,36 @@ const isChinese = computed(() => lang.value === 'zh-CN')
         <div
           i-logos-vue
           text-5
-        ></div>
+        />
       </template>
       <template #title>
         <div class="c-flex c-items-center c-justify-between">
           <div>
             {{ isChinese ? '点击展开/收起代码' : 'Click to open/fold code' }}
           </div>
-          <c-tooltip
+          <!-- eslint-disable vue/no-deprecated-v-on-native-modifier -->
+          <CTooltip
             :content="
               isChinese ? '点击打开交互式编辑器' : 'Open Vue Repl Editor'
             "
             @click.native.stop
           >
-            <c-button
+            <CButton
               icon
               outlined
               @click="showDialog = true"
             >
-              <c-icon :content="ionCodeOutline" />
-            </c-button>
-          </c-tooltip>
+              <CIcon :content="ionCodeOutline" />
+            </CButton>
+          </CTooltip>
         </div>
       </template>
       <div>
         <slot name="code" />
       </div>
-    </c-expansion>
+    </CExpansion>
   </div>
-  <c-dialog
+  <CDialog
     v-model="showDialog"
     :custom-style="{
       height: '100vh',
@@ -125,25 +128,26 @@ const isChinese = computed(() => lang.value === 'zh-CN')
     @opened="onReplDialogOpened"
   >
     <template #title>
-      <c-button @click="run">
-        <c-icon :content="matPlayArrow" />
+      <CButton @click="run">
+        <CIcon :content="matPlayArrow" />
         {{ isChinese ? '点击运行' : 'Click to Run' }}（Ctrl + S）
-      </c-button>
+      </CButton>
     </template>
     <div class="c-flex repl c-items-stretch">
       <div class="editor-wrapper">
         <div
-          class="editor"
           ref="editorDom"
-        ></div>
+          class="editor"
+        />
       </div>
       <div
-        class="c-flex-grow c-pa-md sandbox"
         ref="sandbox"
-      ></div>
+        class="c-flex-grow c-pa-md sandbox"
+      />
     </div>
-  </c-dialog>
+  </CDialog>
 </template>
+
 <style
   lang="scss"
   scoped

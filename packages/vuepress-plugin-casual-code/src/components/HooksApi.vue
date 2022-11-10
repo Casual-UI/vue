@@ -11,23 +11,24 @@ const funcName = frontmatter.value.hooksPath.split('/').pop()
 const items = computed(() => frontmatter.value.hooksInfo.children)
 
 const getTypeDisplayString = (type: any) => {
-  if (type.type === 'literal') return type.value === false ? 'false' : 'true'
-  if (type.type === 'union') {
+  if (type.type === 'literal')
+    return type.value === false ? 'false' : 'true'
+  if (type.type === 'union')
     return type.types.map(getTypeDisplayString).join(' | ')
-  }
-  if (!type.typeArguments || !type.typeArguments.length) {
+
+  if (!type.typeArguments || !type.typeArguments.length)
     return type.name
-  }
+
   return (
-    type.name +
-    '<' +
-    type.typeArguments.map(getTypeDisplayString).join(', ') +
-    '>'
+    `${type.name
+    }<${
+    type.typeArguments.map(getTypeDisplayString).join(', ')
+    }>`
   )
 }
 const getParamDisplayString = (parameters: any[]) => {
   return parameters
-    .map(param => {
+    .map((param) => {
       const type = getTypeDisplayString(param.type)
       return `${param.name}: ${type}`
     })
@@ -43,6 +44,7 @@ const getTranslation = (item: any) =>
     ? item?.tags.find((tag: { tag: string }) => tag.tag === 'zh')?.text
     : item?.shortText
 </script>
+
 <template>
   <div class="hooks-api">
     <c-list
@@ -53,7 +55,7 @@ const getTranslation = (item: any) =>
         <div v-if="item.kindString === 'Interface'">
           <code> {{ item.kindString }} {{ item.name }} </code>
           {{ getTranslation(items.comment) }}
-          <br />
+          <br>
           <div class="c-pl-lg c-py-md">
             <c-list :items="item.children">
               <template #item="{ item: propertyItem }">
@@ -65,7 +67,7 @@ const getTranslation = (item: any) =>
                   <code v-if="propertyItem.kindString === 'Method'">
                     ({{
                       getParamDisplayString(
-                        propertyItem.signatures[0].parameters || []
+                        propertyItem.signatures[0].parameters || [],
                       )
                     }}) =>
                     {{ propertyItem.signatures[0].type.name }}
@@ -105,6 +107,7 @@ const getTranslation = (item: any) =>
     </c-list>
   </div>
 </template>
+
 <style
   lang="scss"
   scoped

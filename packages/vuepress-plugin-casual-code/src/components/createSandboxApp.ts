@@ -1,8 +1,8 @@
 import {
   compileScript,
+  compileStyle,
   compileTemplate,
   parse,
-  compileStyle,
 } from 'vue/compiler-sfc'
 
 export default (id: string, source: string) => {
@@ -12,12 +12,12 @@ export default (id: string, source: string) => {
 
   const script = sourceParsed.descriptor.scriptSetup
     ? compileScript(sourceParsed.descriptor, {
-        id,
-      }).content.replace(/export default/, 'const App =')
+      id,
+    }).content.replace(/export default/, 'const App =')
     : `const App = { name: ${id} }`
 
-  const templateSource =
-    sourceParsed.descriptor.template?.content + `\n<c-notification />`
+  const templateSource
+    = `${sourceParsed.descriptor.template?.content}\n<c-notification />`
 
   const templateParsed = compileTemplate({
     source: templateSource || '<h3>Hello World</h3>',

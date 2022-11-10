@@ -4,7 +4,7 @@
 >
 import { CButton, CIcon, CPopup, useDefaultVModel } from '@casual-ui/vue'
 import { toRefs, onMounted, onUnmounted, computed } from 'vue'
-import { ionCloseOutline } from '@quasar/extras/ionicons-v5'
+import { ionCloseOutline } from '@quasar/extras/ionicons-v5/index'
 import usePosition from './usePosition'
 import type { PositionGroup } from '@casual-ui/types'
 

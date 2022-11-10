@@ -170,14 +170,14 @@ const kebabToCamel = str =>
             >
               <div
                 v-if="
-                  item.bindings?.filter((bItem: any) => bItem.name !== 'name').length >
+                  item.bindings?.filter(bItem => bItem.name !== 'name').length >
                   0
                 "
                 class="c-pl-md"
               >
                 <b>{{ isChinese ? '绑定值' : 'Bindings' }}</b>
                 <c-list
-                  :items="item.bindings.filter((bItem: any) => bItem.name !== 'name')"
+                  :items="item.bindings.filter(bItem => bItem.name !== 'name')"
                   divider
                 >
                   <template #item="{ item: bItem }">

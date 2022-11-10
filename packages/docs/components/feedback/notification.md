@@ -101,7 +101,7 @@ import {
   matArrowForward,
   matArrowDownward,
   matFullscreenExit,
-} from '@quasar/extras/material-icons'
+} from '@quasar/extras/material-icons/index'
 import { useNotifications } from '@casual-ui/vue'
 
 const { open } = useNotifications()

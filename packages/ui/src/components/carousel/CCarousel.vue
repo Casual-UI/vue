@@ -23,7 +23,7 @@ import CIcon from '../basic/icon/CIcon.vue'
 import {
   outlinedNavigateBefore,
   outlinedNavigateNext,
-} from '@quasar/extras/material-icons-outlined'
+} from '@quasar/extras/material-icons-outlined/index'
 
 interface Props {
   /**

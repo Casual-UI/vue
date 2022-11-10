@@ -7,7 +7,7 @@ import {
   matKeyboardDoubleArrowLeft,
   matKeyboardArrowRight,
   matKeyboardDoubleArrowRight,
-} from '@quasar/extras/material-icons'
+} from '@quasar/extras/material-icons/index'
 import type { CSize } from '@casual-ui/types'
 import { useInjectSize } from '@casual-ui/vue'
 import { computed, toRefs } from 'vue'

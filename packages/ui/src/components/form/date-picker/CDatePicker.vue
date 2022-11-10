@@ -14,7 +14,7 @@ import {
 } from '@casual-ui/vue'
 import { toRefs, watch, ref, computed } from 'vue'
 import type { CSize } from '@casual-ui/types'
-import { matCalendarToday } from '@quasar/extras/material-icons'
+import { matCalendarToday } from '@quasar/extras/material-icons/index'
 import useUnit from './useUnit'
 import useValidator from '../useValidator'
 
@@ -268,7 +268,7 @@ const onModelValueChange = (newValue: Date | null) => {
       v-model="show"
       :width-within-parent="false"
       :disabled="disabled"
-      @update:model-value="onModelValueChange"
+      @update:model-value="() => onModelValueChange(null)"
     >
       <c-input
         :model-value="displayValue"

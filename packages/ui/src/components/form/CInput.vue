@@ -10,7 +10,7 @@ import {
   useDefaultVModel,
   useBEM,
 } from '@casual-ui/vue'
-import { matHighlightOff } from '@quasar/extras/material-icons'
+import { matHighlightOff } from '@quasar/extras/material-icons/index'
 import type { CSize, CTheme } from '@casual-ui/types'
 import useValidator from './useValidator'
 
@@ -228,7 +228,6 @@ const onClearIconClick = () => {
         <input
           ref="inputDom"
           v-model="innerValue"
-          :value="modelValue"
           :placeholder="placeholder"
           :disabled="disabled || loading"
           :readonly="readonly"

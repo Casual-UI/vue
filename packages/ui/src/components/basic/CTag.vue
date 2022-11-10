@@ -4,7 +4,7 @@
 >
 import type { CSize, CTheme } from '@casual-ui/types'
 import { CIcon, useInjectSize, useInjectTheme } from '@casual-ui/vue'
-import { matClose } from '@quasar/extras/material-icons'
+import { matClose } from '@quasar/extras/material-icons/index'
 
 interface CTagProps {
   /**

@@ -2,8 +2,8 @@
   setup
   lang="ts"
 >
-import { ionCodeOutline } from '@quasar/extras/ionicons-v5'
-import { matPlayArrow } from '@quasar/extras/material-icons'
+import { ionCodeOutline } from '@quasar/extras/ionicons-v5/index'
+import { matPlayArrow } from '@quasar/extras/material-icons/index'
 import { ref, computed } from 'vue'
 import createSandboxApp from './createSandboxApp'
 import { usePageFrontmatter, usePageLang } from '@vuepress/client'

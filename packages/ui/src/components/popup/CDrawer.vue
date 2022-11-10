@@ -5,7 +5,7 @@
 import { computed } from 'vue'
 import { useDefaultVModel } from '../../usable/useVModel'
 import CDialog from './CDialog.vue'
-import { ionCloseOutline } from '@quasar/extras/ionicons-v5'
+import { ionCloseOutline } from '@quasar/extras/ionicons-v5/index'
 
 interface Props {
   /**

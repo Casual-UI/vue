@@ -19,7 +19,7 @@ componentPath: interact/CExpansion
 
 ```vue live
 <script setup>
-import { matPeople } from '@quasar/extras/material-icons'
+import { matPeople } from '@quasar/extras/material-icons/index'
 </script>
 <template>
   <c-expansion
@@ -52,7 +52,7 @@ import {
   matPeople,
   matNaturePeople,
   matArrowCircleDown,
-} from '@quasar/extras/material-icons'
+} from '@quasar/extras/material-icons/index.mjs'
 </script>
 <template>
   <c-expansion title="自定义arrow插槽图标">

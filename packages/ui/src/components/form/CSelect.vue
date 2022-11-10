@@ -8,7 +8,7 @@ import {
   CInput,
   CDropdown,
 } from '@casual-ui/vue'
-import { matKeyboardArrowDown } from '@quasar/extras/material-icons'
+import { matKeyboardArrowDown } from '@quasar/extras/material-icons/index'
 import { watch, nextTick, computed, onMounted, ref, toRefs } from 'vue'
 import useValidator from './useValidator'
 import { useBEM } from '@casual-ui/vue'

@@ -114,7 +114,7 @@ import {
   matPersonAddAlt1,
   matOfflineBolt,
   matSettings,
-} from '@quasar/extras/material-icons'
+} from '@quasar/extras/material-icons/index'
 const items = [
   { title: '通知', subtitle: '一些通知相关的内容', icon: matOfflineBolt },
   { title: '个人', subtitle: '一些个人相关的内容', icon: matPersonAddAlt1 },

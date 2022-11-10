@@ -270,7 +270,7 @@ import {
   matBuild,
   matCoPresent,
   matDeviceHub,
-} from '@quasar/extras/material-icons'
+} from '@quasar/extras/material-icons/index'
 </script>
 <template>
   <c-button icon>

@@ -111,7 +111,7 @@ const inputValue = ref('')
 
 ```vue live
 <script setup>
-import { matDateRange, matContactPhone } from '@quasar/extras/material-icons'
+import { matDateRange, matContactPhone } from '@quasar/extras/material-icons/index'
 import { ref } from 'vue'
 
 const value = ref('')

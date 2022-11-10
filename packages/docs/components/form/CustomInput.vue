@@ -13,15 +13,17 @@ const innerValue = useDefaultVModel(props, emit)
 
 const { validate, clearValidate, hasError } = useValidator()
 </script>
+
 <template>
-  <div :class="['custom-input', { 'custom-input--has-error': hasError }]">
+  <div class="custom-input" :class="[{ 'custom-input--has-error': hasError }]">
     <input
       v-model="innerValue"
       @focus="clearValidate"
       @blur="validate(innerValue)"
-    />
+    >
   </div>
 </template>
+
 <style lang="scss" scoped>
 .custom-input {
   input {

@@ -1,8 +1,5 @@
 name: CI
-on:
-  pull_request:
-    branches:
-      - main
+on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,5 +16,8 @@ jobs:
           version: 7.14.0
       - name: Install Dependencies
         run: pnpm i
-      - name: Run Eslint
-        run: npx eslint -c .eslintrc.json --ext .js,.ts,.vue ./packages/ui/src ./packages/docs
+      - name: Run eslint with reviewdog
+        uses: reviewdog/action-eslint@v1.16.1
+        with:
+          github_token: ${secrets.G_TOKEN}
+          reporter: Eslint Bot

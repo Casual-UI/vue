@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Setup Node 16
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: Install Packages
+        run: npm i
+      - name: Build UI
+        run: cd packages/ui && pnpm build && cd ../..
+      - name: Create release and publish to npm
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: npm run release
+        env:
+          GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
+          NPM_TOKEN: ${{ secrets.N_TOKEN }}
+      - name: Send a Slack notification if a publish happens
+        if: steps.changesets.outputs.published == 'true'
+        run: cd packages/docs && pnpm build && node deploy
+        env:
+          ALI_OSS_KEY_ID: ${{ secrets.ALI_OSS_KEY_ID }}
+          ALI_OSS_KEY_SECRET: ${{ secrets.ALI_OSS_KEY_SECRET }}
+          ALI_OSS_REGION: ${{ secrets.ALI_OSS_REGION }}

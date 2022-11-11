@@ -2,7 +2,7 @@ import type { Directive } from 'vue'
 
 const vDrag: Directive = {
   beforeMount: (el) => {
-    el._casualDragContext = {
+    el.__casualDragContext = {
       previous: {},
     }
     el.setAttribute('draggable', '')

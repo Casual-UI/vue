@@ -21,13 +21,13 @@ pnpm install casual-ui-vue
 
 ```js
 import { createApp } from 'vue'
-import App from './App.vue'
 import CasualUIVue from '@casual-ui/vue' // import global plugin
+import App from './App.vue'
 import 'casual-ui-vue/dist/style.css' // import styles
 
 const app = createApp(App)
 
-app.use(CasualUIVue) // use plugin
+app.use(CasualUIVue, { /** plugin options */ }) // use plugin
 ```
 
 - Directly use in vue files
@@ -52,8 +52,9 @@ import 'casual-ui-vue/style.css'
 <script setup>
 import { CButton } from '@casual-ui/vue'
 </script>
+
 <template>
-  <c-button label="A Button" />
+  <CButton label="A Button" />
 </template>
 ```
 

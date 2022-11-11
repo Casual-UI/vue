@@ -45,7 +45,7 @@ const emit = defineEmits<{
 
 const { provideSize } = useInjectSize(props)
 
-const onClick = () => {
+const handleClick = () => {
   if (props.clickable)
     emit('click')
 }
@@ -59,7 +59,7 @@ const onClick = () => {
       `c-font-${provideSize}`,
       `c-pa-${provideSize}`,
     ]"
-    @click.stop="onClick"
+    @click="handleClick"
   >
     <!--
       @slot The content of item.

@@ -80,7 +80,7 @@ const handleItemClick = (item: any) => {
         :key="item[itemKey]"
         :clickable="clickable"
         :active="activeFn(item)"
-        @click="handleItemClick"
+        @click="() => handleItemClick(item)"
       >
         <!--
           @slot Customize the item content.

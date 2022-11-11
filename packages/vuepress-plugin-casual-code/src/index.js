@@ -1,10 +1,10 @@
-import { uid } from 'uid'
-import { parse } from 'vue-docgen-api'
 import path from 'path'
 import { execSync } from 'child_process'
+import { fileURLToPath } from 'url'
+import { uid } from 'uid'
+import { parse } from 'vue-docgen-api'
 import MarkdownIt from 'markdown-it'
 import { frontmatterPlugin } from '@mdit-vue/plugin-frontmatter'
-import { fileURLToPath } from 'url'
 
 const mdd = MarkdownIt().use(frontmatterPlugin)
 
@@ -19,7 +19,7 @@ const __filename = fileURLToPath(import.meta.url)
 
 const __dirname = path.dirname(__filename)
 
-const componentsIdMap= {}
+const componentsIdMap = {}
 
 const markdownItVueDemoCodeBlock = (pluginOptions) => {
   return {
@@ -33,23 +33,22 @@ const markdownItVueDemoCodeBlock = (pluginOptions) => {
 
         mdd.render(src, env)
 
-        if (!env.frontmatter) {
+        if (!env.frontmatter)
           env.frontmatter = {}
-        }
 
-        const { componentPath, additionalComponentPaths, hooksPath } =
-          env.frontmatter
+        const { componentPath, additionalComponentPaths, hooksPath }
+          = env.frontmatter
 
         let result = src
         if (componentPath) {
           result = `${result} ${componentDocMdContent(
-            componentPath.split('/').pop()
+            componentPath.split('/').pop(),
           )}`
         }
         if (
-          additionalComponentPaths &&
-          Array.isArray(additionalComponentPaths) &&
-          additionalComponentPaths.length > 0
+          additionalComponentPaths
+          && Array.isArray(additionalComponentPaths)
+          && additionalComponentPaths.length > 0
         ) {
           result = `${result} ${additionalComponentPaths
             .map(({ name }) => componentDocMdContent(name, true))
@@ -72,9 +71,10 @@ const markdownItVueDemoCodeBlock = (pluginOptions) => {
         idx,
         options,
         env,
-        self
+        self,
       ) {
-        if (!defaultFenceRenderer) return ''
+        if (!defaultFenceRenderer)
+          return ''
         const key = `${env.filePathRelative}-${idx}`
 
         const { content, info } = tokens[idx]
@@ -83,7 +83,7 @@ const markdownItVueDemoCodeBlock = (pluginOptions) => {
           idx,
           options,
           env,
-          self
+          self,
         )
         const meta = info.split(' ')
         if (!meta.includes('vue') || !meta.includes('live'))
@@ -92,14 +92,14 @@ const markdownItVueDemoCodeBlock = (pluginOptions) => {
 
         const TempDemoCodeComponentName = `TempDemoCodeComponent${id}`
 
-        if (!env.frontmatter.sandboxCodes) {
+        if (!env.frontmatter.sandboxCodes)
           env.frontmatter.sandboxCodes = {}
-        }
+
         env.frontmatter.sandboxCodes[TempDemoCodeComponentName] = content
 
         const path = `.casual/${env.filePathRelative.replace(
           /(\w|-)+\.md/,
-          ''
+          '',
         )}${TempDemoCodeComponentName}.vue`
 
         app.writeTemp(path, content)
@@ -121,8 +121,8 @@ const markdownItVueDemoCodeBlock = (pluginOptions) => {
         const componentDocInfo = await parse(
           path.resolve(
             __dirname,
-            `${pluginOptions.componentsBasePath}${page.frontmatter.componentPath}.vue`
-          )
+            `${pluginOptions.componentsBasePath}${page.frontmatter.componentPath}.vue`,
+          ),
         )
         page.frontmatter.docInfo = componentDocInfo
       }
@@ -134,8 +134,8 @@ const markdownItVueDemoCodeBlock = (pluginOptions) => {
           page.frontmatter.additionalComponentInfo[name] = (await parse(
             path.resolve(
               __dirname,
-              `${pluginOptions.componentsBasePath}${singlePath}.vue`
-            )
+              `${pluginOptions.componentsBasePath}${singlePath}.vue`,
+            ),
           ))
         }
       }
@@ -143,19 +143,21 @@ const markdownItVueDemoCodeBlock = (pluginOptions) => {
       if (hooksAPIPath) {
         const typesJsonPath = path.resolve(
           __dirname,
-          `./.temp/${hooksAPIPath}.json`
+          `./.temp/${hooksAPIPath}.json`,
         )
         execSync(
           `npx typedoc --tsconfig ${path.resolve(
             __dirname,
-            '../../../tsconfig.json'
+            '../../../tsconfig.json',
           )} --json ${typesJsonPath} ${
             pluginOptions.componentsBasePath
-          }../${hooksAPIPath}.ts`
+          }../${hooksAPIPath}.ts`,
         )
-        page.frontmatter.hooksInfo = await import(typesJsonPath, { assert: {
-          type: 'json'
-        } })
+        page.frontmatter.hooksInfo = await import(typesJsonPath, {
+          assert: {
+            type: 'json',
+          },
+        })
       }
     },
   }

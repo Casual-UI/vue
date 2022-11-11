@@ -75,7 +75,7 @@ export default (id: string, source: string) => {
         {
           "imports": {
             "@quasar/extras/material-icons": "https://unpkg.com/@quasar/extras/material-icons/index.mjs",
-            "casual-ui-vue": "https://unpkg.com/casual-ui-vue/dist/casual-ui-vue.es.js", 
+            "@casual-ui/vue": "https://unpkg.com/casual-ui-vue/dist/casual-ui-vue.es.js", 
             "vue": "https://unpkg.com/vue@3.2.37/dist/vue.esm-browser.prod.js"
           }
         }

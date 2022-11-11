@@ -1,4 +1,4 @@
-name: Release
+name: Update docs site
 
 on:
   push:
@@ -23,11 +23,22 @@ jobs:
           version: 7.14.0
       - name: Install packages
         run: pnpm i
-      - name: Create release and publish to npm
+      - name: Get changesets
         id: changesets
         uses: changesets/action@v1
         with:
           publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
-          NPM_TOKEN: ${{ secrets.N_TOKEN }}
+      - name: Update docs site after released
+        if: steps.changesets.outputs.hasChangesets == 'true'
+        run: cd packages/docs && pnpm build && node deploy
+        env:
+          NODE_OPTIONS: '--max_old_space_size=4096'
+          ALI_OSS_KEY_ID: ${{ secrets.ALI_OSS_KEY_ID }}
+          ALI_OSS_KEY_SECRET: ${{ secrets.ALI_OSS_KEY_SECRET }}
+          ALI_OSS_REGION: ${{ secrets.ALI_OSS_REGION }}
+
+
+
+

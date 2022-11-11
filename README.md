@@ -23,7 +23,7 @@ pnpm install @casual-ui/vue
 // main.js
 import '@casual-ui/vue/dist/style.css'
 ```
-- Global use
+- Global usage
 ```js
 // main.js
 import { createApp } from 'vue'
@@ -37,7 +37,7 @@ Then in .vue file
    <CButton label="A Button" />
 </template>
 ```
-- Single use
+- Single usage
 ```vue
 <script setup>
 import { CButton } from '@casual-ui/vue'

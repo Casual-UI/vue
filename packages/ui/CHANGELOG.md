@@ -1,5 +1,11 @@
 # @casual-ui/vue
 
+## 0.0.5
+
+### Patch Changes
+
+- f3ac463: - fix CList click event not pass item to handler
+
 ## 0.0.4
 
 ### Patch Changes

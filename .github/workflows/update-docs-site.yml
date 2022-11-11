@@ -26,8 +26,6 @@ jobs:
       - name: Get changesets
         id: changesets
         uses: changesets/action@v1
-        with:
-          publish: pnpm release
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
       - name: Update docs site after released

@@ -1,5 +1,11 @@
 # @casual-ui/vue
 
+## 0.0.4
+
+### Patch Changes
+
+- 490bb1a: divide the update docs site workflow
+
 ## 0.0.3
 
 ### Patch Changes

@@ -17,15 +17,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
-      - name: Install Packages
-        run: npm i
-      - name: Build UI
-        run: cd packages/ui && pnpm build && cd ../..
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.4
+        with: 
+          version: 7.14.0
+      - name: Install packages
+        run: pnpm i
       - name: Create release and publish to npm
         id: changesets
         uses: changesets/action@v1
         with:
-          publish: npm run release
+          publish: pnpm releases
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
           NPM_TOKEN: ${{ secrets.N_TOKEN }}

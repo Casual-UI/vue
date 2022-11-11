@@ -31,8 +31,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.G_TOKEN }}
           NPM_TOKEN: ${{ secrets.N_TOKEN }}
-      - name: Send a Slack notification if a publish happens
-        if: steps.changesets.outputs.published == 'true'
+      - name: Update docs site after released
+        if: ${{ success() }}
         run: cd packages/docs && pnpm build && node deploy
         env:
           ALI_OSS_KEY_ID: ${{ secrets.ALI_OSS_KEY_ID }}

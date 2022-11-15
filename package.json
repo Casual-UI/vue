@@ -4,6 +4,7 @@
     "@casual-ui/eslint-config-vue": "^0.0.5",
     "@changesets/cli": "^2.25.2",
     "@vue/tsconfig": "^0.1.3",
+    "eslint": "^8.27.0",
     "typedoc": "^0.22.15"
   },
   "scripts": {

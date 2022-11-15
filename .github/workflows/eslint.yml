@@ -1,12 +1,3 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-# ESLint is a tool for identifying and reporting on patterns
-# found in ECMAScript/JavaScript code.
-# More details at https://github.com/eslint/eslint
-# and https://eslint.org
-
 name: ESLint
 
 on:
@@ -39,8 +30,6 @@ jobs:
           version: 7.14.0
       - name: Install Dependencies
         run: pnpm i
-      - name: Install ESLint Formatter Sarif
-        run: pnpm i @microsoft/eslint-formatter-sarif@2.1.7 --workspace-root
       - name: Run ESLint
         run: npx eslint -c .eslintrc.json --ext .js,.ts,.vue ./packages
           

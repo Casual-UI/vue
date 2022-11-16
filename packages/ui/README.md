@@ -1,4 +1,5 @@
-# Casual UI Vue
+## Introduction
+The Vue version of Casual UI
 
 ## Demos & Docs
 

@@ -34,7 +34,7 @@ app.use(CasualUI)
 Then in .vue file
 ```vue
 <template>
-   <CButton label="A Button" />
+  <CButton label="A Button" />
 </template>
 ```
 - Single usage
@@ -42,8 +42,9 @@ Then in .vue file
 <script setup>
 import { CButton } from '@casual-ui/vue'
 </script>
+
 <template>
-   <CButton label="A Button" />
+  <CButton label="A Button" />
 </template>
 ```
 ## Contributing

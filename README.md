@@ -53,4 +53,4 @@ import { CButton } from '@casual-ui/vue'
 
 ## LICENSE
 
-MIT
+[MIT](https://opensource.org/licenses/MIT)

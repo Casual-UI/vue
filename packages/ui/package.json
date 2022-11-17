@@ -27,9 +27,9 @@
     "url": "https://github.com/Casual-UI/vue.git"
   },
   "devDependencies": {
-    "@casual-ui/i18n": "latest",
-    "@casual-ui/styles": "latest",
-    "@casual-ui/types": "latest",
+    "@casual-ui/i18n": "workspace:*",
+    "@casual-ui/styles": "workspace:*",
+    "@casual-ui/types": "workspace:*",
     "@casual-ui/vue": "workspace:*",
     "@quasar/extras": "^1.13.4",
     "@vitejs/plugin-vue": "^3.1.2",

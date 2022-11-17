@@ -1,5 +1,12 @@
 # @casual-ui/vuepress-plugin-casual-code
 
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies [9340243]
+  - @casual-ui/vue@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes

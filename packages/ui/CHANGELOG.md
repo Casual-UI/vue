@@ -1,5 +1,11 @@
 # @casual-ui/vue
 
+## 0.0.6
+
+### Patch Changes
+
+- 9340243: fix: workflow
+
 ## 0.0.5
 
 ### Patch Changes

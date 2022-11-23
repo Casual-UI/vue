@@ -148,7 +148,7 @@ const markdownItVueDemoCodeBlock = (pluginOptions) => {
         execSync(
           `npx typedoc --tsconfig ${path.resolve(
             __dirname,
-            '../../../tsconfig.json',
+            '../../ui/tsconfig.json',
           )} --json ${typesJsonPath} ${
             pluginOptions.componentsBasePath
           }../${hooksAPIPath}.ts`,

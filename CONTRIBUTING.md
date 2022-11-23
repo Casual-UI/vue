@@ -2,6 +2,7 @@
 
 - Node Version >= 16.18.0
 - use pnpm to as package manager
+- run `git submodule update --init` after cloned
 
 ## Recommended IDE Settings
 

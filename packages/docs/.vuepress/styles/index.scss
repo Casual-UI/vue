@@ -137,9 +137,6 @@ table {
   margin-left: 12px;
 }
 
-code {
-  font-size: 1em;
-}
 .mtk1,
 .mtk4 {
   font-style: italic;
@@ -154,4 +151,9 @@ code {
   position: sticky;
   bottom: 0;
   z-index: 3;
+}
+
+.theme-default-content pre,
+.theme-default-content pre[class*=language-] {
+  line-height: 1.2;
 }

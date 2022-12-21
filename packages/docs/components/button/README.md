@@ -34,16 +34,10 @@ componentPath: basic/button/CButton
 <template>
   <div class="c-row c-gutter-md c-wrap">
     <div>
-      <c-button
-        label="Primary"
-        theme="primary"
-      />
+      <c-button label="Primary" theme="primary" />
     </div>
     <div>
-      <c-button
-        label="Secondary"
-        theme="secondary"
-      />
+      <c-button label="Secondary" theme="secondary" />
     </div>
     <div>
       <c-button
@@ -123,12 +117,13 @@ componentPath: basic/button/CButton
 <script setup>
 import { CButton } from '@casual-ui/vue'
 </script>
+
 <template>
-  <c-button
+  <CButton
     label="Rounded"
     rounded
   />
-  <c-button
+  <CButton
     label="Round"
     round
   />
@@ -272,6 +267,7 @@ import {
   matDeviceHub,
 } from '@quasar/extras/material-icons/index'
 </script>
+
 <template>
   <c-button icon>
     <c-icon :content="matBuild" />

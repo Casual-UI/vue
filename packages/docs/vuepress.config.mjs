@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
 import path from 'path'
 import { defaultTheme, defineUserConfig } from 'vuepress'
 import casualCode from '@casual-ui/vuepress-plugin-casual-code'
@@ -6,7 +8,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import Unocss from 'unocss/vite'
-import { presetIcons } from 'unocss'
+import { presetAttributify, presetIcons, presetUno } from 'unocss'
 import nightOwlTheme from './config/night-owl.json'
 
 export default defineUserConfig({
@@ -373,7 +375,9 @@ export default defineUserConfig({
           '@doc': process.cwd(),
         },
       },
-      plugins: [Unocss({ presets: [presetIcons()] })],
+      plugins: [
+        Unocss({ presets: [presetIcons(), presetAttributify(), presetUno()] }),
+      ],
     },
   }),
 })

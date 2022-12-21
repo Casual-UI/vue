@@ -84,7 +84,7 @@ const isChinese = computed(() => lang.value === 'zh-CN')
         />
       </template>
       <template #title>
-        <div class="c-flex c-items-center c-justify-between">
+        <div class="c-flex c-items-center c-justify-between title">
           <div>
             {{ isChinese ? '点击展开/收起代码' : 'Click to open/fold code' }}
           </div>
@@ -148,10 +148,7 @@ const isChinese = computed(() => lang.value === 'zh-CN')
   </CDialog>
 </template>
 
-<style
-  lang="scss"
-  scoped
->
+<style lang="scss" scoped>
 .demo-code {
   position: relative;
   overflow: visible;
@@ -182,5 +179,8 @@ const isChinese = computed(() => lang.value === 'zh-CN')
   flex-direction: column;
   width: 50%;
   background-color: #fefefe;
+}
+.title {
+  font-size: 14px;
 }
 </style>

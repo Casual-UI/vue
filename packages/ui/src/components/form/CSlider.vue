@@ -1,13 +1,10 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useBEM } from '../../usable/useBEM'
 import useInjectSize from '../../usable/useInjectSize'
 import { useDefaultVModel } from '../../usable/useVModel'
 
-interface Props {
+const props = withDefaults(defineProps<{
   /**
    * The current value.
    * @zh 当前值
@@ -38,9 +35,7 @@ interface Props {
    * @zh 主题色
    */
   theme?: 'primary' | 'secondary' | 'warning' | 'negative'
-}
-
-const props = withDefaults(defineProps<Props>(), {
+}>(), {
   modelValue: 20,
   min: 0,
   max: 100,

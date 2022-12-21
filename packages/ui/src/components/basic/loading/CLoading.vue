@@ -1,13 +1,11 @@
 <script setup lang="ts">
-interface LoadingProps {
+withDefaults(defineProps<{
   /**
    * The thickness
    * @zh 厚度
    */
   thickness?: number
-}
-
-withDefaults(defineProps<LoadingProps>(), {
+}>(), {
   thickness: 5,
 })
 </script>

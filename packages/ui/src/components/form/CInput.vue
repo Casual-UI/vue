@@ -14,7 +14,7 @@ import { matHighlightOff } from '@quasar/extras/material-icons/index'
 import type { CSize, CTheme } from '@casual-ui/types'
 import useValidator from './useValidator'
 
-interface OInputProps {
+const props = withDefaults(defineProps<{
   /**
    * The input value. Can be used with <code>v-model</code>.
    * @zh 输入框内的值，用于默认的<code>v-model</code>绑定
@@ -100,9 +100,7 @@ interface OInputProps {
    * @zh 是否在聚焦时清除验证状态
    */
   clearValidateOnFocus?: boolean
-}
-
-const props = withDefaults(defineProps<OInputProps>(), {
+}>(), {
   theme: undefined,
   disabled: false,
   placeholder: '',

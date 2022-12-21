@@ -1,13 +1,15 @@
-<script
-  setup
-  lang="ts"
->
+<script lang="ts">
+export type Direction = 'left' | 'top' | 'right' | 'bottom'
+</script>
+
+<script setup lang="ts">
 import { computed } from 'vue'
 import { ionCloseOutline } from '@quasar/extras/ionicons-v5/index'
+import type { CPosition } from '@casual-ui/types'
 import { useDefaultVModel } from '../../usable/useVModel'
 import CDialog from './CDialog.vue'
 
-interface Props {
+const props = withDefaults(defineProps<{
   /**
    * The drawer shown status. Can be used with <code>v-model</code>.
    * @zh 是否展示抽屉，用于<code>v-model</code>绑定
@@ -39,9 +41,7 @@ interface Props {
    * @zh 点击遮罩是否关闭抽屉
    */
   closeOnClickBackdrop?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
+}>(), {
   modelValue: false,
   position: 'left',
   title: '',
@@ -58,14 +58,14 @@ const emit = defineEmits<{
   (e: 'update:modelValue', newValue: boolean): void
 }>()
 
-const hMap = new Map([
+const hMap = new Map<Direction, CPosition>([
   ['left', 'start'],
   ['top', 'center'],
   ['right', 'end'],
   ['bottom', 'center'],
 ])
 
-const vMap = new Map([
+const vMap = new Map<Direction, CPosition>([
   ['left', 'center'],
   ['top', 'start'],
   ['right', 'center'],

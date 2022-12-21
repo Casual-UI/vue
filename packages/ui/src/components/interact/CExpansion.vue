@@ -1,13 +1,10 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { CIcon } from '@casual-ui/vue'
 import { matKeyboardArrowDown } from '@quasar/extras/material-icons/index'
 import { useDefaultVModel } from '../../usable/useVModel'
 
-interface CExpansionProps {
+const props = withDefaults(defineProps<{
   /**
    * The icon string.
    * @zh 图标
@@ -28,9 +25,7 @@ interface CExpansionProps {
    * @zh 是否反向展开，如果设置为<code>true</code>则会从上方展开
    */
   reverse?: boolean
-}
-
-const props = withDefaults(defineProps<CExpansionProps>(), {
+}>(), {
   title: '',
   modelValue: false,
   icon: '',

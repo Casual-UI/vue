@@ -1,3 +1,7 @@
+<script lang="ts">
+export type Unit = 'year' | 'month' | 'day'
+</script>
+
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import {
@@ -18,9 +22,7 @@ import { matCalendarToday } from '@quasar/extras/material-icons/index'
 import useValidator from '../useValidator'
 import useUnit from './useUnit'
 
-type Unit = 'year' | 'month' | 'day'
-
-interface ODatePickerProps {
+const props = withDefaults(defineProps<{
   /**
    * Selected date. Can be used with <code>v-model</code>.
    * @zh 当前选中值，用于<code>v-model</code>绑定
@@ -83,9 +85,7 @@ interface ODatePickerProps {
    * @zh 选择单位，可用于<code>v-model:unit</code>绑定
    */
   unit?: Unit
-}
-
-const props = withDefaults(defineProps<ODatePickerProps>(), {
+}>(), {
   format: 'YYYY-MM-DD',
   formatter: (d: Date | null, f: string) => {
     if (!d)
@@ -256,6 +256,12 @@ const onModelValueChange = (newValue: Date | null) => {
   if (!newValue)
     validate(innerValue)
 }
+
+const handleClear = () => {
+  innerValue.value = null
+  innerRange.value = [null, null]
+  validate(innerValue)
+}
 </script>
 
 <template>
@@ -280,13 +286,7 @@ const onModelValueChange = (newValue: Date | null) => {
         :disabled="disabled"
         clearable
         validate-trigger="manual"
-        @clear="
-          () => {
-            innerValue = null
-            innerRange = [null, null]
-            validate(innerValue)
-          }
-        "
+        @clear="handleClear"
       >
         <template #suffix>
           <CIcon :content="matCalendarToday" />

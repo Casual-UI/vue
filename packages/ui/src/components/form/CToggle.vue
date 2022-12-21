@@ -2,7 +2,7 @@
 import type { CSize } from '@casual-ui/types'
 import { useDefaultVModel, useInjectSize } from '@casual-ui/vue'
 
-interface CToggleProps {
+const props = withDefaults(defineProps <{
   /**
    * The label text.
    * @zh 文案
@@ -33,9 +33,7 @@ interface CToggleProps {
    * @zh 是否禁用
    */
   disabled?: boolean
-}
-
-const props = withDefaults(defineProps<CToggleProps>(), {
+} >(), {
   label: '',
   size: undefined,
   checkValue: true,

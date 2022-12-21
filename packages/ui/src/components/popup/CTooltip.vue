@@ -1,10 +1,13 @@
-<script
-  setup
-  lang="ts"
->
+<script lang="ts">
+type Direction = 'left' | 'top' | 'right' | 'bottom'
+export type Position = Direction | `${Direction}-${Direction}`
+</script>
+
+<script setup lang="ts">
 import { useClickOutside } from '@casual-ui/vue'
 import { ref, watch } from 'vue'
-interface CTooltipProps {
+
+const props = withDefaults(defineProps<{
   /**
    * The popup content.
    * @zh 弹出的内容文字
@@ -14,19 +17,7 @@ interface CTooltipProps {
    * The popup position.
    * @zh 弹出位置
    */
-  position?:
-  | 'top-left'
-  | 'top-right'
-  | 'top'
-  | 'left-top'
-  | 'left'
-  | 'left-bottom'
-  | 'bottom-left'
-  | 'bottom'
-  | 'bottom-right'
-  | 'right-top'
-  | 'right'
-  | 'right-bottom'
+  position?: Position
   /**
    * The trigger method.
    * @zh 触发方式
@@ -37,9 +28,7 @@ interface CTooltipProps {
    * @zh 是否展示弹出内容，可以使用<code>v-model:show</code>，仅在<code>trigger = 'manual'</code>时可用
    */
   show?: boolean
-}
-
-const props = withDefaults(defineProps<CTooltipProps>(), {
+}>(), {
   content: '',
   position: 'top',
   trigger: 'hover',

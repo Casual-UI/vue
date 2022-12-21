@@ -23,24 +23,7 @@ import {
 import CButton from '../basic/button/CButton.vue'
 import CIcon from '../basic/icon/CIcon.vue'
 
-const props = withDefaults(defineProps<Props>(), {
-  modelValue: 0,
-  height: '300px',
-  theme: 'primary',
-  interval: 0,
-  indicatorsPositionHorizontal: 'center',
-  indicatorsPositionVertical: 'end',
-  indicatorsAlignDirection: 'row',
-  vertical: false,
-  infinity: false,
-  arrowTiming: 'always',
-  pauseOnHover: true,
-})
-const emit = defineEmits<{
-  (e: 'update:modelValue', newIndex: number): void
-}>()
-
-interface Props {
+const props = withDefaults(defineProps<{
   /**
    * The current active index (from 0). Can used with <code>v-model</code>
    * @zh 当前激活项下标，可使用<code>v-model</code>绑定
@@ -96,7 +79,23 @@ interface Props {
    * @zh 是否在鼠标悬停时暂停过渡倒计时
    */
   pauseOnHover?: boolean
-}
+}>(), {
+  modelValue: 0,
+  height: '300px',
+  theme: 'primary',
+  interval: 0,
+  indicatorsPositionHorizontal: 'center',
+  indicatorsPositionVertical: 'end',
+  indicatorsAlignDirection: 'row',
+  vertical: false,
+  infinity: false,
+  arrowTiming: 'always',
+  pauseOnHover: true,
+})
+const emit = defineEmits<{
+  (e: 'update:modelValue', newIndex: number): void
+}>()
+
 const slides = ref([])
 const direction = ref<Direction>('forward')
 const timeoutFlag = ref(null)

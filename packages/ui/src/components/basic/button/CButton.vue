@@ -1,12 +1,9 @@
-<script
-  lang="ts"
-  setup
->
+<script setup lang="ts">
 import { toRefs } from 'vue'
-import { CLoading, useInjectTheme, useSizeThemeClass } from '@casual-ui/vue'
 import type { CSize, CTheme } from '@casual-ui/types'
+import { CLoading, useInjectTheme, useSizeThemeClass } from '@casual-ui/vue'
 
-interface CButtonProps {
+const props = withDefaults(defineProps<{
   /**
    * The label text
    * @zh 按钮文案
@@ -62,9 +59,7 @@ interface CButtonProps {
    * @zh 是否为扁平按钮
    */
   flat?: boolean
-}
-
-const props = withDefaults(defineProps<CButtonProps>(), {
+}>(), {
   label: '',
   loading: false,
   outlined: false,
@@ -72,7 +67,7 @@ const props = withDefaults(defineProps<CButtonProps>(), {
   rounded: false,
   disabled: false,
   block: false,
-  size: 'md',
+  size: undefined,
   theme: undefined,
   icon: false,
   flat: false,
@@ -99,7 +94,8 @@ const sizeThemeClasses = useSizeThemeClass({
 
 <template>
   <button
-    class="c-button" :class="[
+    class="c-button"
+    :class="[
       { 'c-button--flat': flat },
       { 'c-button--outlined': outlined },
       { 'c-button--round': round },

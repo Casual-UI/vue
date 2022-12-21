@@ -1,10 +1,7 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import usePosition from './usePosition'
 
-interface CPopupProps {
+const props = withDefaults(defineProps<{
   /**
    * 是否处于打卡状态
    */
@@ -26,9 +23,7 @@ interface CPopupProps {
    * 点击遮罩是否关闭弹出层
    */
   closeOnClickBackdrop?: boolean
-}
-
-const props = withDefaults(defineProps<CPopupProps>(), {
+}>(), {
   horizontalAlign: undefined,
   verticalAlign: undefined,
   additionClass: '',

@@ -1,10 +1,13 @@
+<script lang="ts">
+export type CCheckboxModel = boolean | string | number
+</script>
+
 <script setup lang="ts">
 import type { CSize, CTheme } from '@casual-ui/types'
 import { useDefaultVModel, useInjectSize, useInjectTheme } from '@casual-ui/vue'
 import useValidator from './useValidator'
 
-type CCheckboxModel = boolean | string | number
-interface CCheckboxProps {
+const props = withDefaults(defineProps<{
   /**
    * Checked status. Can be used with <code>v-model</code>.
    * @zh 是否处于勾选状态，用于<code>v-model</code>绑定用
@@ -35,9 +38,7 @@ interface CCheckboxProps {
    * @zh 是否禁用
    */
   disabled?: boolean
-}
-
-const props = withDefaults(defineProps<CCheckboxProps>(), {
+}>(), {
   theme: undefined,
   size: undefined,
   label: '',

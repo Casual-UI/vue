@@ -1,12 +1,9 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import type { CSize, CTheme } from '@casual-ui/types'
 import { CIcon, useInjectSize, useInjectTheme } from '@casual-ui/vue'
 import { matClose } from '@quasar/extras/material-icons/index'
 
-interface CTagProps {
+const props = withDefaults(defineProps<{
   /**
    * The label text.
    * @zh 标签内文字
@@ -32,9 +29,7 @@ interface CTagProps {
    * @zh 是否可关闭，设置为<code>true</code>会展示一个关闭图标
    */
   closeable?: boolean
-}
-
-const props = withDefaults(defineProps<CTagProps>(), {
+}>(), {
   label: '',
   theme: undefined,
   size: undefined,

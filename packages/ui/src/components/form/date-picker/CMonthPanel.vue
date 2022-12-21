@@ -1,16 +1,11 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { computed, toRefs } from 'vue'
 import CDateGridPanel from './CDateGridPanel.vue'
 
-interface OMonthPanelProps {
+const props = withDefaults(defineProps<{
   modelValue: Date | null
   year?: number
-}
-
-const props = withDefaults(defineProps<OMonthPanelProps>(), {
+}>(), {
   modelValue: () => new Date(),
   year: new Date().getFullYear(),
 })

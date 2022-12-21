@@ -1,10 +1,8 @@
-<script
-  lang="ts"
-  setup
->
+<script lang="ts" setup>
 import type { CSize } from '@casual-ui/types'
 import { CItem, useInjectSize } from '@casual-ui/vue'
-interface OItemProps {
+
+const props = withDefaults(defineProps<{
   /**
    * The items config.
    * @zh 列表项
@@ -35,9 +33,7 @@ interface OItemProps {
    * @zh 是否展示分割线
    */
   divider?: boolean
-}
-
-const props = withDefaults(defineProps<OItemProps>(), {
+}>(), {
   items: () => [],
   itemKey: 'id',
   clickable: false,

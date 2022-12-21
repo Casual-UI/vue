@@ -1,7 +1,4 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import {
   matKeyboardArrowLeft,
   matKeyboardArrowRight,
@@ -14,16 +11,14 @@ import { computed, toRefs } from 'vue'
 import useDisplayMonth from './useDisplayMonth'
 import type { Unit } from './useUnit'
 
-interface OMonthPanelProps {
+const props = withDefaults(defineProps<{
   year?: number
   month?: number
   size?: CSize
   unit?: Unit
   yearRange?: [number, number]
   unitSwitchable?: boolean
-}
-
-const props = withDefaults(defineProps<OMonthPanelProps>(), {
+}>(), {
   year: new Date().getFullYear(),
   size: undefined,
   month: new Date().getMonth(),

@@ -2,12 +2,10 @@
 import { computed, toRefs } from 'vue'
 import CDateGridPanel from './CDateGridPanel.vue'
 
-interface OYearPanelProps {
+const props = withDefaults(defineProps<{
   modelValue: Date | null
   yearRange: [number, number]
-}
-
-const props = withDefaults(defineProps<OYearPanelProps>(), {})
+}>(), {})
 const emit = defineEmits<{
   (e: 'update:modelValue', newValue: Date | null): void
 }>()

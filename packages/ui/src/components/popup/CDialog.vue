@@ -1,14 +1,11 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { CButton, CIcon, CPopup, useDefaultVModel } from '@casual-ui/vue'
 import { computed, onMounted, onUnmounted, toRefs } from 'vue'
 import { ionCloseOutline } from '@quasar/extras/ionicons-v5/index'
 import type { PositionGroup } from '@casual-ui/types'
 import usePosition from './usePosition'
 
-interface CDialogProps {
+const props = withDefaults(defineProps<{
   /**
    * The open status of dialog. Can be used with <code>v-model</code>
    * @zh 对话框是否打开，可用于<code>v-model</code>绑定
@@ -106,9 +103,7 @@ interface CDialogProps {
    * @zh 点击遮罩是否关闭弹出层
    */
   closeOnClickBackdrop?: boolean
-}
-
-const props = withDefaults(defineProps<CDialogProps>(), {
+}>(), {
   title: '',
   width: '40vw',
   bodyHeight: 'auto',

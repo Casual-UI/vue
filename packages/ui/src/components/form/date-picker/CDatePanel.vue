@@ -1,11 +1,13 @@
+<script lang="ts">
+export type Formatter = (origin: Date | null, format: string) => string
+</script>
+
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue'
 import dayjs from 'dayjs'
 import { useMessage } from '../../../usable/useI18n'
 
-type Formatter = (origin: Date | null, format: string) => string
-
-interface ODatePanelProps {
+const props = withDefaults(defineProps<{
   year?: number
   month?: number
   modelValue?: Date | null
@@ -14,9 +16,7 @@ interface ODatePanelProps {
   format?: string
   formatter?: Formatter
   range?: boolean
-}
-
-const props = withDefaults(defineProps<ODatePanelProps>(), {
+}>(), {
   year: new Date().getFullYear(),
   month: new Date().getMonth(),
   modelValue: () => new Date(),

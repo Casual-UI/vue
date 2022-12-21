@@ -1,12 +1,15 @@
+<script lang="ts">
+export type CCheckboxModel = boolean | string | number
+</script>
+
 <script setup lang="ts">
 import type { CSize } from '@casual-ui/types'
 import { CCheckbox, useVModel } from '@casual-ui/vue'
 import { computed, toRefs } from 'vue'
 import useFormProps from './useFormProps'
 import useValidator from './useValidator'
-type CCheckboxModel = boolean | string | number
 
-interface CCheckboxGroupProps {
+const props = withDefaults(defineProps<{
   /**
    * The options array.
    * @zh 选项数组
@@ -29,9 +32,7 @@ interface CCheckboxGroupProps {
    * @default 'md'
    */
   gutterSize?: CSize
-}
-
-const props = withDefaults(defineProps<CCheckboxGroupProps>(), {
+}>(), {
   options: () => [],
   size: undefined,
   gutterSize: undefined,

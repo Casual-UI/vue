@@ -1,50 +1,8 @@
 <script lang="ts">
 export const errorKey = Symbol('errorStatus')
 export const validatorsKey = Symbol('validators')
-</script>
 
-<script setup lang="ts">
-import type { Component } from 'vue'
-import { nextTick, provide, ref } from 'vue'
-import type { CRule, CSize } from '@casual-ui/types'
-import { useDefaultVModel } from '../../usable/useVModel'
-import useFormProps, { type LabelDirection } from './useFormProps'
-import CFormItem from './CFormItem.vue'
-
-const props = withDefaults(defineProps<CFormProps>(), {
-  items: () => [],
-  modelValue: () => ({}),
-  labelWidth: undefined,
-  col: undefined,
-  labelDirection: undefined,
-  size: undefined,
-  gutterSize: 'md',
-  labelAlign: undefined,
-  validating: false,
-})
-const emit = defineEmits<{
-  /**
-   * Emit when the form data is changed.
-   * @zh 表单绑定值变化时触发
-   * @arg {any} newModelValue_zh 新的绑定值
-   * @arg {any} newModelValue new form data
-   */
-  (e: 'update:modelValue', newModelValue: object): void
-  /**
-   * Emit when the validating status change.
-   * @zh 表单验证进行中状态变更触发
-   * @arg {boolean} newValidating_zh 新的验证状态
-   * @arg {boolean} newValidating new validating status
-   */
-  (e: 'update:validating', newValidating: boolean): void
-}>()
-
-interface Option {
-  value: string | number
-  label: string
-}
-
-type FormItemComponent =
+export type FormItemComponent =
   | 'input'
   | 'select'
   | 'checkbox'
@@ -59,7 +17,7 @@ type FormItemComponent =
  * The form config item.
  * @zh 表单项配置
  */
-interface CFormItemConfig {
+export interface CFormItemConfig {
   /**
    * The component.
    * @zh 表单项类型，对应需要渲染的组件
@@ -91,8 +49,17 @@ interface CFormItemConfig {
    */
   col?: number
 }
+</script>
 
-interface CFormProps {
+<script setup lang="ts">
+import type { Component } from 'vue'
+import { nextTick, provide, ref } from 'vue'
+import type { CRule, CSize } from '@casual-ui/types'
+import { useDefaultVModel } from '../../usable/useVModel'
+import useFormProps, { type LabelDirection } from './useFormProps'
+import CFormItem from './CFormItem.vue'
+
+const props = withDefaults(defineProps<{
   /**
    * The form items config
    * @zh 表单项配置
@@ -144,6 +111,37 @@ interface CFormProps {
    * @zh 是否在验证中，可用于<code>v-model:validating</code>绑定，在具有异步验证规则时可能会需要这个属性用作一些状态展示
    */
   validating?: boolean
+}>(), {
+  items: () => [],
+  modelValue: () => ({}),
+  labelWidth: undefined,
+  col: undefined,
+  labelDirection: undefined,
+  size: undefined,
+  gutterSize: 'md',
+  labelAlign: undefined,
+  validating: false,
+})
+const emit = defineEmits<{
+  /**
+   * Emit when the form data is changed.
+   * @zh 表单绑定值变化时触发
+   * @arg {any} newModelValue_zh 新的绑定值
+   * @arg {any} newModelValue new form data
+   */
+  (e: 'update:modelValue', newModelValue: object): void
+  /**
+   * Emit when the validating status change.
+   * @zh 表单验证进行中状态变更触发
+   * @arg {boolean} newValidating_zh 新的验证状态
+   * @arg {boolean} newValidating new validating status
+   */
+  (e: 'update:validating', newValidating: boolean): void
+}>()
+
+interface Option {
+  value: string | number
+  label: string
 }
 
 const innerValue = useDefaultVModel(props, emit)

@@ -1,11 +1,13 @@
+<script lang="ts">
+export type CRadioModel = boolean | string | number
+</script>
+
 <script setup lang="ts">
 import type { CSize } from '@casual-ui/types'
 import { useDefaultVModel, useInjectSize } from '@casual-ui/vue'
 import useValidator from './useValidator'
 
-type CRadioModel = boolean | string | number
-
-interface CRadioProps {
+const props = withDefaults(defineProps<{
   /**
    * Current value. Can be used with <code>v-model</code>.
    * @zh 当前值，用于<code>v-model</code>绑定用
@@ -31,9 +33,7 @@ interface CRadioProps {
    * @zh 是否禁用
    */
   disabled?: boolean
-}
-
-const props = withDefaults(defineProps<CRadioProps>(), {
+}>(), {
   label: '',
   size: undefined,
   disabled: false,

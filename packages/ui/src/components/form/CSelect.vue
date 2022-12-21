@@ -1,3 +1,17 @@
+<script lang="ts">
+export interface COption {
+  label: string
+  value: string | number
+  [key: string | number | symbol]: any
+}
+
+/**
+ * The value types.
+ * @zh 选择器值类型
+ */
+export type CSelectModelValue = string | number | Array<string | number>
+</script>
+
 <script setup lang="ts">
 import {
   CDropdown,
@@ -13,19 +27,7 @@ import { matKeyboardArrowDown } from '@quasar/extras/material-icons/index'
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue'
 import useValidator from './useValidator'
 
-interface OOption {
-  label: string
-  value: string | number
-  [key: string | number | symbol]: any
-}
-
-/**
- * The value types.
- * @zh 选择器值类型
- */
-type CSelectModelValue = string | number | Array<string | number>
-
-interface CSelectProps {
+const props = withDefaults(defineProps<{
   /**
    * The placeholder.
    * @zh 预设文本
@@ -45,7 +47,7 @@ interface CSelectProps {
    * The options.
    * @zh 选项
    */
-  options?: OOption[]
+  options?: COption[]
   /**
    * Determine whether the select can have multiple selected options or not.
    * @zh 是否支持多选
@@ -66,9 +68,7 @@ interface CSelectProps {
    * @zh 是否为圆角
    */
   rounded?: boolean
-}
-
-const props = withDefaults(defineProps<CSelectProps>(), {
+}>(), {
   placeholder: '',
   size: undefined,
   options: () => [],

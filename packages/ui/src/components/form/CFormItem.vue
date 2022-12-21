@@ -10,30 +10,7 @@ import { computed, inject, provide, ref } from 'vue'
 import type { Ref } from 'vue'
 import useFormProps, { type LabelDirection } from './useFormProps'
 import { errorKey, validatorsKey } from './CForm.vue'
-const props = withDefaults(defineProps<CFormItemProps>(), {
-  label: '',
-  labelWidth: undefined,
-  col: undefined,
-  size: undefined,
-  rules: () => [],
-  field: undefined,
-  labelDirection: undefined,
-  labelAlign: undefined,
-})
-const emit = defineEmits<{
-  /**
-   * Emit when the form item begin validating.
-   * @zh 开始验证触发
-   */
-  (e: 'validate-start'): void
-  /**
-   * Emit when the form item end validating.
-   * @zh 结束验证触发
-   */
-  (e: 'validate-end'): void
-}>()
-
-interface CFormItemProps {
+const props = withDefaults(defineProps<{
   /**
    * The filed key of whole form data.
    * @zh 对应表单中的项的名称
@@ -78,7 +55,28 @@ interface CFormItemProps {
    * @default 'left'
    */
   labelAlign?: 'left' | 'center' | 'right'
-}
+}>(), {
+  label: '',
+  labelWidth: undefined,
+  col: undefined,
+  size: undefined,
+  rules: () => [],
+  field: undefined,
+  labelDirection: undefined,
+  labelAlign: undefined,
+})
+const emit = defineEmits<{
+  /**
+   * Emit when the form item begin validating.
+   * @zh 开始验证触发
+   */
+  (e: 'validate-start'): void
+  /**
+   * Emit when the form item end validating.
+   * @zh 结束验证触发
+   */
+  (e: 'validate-end'): void
+}>()
 
 const { col, labelDirection, size, labelWidth, labelAlign }
   = useFormProps(props)

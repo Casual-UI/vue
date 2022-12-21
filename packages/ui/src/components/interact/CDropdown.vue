@@ -1,11 +1,8 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import { useClickOutside, useVModel } from '@casual-ui/vue'
 import { ref, toRefs } from 'vue'
 
-interface CDropdownProps {
+const props = withDefaults(defineProps<{
   /**
    * The dropdown shown status. Can be use with <code>v-model</code>
    * @zh 下拉是否展示，用于<code>v-model</code>绑定用
@@ -26,9 +23,7 @@ interface CDropdownProps {
    * @zh 是否手动控制
    */
   manual?: boolean
-}
-
-const props = withDefaults(defineProps<CDropdownProps>(), {
+}>(), {
   disabled: false,
   widthWithinParent: true,
   manual: false,

@@ -1,18 +1,17 @@
-<script
-  setup
-  lang="ts"
->
-import type { CSize } from '@casual-ui/types'
-import { useInjectSize } from '@casual-ui/vue'
-import { nextTick, onMounted, ref, watch } from 'vue'
-
-interface CItem {
+<script lang="ts">
+export interface CItem {
   name: string
   title?: string
   icon?: string
 }
+</script>
 
-interface CTabProps {
+<script setup lang="ts">
+import type { CSize } from '@casual-ui/types'
+import { useInjectSize } from '@casual-ui/vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
+
+const props = withDefaults(defineProps<{
   /**
    * The current active tab name. Can be used with
    * @zh 当前激活的名称，用于<code>v-model</code>绑定
@@ -37,10 +36,8 @@ interface CTabProps {
    * Customize the panel body style.
    * @zh 自定义面板体样式
    */
-  bodyStyle?: object
-}
-
-const props = withDefaults(defineProps<CTabProps>(), {
+  bodyStyle?: Record<string, any>
+}>(), {
   items: () => [],
   size: undefined,
   bodyStyle: () => ({}),

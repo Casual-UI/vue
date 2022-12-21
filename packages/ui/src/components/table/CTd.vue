@@ -1,8 +1,10 @@
-<script setup lang="ts">
-interface CTdProps {
+<script lang="ts">
+export interface CTdProps {
   width?: string
 }
+</script>
 
+<script setup lang="ts">
 withDefaults(defineProps<CTdProps>(), {
   width: 'auto',
 })

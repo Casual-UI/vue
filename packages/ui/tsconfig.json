@@ -2,9 +2,12 @@
   "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
+    "declaration": true,
     "esModuleInterop": true,
     "target": "ESNext",
     "resolveJsonModule": true,
     "moduleResolution": "node",
-  }
+    "outDir": "dist"
+  },
+  "include": ["src"]
 }

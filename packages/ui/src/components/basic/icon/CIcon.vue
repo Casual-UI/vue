@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-interface CIconProps {
+
+const props = withDefaults(defineProps<{
   /**
    * svg内容，格式为<code>d[@@style][@@transform]|viewBox</code>
    */
   content?: string
-}
-
-const props = withDefaults(defineProps<CIconProps>(), {
+}>(), {
   content: '',
 })
 

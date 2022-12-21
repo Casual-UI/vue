@@ -1,9 +1,11 @@
-<script lang="ts" setup>
-interface OTdProps {
+<script lang="ts">
+export interface CTdProps {
   width?: string
 }
+</script>
 
-withDefaults(defineProps<OTdProps>(), {
+<script lang="ts" setup>
+withDefaults(defineProps<CTdProps>(), {
   width: 'auto',
 })
 </script>

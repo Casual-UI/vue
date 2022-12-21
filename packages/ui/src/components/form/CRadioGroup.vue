@@ -3,7 +3,7 @@ import type { CSize } from '@casual-ui/types'
 import useFormProps from './useFormProps'
 import useValidator from './useValidator'
 
-interface CRadioGroups {
+const props = withDefaults(defineProps<{
   /**
    * Current value. Used with <code>v-model</code>.
    * @zh 当前值，用于<code>v-model</code>绑定用
@@ -26,9 +26,7 @@ interface CRadioGroups {
    * @default 'md'
    */
   gutterSize?: CSize
-}
-
-const props = withDefaults(defineProps<CRadioGroups>(), {
+}>(), {
   size: undefined,
   gutterSize: undefined,
 })

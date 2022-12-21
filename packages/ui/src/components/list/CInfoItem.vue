@@ -1,11 +1,8 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import type { CSize } from '@casual-ui/types'
 import useInjectSize from '../../usable/useInjectSize'
 
-interface CInfoItemProps {
+const props = withDefaults(defineProps<{
   /**
    * The icon. imported from @quasar/extras
    * @zh 图标，从@quasar/extras导入的图标
@@ -39,9 +36,7 @@ interface CInfoItemProps {
    * @zh 尺寸，该值会影响标题、子标题、字体大小以及图标与标题间的间距
    */
   size?: CSize
-}
-
-const props = withDefaults(defineProps<CInfoItemProps>(), {
+}>(), {
   title: '',
   subtitle: '',
   icon: '',

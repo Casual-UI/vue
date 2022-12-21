@@ -15,14 +15,5 @@ export default defineConfig({
       name: 'CasualUIVue',
       fileName: format => `casual-ui-vue.${format}.js`,
     },
-    rollupOptions: {
-      external: ['vue'],
-      output: {
-        exports: 'named',
-        globals: {
-          vue: 'Vue',
-        },
-      },
-    },
   },
 })

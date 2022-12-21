@@ -1,18 +1,18 @@
-<script
-  setup
-  lang="ts"
->
+<script lang="ts">
+export interface TableColumn {
+  title: string
+  field: string
+  width?: string
+}
+</script>
+
+<script setup lang="ts">
 import { provide } from 'vue'
 import CTr from './CTr.vue'
 import CTd from './CTd.vue'
 import CTh from './CTh.vue'
 
-interface TableColumn {
-  title: string
-  field: string
-  width?: string
-}
-interface TableProps {
+const props = withDefaults(defineProps <{
   /**
    * Determine the table has striped style or not.
    * @zh 是否为条纹表格
@@ -33,9 +33,7 @@ interface TableProps {
    * @zh 行数据唯一键
    */
   rowKey?: string
-}
-
-const props = withDefaults(defineProps<TableProps>(), {
+} >(), {
   columns: () => [],
   data: () => [],
   rowKey: 'id',

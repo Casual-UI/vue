@@ -1,11 +1,8 @@
-<script
-  setup
-  lang="ts"
->
+<script setup lang="ts">
 import type { CSize } from '@casual-ui/types'
 import { useInjectSize } from '@casual-ui/vue'
 
-interface CItemProps {
+const props = withDefaults(defineProps<{
   /**
    * The label text of item.
    * @zh 文字
@@ -26,9 +23,7 @@ interface CItemProps {
    * @zh 是否处于激活态
    */
   active?: boolean
-}
-
-const props = withDefaults(defineProps<CItemProps>(), {
+}>(), {
   label: '',
   size: undefined,
   clickable: false,

@@ -8,6 +8,7 @@ title: Theme Customization
 <script setup>
 const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '--casual-negative']
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center c-wrap">
     <div
@@ -18,7 +19,7 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
       <div
         class="c-rounded-md color-card c-pa-md"
         :style="{
-          backgroundColor: `var(${c})`
+          backgroundColor: `var(${c})`,
         }"
       >
         {{ c }}
@@ -26,6 +27,7 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
     </div>
   </div>
 </template>
+
 <style scoped>
 .color-card {
   height: 120px;
@@ -39,4 +41,4 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
 All Theme colors shown below can be override with CSS variables
 ### Variables
 
-@[code](../../../styles/src/variables/colors.scss)
+@[code](../../../packages/styles/src/variables/colors.scss)

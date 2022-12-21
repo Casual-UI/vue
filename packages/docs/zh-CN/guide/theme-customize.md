@@ -8,6 +8,7 @@ title: 主题定制
 <script setup>
 const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '--casual-negative']
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center c-wrap">
     <div
@@ -18,7 +19,7 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
       <div
         class="c-rounded-md color-card c-pa-md"
         :style="{
-          backgroundColor: `var(${c})`
+          backgroundColor: `var(${c})`,
         }"
       >
         {{ c }}
@@ -26,6 +27,7 @@ const colors = ['--casual-primary', '--casual-secondary', '--casual-warning', '-
     </div>
   </div>
 </template>
+
 <style scoped>
 .color-card {
   height: 120px;
@@ -41,4 +43,4 @@ Casual UI支持通过CSS变量定制主题
 下面的所有变量均可以通过自定义css变量覆盖
 ### 变量一览
 
-@[code](../../../../styles/src/variables/colors.scss)
+@[code](../../../../packages/styles/src/variables/colors.scss)

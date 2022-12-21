@@ -15,5 +15,13 @@ export default defineConfig({
       name: 'CasualUIVue',
       fileName: format => `casual-ui-vue.${format}.js`,
     },
+    rollupOptions: {
+      external: ['vue', '@casual-ui/types', '@casual-ui/i18n', '@casual-ui/types', 'dayjs'],
+      output: {
+        globals: {
+          vue: 'Vue',
+        },
+      },
+    },
   },
 })

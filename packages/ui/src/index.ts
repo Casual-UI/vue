@@ -1,4 +1,3 @@
-import '@casual-ui/styles/src/index.scss'
 import { type Locale, key } from '@casual-ui/i18n'
 import { type App, type Plugin, ref } from 'vue'
 import CButton from './components/basic/button/CButton.vue'

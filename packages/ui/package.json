@@ -13,7 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "vue-tsc --declaration --emitDeclarationOnly && vite build"
+    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly && vite build -c vite.build-style.ts"
   },
   "keywords": [
     "vue",

@@ -1,5 +1,6 @@
 ---
 title: Global CSS Utils
+
 ---
 
 ### Sizes
@@ -132,6 +133,7 @@ Casual UI use 12 cols per row
     </div>
   </div>
 </template>
+
 <style scoped>
 .c-col-2 > div,
 .c-col-3 > div,
@@ -154,23 +156,24 @@ Casual UI use 12 cols per row
       v-for="n in 8"
       :key="n"
       class="motion-item"
-    ></div>
+    />
   </div>
   <div class="c-row c-wrap c-gutter-md">
     <div
       v-for="n in 8"
       :key="n"
       class="motion-item-eio"
-    ></div>
+    />
   </div>
   <div class="c-row c-wrap c-gutter-md">
     <div
       v-for="n in 8"
       :key="n"
       class="motion-item-ei"
-    ></div>
+    />
   </div>
 </template>
+
 <style
   scoped
   lang="scss"
@@ -276,11 +279,10 @@ Casual UI use 12 cols per row
 }
 </style>
 ```
-
 <div class="c-doc-demo">
-  <c-expansion title="查看变量定义" :model-value="false">
+  <c-expansion :title="siteLocaleData.seeVarsDefinition" :model-value="false">
 
-@[code](../../../styles/src/variables/motion-curves.scss)
+@[code](../../../packages/styles/src/variables/motion-curves.scss)
 
   </c-expansion>
 </div>
@@ -310,6 +312,7 @@ Casual UI use 12 cols per row
     </div>
   </div>
 </template>
+
 <style scoped>
 .custom-grid--item {
   text-align: center;
@@ -320,3 +323,8 @@ Casual UI use 12 cols per row
 }
 </style>
 ```
+
+<script setup>
+  import { useSiteLocaleData } from '@vuepress/client'
+  const siteLocaleData = useSiteLocaleData()
+</script>

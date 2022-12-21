@@ -19,10 +19,12 @@ export default defineUserConfig({
     '/': {
       lang: 'en-US',
       description: 'A ui components lib that supports for Vue3+',
+      seeVarsDefinition: 'Click to see variables definition',
     },
     '/zh-CN/': {
       lang: 'zh-CN',
       description: '一个支持Vue3+的组件库',
+      seeVarsDefinition: '查看变量定义',
     },
   },
   theme: defaultTheme({

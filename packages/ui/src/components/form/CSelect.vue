@@ -70,7 +70,6 @@ const props = withDefaults(defineProps<{
   rounded?: boolean
 }>(), {
   placeholder: '',
-  size: undefined,
   options: () => [],
   multiple: false,
   disabled: false,

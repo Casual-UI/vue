@@ -34,8 +34,6 @@ const props = withDefaults(defineProps<{
   gutterSize?: CSize
 }>(), {
   options: () => [],
-  size: undefined,
-  gutterSize: undefined,
 })
 
 const emit = defineEmits<{

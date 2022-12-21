@@ -114,10 +114,6 @@ const props = withDefaults(defineProps<{
 }>(), {
   items: () => [],
   modelValue: () => ({}),
-  labelWidth: undefined,
-  col: undefined,
-  labelDirection: undefined,
-  size: undefined,
   gutterSize: 'md',
   labelAlign: undefined,
   validating: false,

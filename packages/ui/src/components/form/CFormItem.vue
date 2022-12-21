@@ -57,13 +57,8 @@ const props = withDefaults(defineProps<{
   labelAlign?: 'left' | 'center' | 'right'
 }>(), {
   label: '',
-  labelWidth: undefined,
-  col: undefined,
-  size: undefined,
+  field: '',
   rules: () => [],
-  field: undefined,
-  labelDirection: undefined,
-  labelAlign: undefined,
 })
 const emit = defineEmits<{
   /**

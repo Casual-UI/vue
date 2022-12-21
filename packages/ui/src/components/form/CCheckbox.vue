@@ -39,8 +39,6 @@ const props = withDefaults(defineProps<{
    */
   disabled?: boolean
 }>(), {
-  theme: undefined,
-  size: undefined,
   label: '',
   checkedValue: true,
   disabled: false,

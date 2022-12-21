@@ -92,7 +92,6 @@ const props = withDefaults(defineProps<{
       return ''
     return dayjs(d).format(f)
   },
-  size: undefined,
   hideOnSelect: true,
   formattedValue: '',
   dateRange: () => [null, null],

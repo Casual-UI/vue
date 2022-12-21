@@ -101,7 +101,6 @@ const props = withDefaults(defineProps<{
    */
   clearValidateOnFocus?: boolean
 }>(), {
-  theme: undefined,
   disabled: false,
   placeholder: '',
   rounded: false,
@@ -110,7 +109,6 @@ const props = withDefaults(defineProps<{
   readonly: false,
   prefixDivider: true,
   suffixDivider: true,
-  size: undefined,
   focused: false,
   autoBlur: true,
   type: 'text',

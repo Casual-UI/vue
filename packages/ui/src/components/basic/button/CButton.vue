@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { toRefs } from 'vue'
 import type { CSize, CTheme } from '@casual-ui/types'
-import { CLoading, useInjectTheme, useSizeThemeClass } from '@casual-ui/vue'
+import { CLoading, useInjectSize, useInjectTheme, useSizeThemeClass } from '@casual-ui/vue'
 
 const props = withDefaults(defineProps<{
   /**
@@ -67,8 +67,6 @@ const props = withDefaults(defineProps<{
   rounded: false,
   disabled: false,
   block: false,
-  size: undefined,
-  theme: undefined,
   icon: false,
   flat: false,
 })
@@ -81,12 +79,11 @@ defineEmits<{
   (e: 'click'): void
 }>()
 
-const { size } = toRefs(props)
-
 const { provideTheme: theme } = useInjectTheme(props)
 
+const { provideSize } = useInjectSize(props)
 const sizeThemeClasses = useSizeThemeClass({
-  size,
+  size: provideSize,
   theme,
   prefix: 'c-button',
 })
@@ -99,13 +96,13 @@ const sizeThemeClasses = useSizeThemeClass({
       { 'c-button--flat': flat },
       { 'c-button--outlined': outlined },
       { 'c-button--round': round },
-      rounded ? `c-rounded-${size}` : '',
+      rounded ? `c-rounded-${provideSize}` : '',
       { 'c-button--block': block },
       { 'c-button--loading': loading },
       { 'c-button--icon': icon },
-      `c-font-${size}`,
-      `c-h-${size}`,
-      `c-px-${size}`,
+      `c-font-${provideSize}`,
+      `c-h-${provideSize}`,
+      `c-px-${provideSize}`,
       ...sizeThemeClasses,
     ]"
     :disabled="disabled"

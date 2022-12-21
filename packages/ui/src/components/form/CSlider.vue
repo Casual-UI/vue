@@ -41,7 +41,6 @@ const props = withDefaults(defineProps<{
   max: 100,
   step: 1,
   theme: 'primary',
-  size: undefined,
 })
 
 const emit = defineEmits<{

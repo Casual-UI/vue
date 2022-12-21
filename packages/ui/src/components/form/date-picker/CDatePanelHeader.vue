@@ -20,7 +20,6 @@ const props = withDefaults(defineProps<{
   unitSwitchable?: boolean
 }>(), {
   year: new Date().getFullYear(),
-  size: undefined,
   month: new Date().getMonth(),
   unit: 'day',
   yearRange: () => [new Date().getFullYear(), new Date().getFullYear() + 11],

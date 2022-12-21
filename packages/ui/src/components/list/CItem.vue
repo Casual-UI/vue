@@ -25,7 +25,6 @@ const props = withDefaults(defineProps<{
   active?: boolean
 }>(), {
   label: '',
-  size: undefined,
   clickable: false,
   active: false,
 })

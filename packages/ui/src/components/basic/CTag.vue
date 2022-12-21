@@ -31,8 +31,6 @@ const props = withDefaults(defineProps<{
   closeable?: boolean
 }>(), {
   label: '',
-  theme: undefined,
-  size: undefined,
   rounded: false,
   closeable: false,
 })

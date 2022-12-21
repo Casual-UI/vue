@@ -35,7 +35,6 @@ const props = withDefaults(defineProps<{
   disabled?: boolean
 }>(), {
   label: '',
-  size: undefined,
   disabled: false,
   value: true,
 })

@@ -7,13 +7,13 @@ export default ({
   theme,
   prefix,
 }: {
-  size: Ref<CSize>
+  size?: Ref<CSize | undefined>
   theme: Ref<CTheme>
   prefix: string
 }) => {
   return computed(() => [
     prefix,
     `${prefix}--theme-${theme.value || 'primary'}`,
-    `${prefix}--size-${size.value || 'md'}`,
+    `${prefix}--size-${size?.value || 'md'}`,
   ])
 }

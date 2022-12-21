@@ -37,7 +37,6 @@ const props = withDefaults(defineProps<{
   items: () => [],
   itemKey: 'id',
   clickable: false,
-  size: undefined,
   activeFn: () => false,
   divider: false,
 })

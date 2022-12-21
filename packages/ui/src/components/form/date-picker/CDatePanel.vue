@@ -23,7 +23,7 @@ const props = withDefaults(defineProps<{
   dateRange: () => [null, null],
   formattedDateRange: () => ['', ''],
   format: 'YYYY-MM-DD',
-  formatter: (d: Date | null, f: string) => {
+  formatter: () => (d: Date | null, f: string) => {
     if (!d)
       return ''
     return dayjs(d).format(f)

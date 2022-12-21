@@ -39,7 +39,6 @@ const props = withDefaults(defineProps<{
   bodyStyle?: Record<string, any>
 }>(), {
   items: () => [],
-  size: undefined,
   bodyStyle: () => ({}),
   panelPadding: true,
 })

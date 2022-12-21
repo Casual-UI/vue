@@ -1,5 +1,13 @@
 # @casual-ui/vue
 
+## 0.0.7
+
+### Patch Changes
+
+- 899e692: generate types for lib
+- Updated dependencies [899e692]
+  - @casual-ui/vue@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes

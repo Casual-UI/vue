@@ -5,6 +5,10 @@ Include these parts:
 - The docs site
 - The vuepress relative plugins
 
+## Online Docs & Demos
+
+[Casual UI - Vue](https://casual-ui-vue.donsen.site/)
+
 ## Usage Guide
 
 - Install

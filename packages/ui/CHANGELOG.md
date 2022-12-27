@@ -1,5 +1,13 @@
 # @casual-ui/vue
 
+## 0.0.9
+
+### Patch Changes
+
+- a140dbf: fix: formatter should be a function that return the formatter function
+- Updated dependencies [a140dbf]
+  - @casual-ui/vue@0.0.9
+
 ## 0.0.7
 
 ### Patch Changes

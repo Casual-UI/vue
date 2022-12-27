@@ -3,7 +3,6 @@ export type Unit = 'year' | 'month' | 'day'
 </script>
 
 <script setup lang="ts">
-import dayjs from 'dayjs'
 import {
   CDatePanel,
   CDatePanelHeader,
@@ -21,6 +20,7 @@ import type { CSize } from '@casual-ui/types'
 import { matCalendarToday } from '@quasar/extras/material-icons/index'
 import useValidator from '../useValidator'
 import useUnit from './useUnit'
+import defaultFormatter from './defaultFormatter'
 
 const props = withDefaults(defineProps<{
   /**
@@ -87,11 +87,7 @@ const props = withDefaults(defineProps<{
   unit?: Unit
 }>(), {
   format: 'YYYY-MM-DD',
-  formatter: () => (d: Date | null, f: string) => {
-    if (!d)
-      return ''
-    return dayjs(d).format(f)
-  },
+  formatter: defaultFormatter,
   hideOnSelect: true,
   formattedValue: '',
   dateRange: () => [null, null],
@@ -145,7 +141,9 @@ const emit = defineEmits<{
   (e: 'update:unit', newUnit: Unit): void
 }>()
 
-const innerFormatter = (d: Date | null) => props.formatter(d, props.format)
+const formatter = typeof props.formatter === 'function' ? props.formatter : defaultFormatter
+
+const innerFormatter = (d: Date | null) => formatter(d, props.format)
 
 const { provideSize: size } = useInjectSize(props)
 

@@ -1,11 +1,11 @@
 <script lang="ts">
-export type Formatter = (origin: Date | null, format: string) => string
+type Formatter = (origin: Date | null, format: string) => string
 </script>
 
 <script setup lang="ts">
 import { computed, ref, toRefs } from 'vue'
-import dayjs from 'dayjs'
 import { useMessage } from '../../../usable/useI18n'
+import defaultFormatter from './defaultFormatter'
 
 const props = withDefaults(defineProps<{
   year?: number
@@ -23,11 +23,7 @@ const props = withDefaults(defineProps<{
   dateRange: () => [null, null],
   formattedDateRange: () => ['', ''],
   format: 'YYYY-MM-DD',
-  formatter: () => (d: Date | null, f: string) => {
-    if (!d)
-      return ''
-    return dayjs(d).format(f)
-  },
+  formatter: defaultFormatter,
   range: false,
 })
 
@@ -36,9 +32,11 @@ const emit = defineEmits<{
   (e: 'update:dateRange', dateRange: [Date | null, Date | null]): void
 }>()
 
+const formatter = typeof props.formatter === 'function' ? props.formatter : defaultFormatter
+
 const messages = useMessage()
 
-const innerFormatter = (d: Date | null) => props.formatter(d, props.format)
+const innerFormatter = (d: Date | null) => formatter(d, props.format)
 /**
  * 比较两个日期是否相等
  */

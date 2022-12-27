@@ -1,5 +1,13 @@
 # @casual-ui/vue
 
+## 0.0.10
+
+### Patch Changes
+
+- 24309bd: fix: date picker formatter ensure
+- Updated dependencies [24309bd]
+  - @casual-ui/vue@0.0.10
+
 ## 0.0.9
 
 ### Patch Changes

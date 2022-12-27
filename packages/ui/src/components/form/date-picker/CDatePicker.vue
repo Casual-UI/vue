@@ -87,7 +87,7 @@ const props = withDefaults(defineProps<{
   unit?: Unit
 }>(), {
   format: 'YYYY-MM-DD',
-  formatter: (d: Date | null, f: string) => {
+  formatter: () => (d: Date | null, f: string) => {
     if (!d)
       return ''
     return dayjs(d).format(f)

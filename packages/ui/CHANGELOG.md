@@ -1,5 +1,13 @@
 # @casual-ui/vue
 
+## 0.0.11
+
+### Patch Changes
+
+- 6a71123: fix: input should have a border box
+- Updated dependencies [6a71123]
+  - @casual-ui/vue@0.0.11
+
 ## 0.0.10
 
 ### Patch Changes

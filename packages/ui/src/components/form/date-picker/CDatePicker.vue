@@ -264,7 +264,8 @@ const handleClear = () => {
 <template>
   <div
     ref="datePickerContainer"
-    class="c-date-picker" :class="[
+    class="c-date-picker"
+    :class="[
       `c-font-${size}`,
       `c-date-picker--size-${size}`,
       { 'c-date-picker--disabled': disabled },

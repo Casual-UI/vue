@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { toRefs } from 'vue'
 import type { CSize, CTheme } from '@casual-ui/types'
 import { CLoading, useInjectSize, useInjectTheme, useSizeThemeClass } from '@casual-ui/vue'
 

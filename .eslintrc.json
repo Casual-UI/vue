@@ -1,7 +1,5 @@
 {
   "extends": "@casual-ui/eslint-config-vue",
-
-  
   "overrides": [
     {
       "files": "*.vue",

@@ -1,5 +1,13 @@
 # @casual-ui/vue
 
+## 0.0.13
+
+### Patch Changes
+
+- cfc5fc8: update i18n package
+- Updated dependencies [cfc5fc8]
+  - @casual-ui/vue@0.0.13
+
 ## 0.0.12
 
 ### Patch Changes

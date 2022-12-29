@@ -1,5 +1,13 @@
 # @casual-ui/vue
 
+## 0.0.12
+
+### Patch Changes
+
+- bdffbb3: fix type error
+- Updated dependencies [bdffbb3]
+  - @casual-ui/vue@0.0.12
+
 ## 0.0.11
 
 ### Patch Changes

@@ -75,7 +75,8 @@ componentPath: basic/CTag
         closeable
         label="A closeable tag"
         size="xs"
-        theme="secondary" />
+        theme="secondary"
+      />
     </div>
     <div>
       <c-tag closeable label="A closeable tag" size="sm" />
@@ -91,7 +92,8 @@ componentPath: basic/CTag
         closeable
         label="A closeable tag"
         size="xl"
-        theme="negative" />
+        theme="negative"
+      />
     </div>
   </div>
 </template>

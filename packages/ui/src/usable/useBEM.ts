@@ -10,12 +10,12 @@ const camelToKebab = (str: string) =>
 
 type BEM = (
   base: string,
-  bemCondition: {
+  bemCondition?: {
     [k: string]: any
   }
 ) => any[]
 
-const useBEM: BEM = (base, bemCondition) =>
+const useBEM: BEM = (base, bemCondition = {}) =>
   Object.entries(bemCondition).reduce<any[]>(
     (bemClass, [k, v]) => {
       const className = `c-${base}--${camelToKebab(k)}`

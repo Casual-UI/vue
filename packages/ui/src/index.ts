@@ -69,6 +69,7 @@ import CCarouselSlider from './components/carousel/CCarouselSlider.vue'
 import CCarousel from './components/carousel/CCarousel.vue'
 import CSlider from './components/form/CSlider.vue'
 import useI18n, { useMessage } from './usable/useI18n'
+import CAjaxBar from './components/interact/CAjaxBar.vue'
 
 const CasualUI: Plugin = {
   install: (
@@ -81,6 +82,7 @@ const CasualUI: Plugin = {
       locale: 'en',
     },
   ) => {
+    app.component('CAjaxBar', CAjaxBar)
     app.component('CSlider', CSlider)
     app.component('CCarousel', CCarousel)
     app.component('CCarouselSlider', CCarouselSlider)

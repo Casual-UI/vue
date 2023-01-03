@@ -135,6 +135,7 @@ export default defineUserConfig({
               text: 'Interact',
               collapsible: true,
               children: [
+                '/components/interact/ajax-bar/',
                 '/components/interact/dropdown/',
                 '/components/interact/expansion/',
                 '/components/interact/tabs/',

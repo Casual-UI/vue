@@ -11,14 +11,21 @@ import { ref } from 'vue'
 const items = [{ name: 'Panel1' }, { name: 'Panel2' }, { name: 'Panel3' }]
 const activeItem = ref('Panel1')
 </script>
+
 <template>
   <c-tabs
     v-model="activeItem"
     :items="items"
   >
-    <template #body-Panel1> The content of panel 1 </template>
-    <template #body-Panel2> The content of panel 2 </template>
-    <template #body-Panel3> The content of panel 3 </template>
+    <template #body-Panel1>
+      The content of panel 1
+    </template>
+    <template #body-Panel2>
+      The content of panel 2
+    </template>
+    <template #body-Panel3>
+      The content of panel 3
+    </template>
   </c-tabs>
 </template>
 ```
@@ -32,6 +39,7 @@ const items = [{ name: 'Panel1' }, { name: 'Panel2' }, { name: 'Panel3' }]
 const activeItem = ref('Panel1')
 const size = ref('md')
 </script>
+
 <template>
   <div class="c-row c-items-center c-wrap c-gutter-md">
     <c-radio
@@ -69,9 +77,15 @@ const size = ref('md')
     :items="items"
     :size="size"
   >
-    <template #body-Panel1> The content of panel 1 </template>
-    <template #body-Panel2> The content of panel 2 </template>
-    <template #body-Panel3> The content of panel 3 </template>
+    <template #body-Panel1>
+      The content of panel 1
+    </template>
+    <template #body-Panel2>
+      The content of panel 2
+    </template>
+    <template #body-Panel3>
+      The content of panel 3
+    </template>
   </c-tabs>
 </template>
 ```

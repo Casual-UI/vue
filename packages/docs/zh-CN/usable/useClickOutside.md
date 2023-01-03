@@ -8,7 +8,7 @@ hooksPath: usable/useClickOutside
 ```vue live
 <script setup>
 import { ref } from 'vue'
-import {useClickOutside} from '@casual-ui/vue'
+import { useClickOutside } from '@casual-ui/vue'
 const isOutsideClick = ref(false)
 const domRef = ref(null)
 
@@ -22,12 +22,16 @@ useClickOutside({
   },
 })
 </script>
+
 <template>
-  <div ref="domRef" class="click-card">点击内部或者外部</div>
+  <div ref="domRef" class="click-card">
+    点击内部或者外部
+  </div>
   <p>
     是否为外部点击：<code>{{ isOutsideClick }}</code>
   </p>
 </template>
+
 <style scoped>
 .click-card {
   background-color: var(--casual-primary);

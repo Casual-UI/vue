@@ -9,14 +9,15 @@ title: v-loading
 import { ref } from 'vue'
 const loading = ref(false)
 </script>
+
 <template>
   <c-toggle v-model="loading" label="Click to open/close Loading" />
   <div
     v-loading="loading"
     class="loading-container"
-  >
-  </div>
+  />
 </template>
+
 <style scoped>
 .loading-container {
   height: 30vh;
@@ -38,14 +39,15 @@ const loadingConf = {
   backgroundColor: 'rgba(0, 0, 0, .7)'
 }
 </script>
+
 <template>
   <c-toggle v-model="loading" label="Click to open/close Loading" />
   <div
     v-loading:[loadingConf]="loading"
     class="loading-container"
-  >
-  </div>
+  />
 </template>
+
 <style lang="scss" scoped>
 .loading-container {
   height: 30vh;

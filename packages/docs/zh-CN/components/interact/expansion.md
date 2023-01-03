@@ -21,6 +21,7 @@ componentPath: interact/CExpansion
 <script setup>
 import { matPeople } from '@quasar/extras/material-icons/index'
 </script>
+
 <template>
   <c-expansion
     title="标题左侧图标"
@@ -35,7 +36,7 @@ import { matPeople } from '@quasar/extras/material-icons/index'
       <img
         style="width: 80px;"
         src="/logo-dark.svg"
-      />
+      >
     </template>
     <div class="c-px-lg">
       <p>代码能够运行并满足业务要求是最低标准</p>
@@ -49,11 +50,12 @@ import { matPeople } from '@quasar/extras/material-icons/index'
 ```vue live
 <script setup>
 import {
-  matPeople,
-  matNaturePeople,
   matArrowCircleDown,
+  matNaturePeople,
+  matPeople,
 } from '@quasar/extras/material-icons/index.mjs'
 </script>
+
 <template>
   <c-expansion title="自定义arrow插槽图标">
     <template #arrow>
@@ -80,6 +82,7 @@ import {
 <script setup>
 import { CExpansion } from '@casual-ui/vue'
 </script>
+
 <template>
   <CExpansion
     title="Expanded from top"

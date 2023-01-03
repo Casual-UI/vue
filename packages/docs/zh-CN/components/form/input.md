@@ -11,6 +11,7 @@ eventsNameWidth: 140px
 import { ref } from 'vue'
 const inputValue = ref('')
 </script>
+
 <template>
   <div class="c-row c-items-center c-gutter-md c-wrap">
     <div>
@@ -35,6 +36,7 @@ const inputValue = ref('')
 import { ref } from 'vue'
 const inputValue = ref('')
 </script>
+
 <template>
   <div class="c-row c-items-center c-gutter-md c-wrap">
     <div>
@@ -63,6 +65,7 @@ const inputValue = ref('')
 import { ref } from 'vue'
 const inputValue = ref('')
 </script>
+
 <template>
   <c-input v-model="inputValue" placeholder="请输入..." clearable />
 </template>
@@ -72,17 +75,22 @@ const inputValue = ref('')
 
 ```vue live
 <script setup>
-import { matDateRange, matContactPhone } from '@quasar/extras/material-icons/index'
+import { matContactPhone, matDateRange } from '@quasar/extras/material-icons/index'
 import { ref } from 'vue'
 
 const value = ref('')
 </script>
+
 <template>
   <div class="c-row c-items-center c-gutter-x-lg">
     <div>
       <c-input v-model="value">
-        <template #prefix> +234 </template>
-        <template #suffix> @someone </template>
+        <template #prefix>
+          +234
+        </template>
+        <template #suffix>
+          @someone
+        </template>
       </c-input>
     </div>
     <div>
@@ -106,6 +114,7 @@ const value = ref('')
 import { ref } from 'vue'
 const value = ref('')
 </script>
+
 <template>
   <div class="c-row c-gutter-x-md">
     <div>

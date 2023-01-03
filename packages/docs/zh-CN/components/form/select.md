@@ -19,6 +19,7 @@ const options = [
   { label: '500 - 1000', value: 4 },
 ]
 </script>
+
 <template>
   <c-select
     v-model="selectedValue"
@@ -51,6 +52,7 @@ const options = [
   { label: '500 - 1000', value: 4 },
 ]
 </script>
+
 <template>
   <div class="c-row c-items-center c-gutter-md c-wrap">
     <div>
@@ -111,6 +113,7 @@ const options = [
   { label: '500 - 1000', value: 4 },
 ]
 </script>
+
 <template>
   <c-select
     v-model="val"
@@ -137,6 +140,7 @@ const options = [
   { label: '500 - 1000', value: 4 },
 ]
 </script>
+
 <template>
   <c-select
     v-model="selectedValue"
@@ -163,6 +167,7 @@ const options = [
   { label: '500 - 1000', value: 4 },
 ]
 </script>
+
 <template>
   <c-select
     v-model="selectedValue"

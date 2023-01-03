@@ -10,6 +10,7 @@ componentPath: popup/CDialog
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-dialog v-model="show" title="Hi, there">
     <div>Hello, world</div>
@@ -26,6 +27,7 @@ const show = ref(false)
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-dialog
     v-model="show"
@@ -46,6 +48,7 @@ const show = ref(false)
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-dialog
     v-model="show"
@@ -67,6 +70,7 @@ const show = ref(false)
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-dialog
     v-model="show"
@@ -88,9 +92,9 @@ const show = ref(false)
 <script setup>
 import {
   matArrowBack,
-  matArrowUpward,
-  matArrowForward,
   matArrowDownward,
+  matArrowForward,
+  matArrowUpward,
   matFullscreenExit,
 } from '@quasar/extras/material-icons/index'
 import { ref } from 'vue'
@@ -105,6 +109,7 @@ const openWithPosition = (h, v) => {
   show.value = true
 }
 </script>
+
 <template>
   <c-dialog
     v-model="show"
@@ -192,10 +197,11 @@ import { ref } from 'vue'
 import { matPeople } from '@quasar/extras/material-icons/index'
 const show = ref(false)
 </script>
+
 <template>
   <c-dialog v-model="show">
     <template #title>
-      <img class="title-icon" src="/logo-dark.svg" />
+      <img class="title-icon" src="/logo-dark.svg">
     </template>
     <template #close-icon>
       <c-icon :content="matPeople" />
@@ -219,6 +225,7 @@ const show = ref(false)
   </c-dialog>
   <c-button label="Open Dialog" @click="show = true" />
 </template>
+
 <style scoped>
 .title-icon {
   width: 80px;
@@ -236,6 +243,7 @@ const top = ref(false)
 const right = ref(false)
 const bottom = ref(false)
 </script>
+
 <template>
   <c-dialog
     v-model="left"
@@ -243,11 +251,12 @@ const bottom = ref(false)
     title="Left Drawer"
     :rounded="false"
     :custom-style="{
-      height: '100vh'
+      height: '100vh',
     }"
     width="80vw"
     vertical-align="center"
-    horizontal-align="start">
+    horizontal-align="start"
+  >
     内容
   </c-dialog>
   <c-dialog
@@ -257,10 +266,11 @@ const bottom = ref(false)
     :rounded="false"
     width="80vw"
     :custom-style="{
-      height: '100vh'
+      height: '100vh',
     }"
     vertical-align="center"
-    horizontal-align="end">
+    horizontal-align="end"
+  >
     Content
   </c-dialog>
   <c-dialog
@@ -269,7 +279,8 @@ const bottom = ref(false)
     :rounded="false"
     width="100vw"
     vertical-align="start"
-    horizontal-align="center">
+    horizontal-align="center"
+  >
     Content
   </c-dialog>
   <c-dialog
@@ -278,7 +289,8 @@ const bottom = ref(false)
     :rounded="false"
     width="100vw"
     vertical-align="end"
-    horizontal-align="center">
+    horizontal-align="center"
+  >
     Content
   </c-dialog>
   <div class="c-row c-items-center c-wrap c-gutter-md">

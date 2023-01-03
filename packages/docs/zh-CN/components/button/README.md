@@ -123,12 +123,13 @@ componentPath: basic/button/CButton
 <script setup>
 import { CButton } from '@casual-ui/vue'
 </script>
+
 <template>
-  <c-button
+  <CButton
     label="圆角按钮"
     rounded
   />
-  <c-button
+  <CButton
     label="圆边按钮"
     round
   />
@@ -272,6 +273,7 @@ import {
   matDeviceHub,
 } from '@quasar/extras/material-icons/index'
 </script>
+
 <template>
   <c-button icon>
     <c-icon :content="matBuild" />

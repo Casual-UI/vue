@@ -13,6 +13,7 @@ additionalComponentPaths:
 import { ref } from 'vue'
 const val = ref(false)
 </script>
+
 <template>
   <c-checkbox v-model="val" label="同意协议" />
 </template>
@@ -25,29 +26,34 @@ const val = ref(false)
 import { ref } from 'vue'
 const val = ref('md')
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center">
     <c-checkbox
       v-model="val"
       checked-value="xs"
       size="xs"
-      label="超小尺寸" />
+      label="超小尺寸"
+    />
     <c-checkbox
       v-model="val"
       checked-value="sm"
       size="sm"
-      label="小尺寸" />
+      label="小尺寸"
+    />
     <c-checkbox v-model="val" checked-value="md" label="中等尺寸（默认）" />
     <c-checkbox
       v-model="val"
       checked-value="lg"
       size="lg"
-      label="大尺寸" />
+      label="大尺寸"
+    />
     <c-checkbox
       v-model="val"
       checked-value="xl"
       size="xl"
-      label="超大尺寸" />
+      label="超大尺寸"
+    />
   </div>
   <div>当前值：{{ val }}</div>
 </template>
@@ -61,13 +67,15 @@ import { ref } from 'vue'
 const val1 = ref(false)
 const val2 = ref(true)
 </script>
+
 <template>
   <c-checkbox v-model="val1" label="禁用态" disabled />
   <c-checkbox
     v-model="val2"
     label="禁用态"
     disabled
-    class="c-ml-md" />
+    class="c-ml-md"
+  />
 </template>
 ```
 
@@ -86,6 +94,7 @@ const options = [
   { label: '桃子', value: 'Peach' },
 ]
 </script>
+
 <template>
   <c-checkbox-group
     v-model="val"

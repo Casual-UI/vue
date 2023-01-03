@@ -120,6 +120,7 @@ Casual UI 使用经典的 12 栅格机制
     </div>
   </div>
 </template>
+
 <style scoped>
 .c-col-2 > div ,
 .c-col-3 > div ,
@@ -138,15 +139,16 @@ Casual UI 使用经典的 12 栅格机制
 ```vue live hide-code
 <template>
   <div class="c-row c-wrap c-gutter-md">
-    <div v-for="n in 8" :key="n" class="motion-item"></div>
+    <div v-for="n in 8" :key="n" class="motion-item" />
   </div>
   <div class="c-row c-wrap c-gutter-md">
-    <div v-for="n in 8" :key="n" class="motion-item-eio"></div>
+    <div v-for="n in 8" :key="n" class="motion-item-eio" />
   </div>
   <div class="c-row c-wrap c-gutter-md">
-    <div v-for="n in 8" :key="n" class="motion-item-ei"></div>
+    <div v-for="n in 8" :key="n" class="motion-item-ei" />
   </div>
 </template>
+
 <style scoped lang="scss">
 @keyframes circle {
   from {
@@ -279,6 +281,7 @@ Casual UI 使用经典的 12 栅格机制
     </div>
   </div>
 </template>
+
 <style scoped>
 .custom-grid--item {
   text-align: center;

@@ -10,6 +10,7 @@ componentPath: form/CToggle
 import { ref } from 'vue'
 const checked = ref(false)
 </script>
+
 <template>
   <c-toggle
     v-model="checked"
@@ -32,6 +33,7 @@ const checkStatus = reactive({
   xl: false,
 })
 </script>
+
 <template>
   <div class="c-row c-gutter-x-md c-items-center">
     <div>
@@ -82,6 +84,7 @@ import { ref } from 'vue'
 const checked1 = ref(false)
 const checked2 = ref(true)
 </script>
+
 <template>
   <c-toggle
     v-model="checked1"

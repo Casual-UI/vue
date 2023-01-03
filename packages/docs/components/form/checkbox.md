@@ -13,6 +13,7 @@ additionalComponentPaths:
 import { ref } from 'vue'
 const val = ref(false)
 </script>
+
 <template>
   <c-checkbox
     v-model="val"
@@ -28,6 +29,7 @@ const val = ref(false)
 import { ref } from 'vue'
 const val = ref('md')
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center">
     <c-checkbox
@@ -72,6 +74,7 @@ import { ref } from 'vue'
 const val1 = ref(false)
 const val2 = ref(true)
 </script>
+
 <template>
   <c-checkbox
     v-model="val1"
@@ -102,6 +105,7 @@ const options = [
   { label: 'Peach', value: 'Peach' },
 ]
 </script>
+
 <template>
   <c-checkbox-group
     v-model="val"

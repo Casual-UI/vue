@@ -13,6 +13,7 @@ additionalComponentPaths:
 import { ref } from 'vue'
 const val = ref('')
 </script>
+
 <template>
   <div class="c-row c-gutter-x-md">
     <c-radio
@@ -36,7 +37,9 @@ const val = ref('')
       value="Grape"
     />
   </div>
-  <div class="c-mt-md">Current value: {{ val }}</div>
+  <div class="c-mt-md">
+    Current value: {{ val }}
+  </div>
 </template>
 ```
 
@@ -47,6 +50,7 @@ const val = ref('')
 import { ref } from 'vue'
 const val = ref('')
 </script>
+
 <template>
   <div class="c-row c-gutter-x-md c-items-center">
     <c-radio
@@ -79,7 +83,9 @@ const val = ref('')
       size="xl"
     />
   </div>
-  <div class="c-mt-md">Current value: {{ val }}</div>
+  <div class="c-mt-md">
+    Current value: {{ val }}
+  </div>
 </template>
 ```
 
@@ -91,6 +97,7 @@ import { ref } from 'vue'
 const val1 = ref(false)
 const val2 = ref(true)
 </script>
+
 <template>
   <div class="c-row c-gutter-x-md">
     <c-radio
@@ -121,6 +128,7 @@ const fruits = [
   { label: 'Grapes', value: 'Grape' },
 ]
 </script>
+
 <template>
   Current value: {{ selectedFruit }}
   <c-radio-group

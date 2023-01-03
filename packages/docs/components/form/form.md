@@ -29,6 +29,7 @@ const industryOptions = [
   { label: 'Transportation', value: 'Transportation' },
 ]
 </script>
+
 <template>
   <c-form>
     <c-form-item label="Name">
@@ -109,6 +110,7 @@ const formItems = [
   },
 ]
 </script>
+
 <template>
   <c-form
     v-model="formData"
@@ -167,6 +169,7 @@ const formItems = [
 const size = ref('md')
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center">
     <c-radio
@@ -236,6 +239,7 @@ const formItems = [
 const size = ref('md')
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center">
     <c-radio
@@ -318,6 +322,7 @@ const formItems = [
   },
 ]
 </script>
+
 <template>
   <c-form
     v-model="formData"
@@ -392,6 +397,7 @@ const formItems = [
   },
 ]
 </script>
+
 <template>
   <c-form
     v-model="formData"
@@ -455,6 +461,7 @@ const formItems = [
   },
 ]
 </script>
+
 <template>
   <c-form
     v-model="formData"
@@ -523,6 +530,7 @@ const formItems = [
 const col = ref(6)
 const spans = [6, 12]
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center">
     <c-radio
@@ -561,7 +569,7 @@ It's async validator would be like this:
 
 ```js
 const asyncRule = v =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     setTimeout(() => {
       resolve(v ? false : 'This field is required')
     }, 1000)
@@ -646,7 +654,7 @@ const formItems = [
     rules: [
       // Async validator
       v =>
-        new Promise(resolve => {
+        new Promise((resolve) => {
           setTimeout(() => {
             resolve(v.length < 2 ? 'At least check two' : false)
           }, 3000)
@@ -669,6 +677,7 @@ const clearValidate = () => {
   form.value?.clearAll()
 }
 </script>
+
 <template>
   <c-form
     ref="form"
@@ -784,6 +793,7 @@ const clearAll = () => {
 }
 const validating = ref(false)
 </script>
+
 <template>
   <c-form
     ref="form"
@@ -798,7 +808,7 @@ const validating = ref(false)
         :style="{ color: hasError ? 'red' : 'inherit' }"
         @blur="validate"
         @focus="clearValidate"
-      />
+      >
     </template>
   </c-form>
   <div class="c-mt-xl">
@@ -895,7 +905,7 @@ const formItems = [
     field: 'customField',
     component: CustomInput,
     rules: [
-      v => {
+      (v) => {
         return v === 'custom value' ? false : 'Can only input “custom value”'
       },
     ],
@@ -916,13 +926,14 @@ const clearAll = () => {
 }
 const validating = ref(false)
 </script>
+
 <template>
   <c-form
     ref="form"
+    v-model="formData"
     col="12"
     label-align="right"
     label-width="140px"
-    v-model="formData"
     :items="formItems"
     class="c-pa-md"
   />

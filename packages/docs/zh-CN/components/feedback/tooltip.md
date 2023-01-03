@@ -32,10 +32,12 @@ const positions = [
   'left-bottom',
 ]
 </script>
+
 <template>
   <div class="tooltips">
     <c-tooltip
       v-for="p in positions"
+      :key="p"
       :content="`来自于位置${p}的tooltip信息`"
       :position="p"
     >
@@ -43,6 +45,7 @@ const positions = [
     </c-tooltip>
   </div>
 </template>
+
 <style scoped>
 .tooltips {
   display: grid;
@@ -79,6 +82,7 @@ const positions = [
     </template>
   </c-tooltip>
 </template>
+
 <style scoped>
 .custom-content {
   white-space: nowrap;
@@ -100,6 +104,7 @@ const toggleShow = () => {
   show.value = !show.value
 }
 </script>
+
 <template>
   <div class="popups">
     <c-tooltip content="你好，世界">
@@ -133,6 +138,7 @@ const toggleShow = () => {
     </div>
   </div>
 </template>
+
 <style scoped>
 .popups {
   display: flex;

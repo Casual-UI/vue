@@ -10,6 +10,7 @@ componentPath: interact/CDropdown
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-dropdown v-model="show">
     <c-button label="Click to show dropdown" />
@@ -27,6 +28,7 @@ const show = ref(false)
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-dropdown
     v-model="show"
@@ -43,6 +45,7 @@ const show = ref(false)
     </template>
   </c-dropdown>
 </template>
+
 <style scoped>
 .custom-width {
   width: 400px;
@@ -58,6 +61,7 @@ const show = ref(false)
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-button
     :label="`Click top ${show ? 'close' : 'open'} dropdown`"
@@ -80,6 +84,7 @@ const show = ref(false)
     </template>
   </c-dropdown>
 </template>
+
 <style scoped>
 h3 {
   margin-left: 12px;

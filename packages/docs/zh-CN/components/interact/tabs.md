@@ -15,6 +15,7 @@ const items = [
 ]
 const activeItem = ref('面板1')
 </script>
+
 <template>
   <c-tabs v-model="activeItem" :items="items">
     <template #body-面板1>
@@ -43,29 +44,34 @@ const items = [
 const activeItem = ref('面板1')
 const size = ref('md')
 </script>
+
 <template>
   <div class="c-row c-items-center c-wrap c-gutter-md">
     <c-radio
       v-model="size"
       label="xs"
       value="xs"
-      size="xs" />
+      size="xs"
+    />
     <c-radio
       v-model="size"
       label="sm"
       value="sm"
-      size="sm" />
+      size="sm"
+    />
     <c-radio v-model="size" label="md（默认）" value="md" />
     <c-radio
       v-model="size"
       label="lg"
       value="lg"
-      size="lg" />
+      size="lg"
+    />
     <c-radio
       v-model="size"
       label="xl"
       value="xl"
-      size="xl" />
+      size="xl"
+    />
   </div>
   <c-tabs v-model="activeItem" :items="items" :size="size">
     <template #body-面板1>

@@ -31,6 +31,7 @@ const tableColumns = [
   { title: '性别', field: 'gender' },
 ]
 </script>
+
 <template>
   <c-table
     row-key="name"
@@ -54,6 +55,7 @@ const tableColumns = [
   { title: '性别', field: 'gender' },
 ]
 </script>
+
 <template>
   <c-table row-key="name" :data="tableData" :columns="tableColumns">
     <template #th-name="{ title }">
@@ -80,6 +82,7 @@ const tableColumns = [
   { title: '操作', field: 'operations' },
 ]
 </script>
+
 <template>
   <c-table row-key="name" :data="tableData" :columns="tableColumns">
     <template #td-operations>

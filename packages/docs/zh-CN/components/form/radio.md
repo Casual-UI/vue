@@ -13,6 +13,7 @@ additionalComponentPaths:
 import { ref } from 'vue'
 const val = ref('')
 </script>
+
 <template>
   <div class="c-row c-gutter-x-md">
     <c-radio v-model="val" label="苹果" value="Apple" />
@@ -20,7 +21,9 @@ const val = ref('')
     <c-radio v-model="val" label="桃子" value="Peach" />
     <c-radio v-model="val" label="葡萄" value="Grape" />
   </div>
-  <div class="c-mt-md">当前选中值：{{ val }}</div>
+  <div class="c-mt-md">
+    当前选中值：{{ val }}
+  </div>
 </template>
 ```
 
@@ -31,31 +34,38 @@ const val = ref('')
 import { ref } from 'vue'
 const val = ref('')
 </script>
+
 <template>
   <div class="c-row c-gutter-x-md c-items-center">
     <c-radio
       v-model="val"
       label="超小尺寸"
       value="xs"
-      size="xs" />
+      size="xs"
+    />
     <c-radio
       v-model="val"
       label="小尺寸"
       value="sm"
-      size="sm" />
+      size="sm"
+    />
     <c-radio v-model="val" label="中等尺寸（默认）" value="md" />
     <c-radio
       v-model="val"
       label="大尺寸"
       value="lg"
-      size="lg" />
+      size="lg"
+    />
     <c-radio
       v-model="val"
       label="超大尺寸"
       value="xl"
-      size="xl" />
+      size="xl"
+    />
   </div>
-  <div class="c-mt-md">当前选中值：{{ val }}</div>
+  <div class="c-mt-md">
+    当前选中值：{{ val }}
+  </div>
 </template>
 ```
 
@@ -67,6 +77,7 @@ import { ref } from 'vue'
 const val1 = ref(false)
 const val2 = ref(true)
 </script>
+
 <template>
   <div class="c-row c-gutter-x-md">
     <c-radio v-model="val1" label="禁用态" disabled />
@@ -89,6 +100,7 @@ const fruits = [
   { label: '葡萄', value: 'Grape' },
 ]
 </script>
+
 <template>
   {{ selectedFruit }}
   <c-radio-group v-model="selectedFruit" :options="fruits" />

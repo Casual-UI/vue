@@ -1,5 +1,13 @@
 # @casual-ui/vue
 
+## 0.0.14
+
+### Patch Changes
+
+- dbec77a: feat: add ajax bar component
+- Updated dependencies [dbec77a]
+  - @casual-ui/vue@0.0.14
+
 ## 0.0.13
 
 ### Patch Changes

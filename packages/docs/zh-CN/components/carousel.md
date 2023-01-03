@@ -14,6 +14,7 @@ import { ref } from 'vue'
 
 const current = ref(0)
 </script>
+
 <template>
   <c-carousel v-model="current">
     <c-carousel-slider>
@@ -21,7 +22,7 @@ const current = ref(0)
         <div
           i-openmoji-red-apple
           class="icon"
-        ></div>
+        />
         要来一些苹果吗？
       </div>
     </c-carousel-slider>
@@ -30,7 +31,7 @@ const current = ref(0)
         <div
           i-openmoji-banana
           class="icon"
-        ></div>
+        />
         要来一些香蕉吗？
       </div>
     </c-carousel-slider>
@@ -39,12 +40,13 @@ const current = ref(0)
         <div
           class="icon"
           i-openmoji-grapes
-        ></div>
+        />
         要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
 </template>
+
 <style scoped>
 .item {
   font-size: 32px;
@@ -69,6 +71,7 @@ import { ref } from 'vue'
 
 const current = ref(0)
 </script>
+
 <template>
   <c-carousel
     v-model="current"
@@ -79,7 +82,7 @@ const current = ref(0)
         <div
           i-openmoji-red-apple
           class="icon"
-        ></div>
+        />
         要来一些苹果吗？
       </div>
     </c-carousel-slider>
@@ -88,7 +91,7 @@ const current = ref(0)
         <div
           i-openmoji-banana
           class="icon"
-        ></div>
+        />
         要来一些香蕉吗？
       </div>
     </c-carousel-slider>
@@ -97,12 +100,13 @@ const current = ref(0)
         <div
           class="icon"
           i-openmoji-grapes
-        ></div>
+        />
         要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
 </template>
+
 <style scoped>
 .item {
   font-size: 32px;
@@ -127,17 +131,18 @@ import { ref } from 'vue'
 
 const current = ref(0)
 </script>
+
 <template>
   <c-carousel
     v-model="current"
-    arrowTiming="hover"
+    arrow-timing="hover"
   >
     <c-carousel-slider>
       <div class="item">
         <div
           i-openmoji-red-apple
           class="icon"
-        ></div>
+        />
         要来一些苹果吗？
       </div>
     </c-carousel-slider>
@@ -146,7 +151,7 @@ const current = ref(0)
         <div
           i-openmoji-banana
           class="icon"
-        ></div>
+        />
         要来一些香蕉吗？
       </div>
     </c-carousel-slider>
@@ -155,12 +160,13 @@ const current = ref(0)
         <div
           class="icon"
           i-openmoji-grapes
-        ></div>
+        />
         要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
 </template>
+
 <style scoped>
 .item {
   font-size: 32px;
@@ -192,6 +198,7 @@ const themeOptions = [
   { label: 'negative', value: 'negative' },
 ]
 </script>
+
 <template>
   <c-radio-group
     v-model="theme"
@@ -206,7 +213,7 @@ const themeOptions = [
         <div
           i-openmoji-red-apple
           class="icon"
-        ></div>
+        />
         要来一些苹果吗？
       </div>
     </c-carousel-slider>
@@ -215,7 +222,7 @@ const themeOptions = [
         <div
           i-openmoji-banana
           class="icon"
-        ></div>
+        />
         要来一些香蕉吗？
       </div>
     </c-carousel-slider>
@@ -224,12 +231,13 @@ const themeOptions = [
         <div
           class="icon"
           i-openmoji-grapes
-        ></div>
+        />
         要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
 </template>
+
 <style scoped>
 .item {
   font-size: 32px;
@@ -254,6 +262,7 @@ import { ref } from 'vue'
 
 const current = ref(0)
 </script>
+
 <template>
   <c-carousel v-model="current">
     <template #control-prev>
@@ -279,7 +288,7 @@ const current = ref(0)
         <div
           i-openmoji-red-apple
           class="icon"
-        ></div>
+        />
         要来一些苹果吗？
       </div>
     </c-carousel-slider>
@@ -288,7 +297,7 @@ const current = ref(0)
         <div
           i-openmoji-banana
           class="icon"
-        ></div>
+        />
         要来一些香蕉吗？
       </div>
     </c-carousel-slider>
@@ -297,12 +306,13 @@ const current = ref(0)
         <div
           class="icon"
           i-openmoji-grapes
-        ></div>
+        />
         要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
 </template>
+
 <style scoped>
 .item {
   font-size: 32px;
@@ -327,6 +337,7 @@ import { ref } from 'vue'
 
 const current = ref(0)
 </script>
+
 <template>
   <c-carousel
     v-model="current"
@@ -338,7 +349,7 @@ const current = ref(0)
         <div
           i-openmoji-red-apple
           class="icon"
-        ></div>
+        />
         要来一些苹果吗？
       </div>
     </c-carousel-slider>
@@ -347,7 +358,7 @@ const current = ref(0)
         <div
           i-openmoji-banana
           class="icon"
-        ></div>
+        />
         要来一些香蕉吗？
       </div>
     </c-carousel-slider>
@@ -356,12 +367,13 @@ const current = ref(0)
         <div
           class="icon"
           i-openmoji-grapes
-        ></div>
+        />
         要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
 </template>
+
 <style scoped>
 .item {
   font-size: 32px;
@@ -386,6 +398,7 @@ import { ref } from 'vue'
 
 const current = ref(0)
 </script>
+
 <template>
   <c-carousel
     v-model="current"
@@ -396,7 +409,7 @@ const current = ref(0)
         <div
           i-openmoji-red-apple
           class="icon"
-        ></div>
+        />
         要来一些苹果吗？
       </div>
     </c-carousel-slider>
@@ -405,7 +418,7 @@ const current = ref(0)
         <div
           i-openmoji-banana
           class="icon"
-        ></div>
+        />
         要来一些香蕉吗？
       </div>
     </c-carousel-slider>
@@ -414,12 +427,13 @@ const current = ref(0)
         <div
           class="icon"
           i-openmoji-grapes
-        ></div>
+        />
         要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
 </template>
+
 <style scoped>
 .item {
   font-size: 32px;
@@ -460,6 +474,7 @@ const alignOptions = [
   { label: 'column-reverse', value: 'column-reverse' },
 ]
 </script>
+
 <template>
   <div>
     <b>横向位置：</b>
@@ -482,7 +497,7 @@ const alignOptions = [
       :options="alignOptions"
     />
   </div>
-  <hr />
+  <hr>
   <c-carousel
     v-model="current"
     v-bind="{
@@ -496,7 +511,7 @@ const alignOptions = [
         <div
           i-openmoji-red-apple
           class="icon"
-        ></div>
+        />
         要来一些苹果吗？
       </div>
     </c-carousel-slider>
@@ -505,7 +520,7 @@ const alignOptions = [
         <div
           i-openmoji-banana
           class="icon"
-        ></div>
+        />
         要来一些香蕉吗？
       </div>
     </c-carousel-slider>
@@ -514,12 +529,13 @@ const alignOptions = [
         <div
           class="icon"
           i-openmoji-grapes
-        ></div>
+        />
         要来一些葡萄吗？
       </div>
     </c-carousel-slider>
   </c-carousel>
 </template>
+
 <style scoped>
 .item {
   font-size: 32px;

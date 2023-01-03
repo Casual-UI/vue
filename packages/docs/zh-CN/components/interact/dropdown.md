@@ -10,6 +10,7 @@ componentPath: interact/CDropdown
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-dropdown v-model="show">
     <c-button label="点击展开下拉" />
@@ -27,6 +28,7 @@ const show = ref(false)
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-dropdown
     v-model="show"
@@ -34,10 +36,13 @@ const show = ref(false)
   >
     <c-button label="点击展开下拉" />
     <template #drop-content>
-      <div class="custom-width">自定义内容宽度</div>
+      <div class="custom-width">
+        自定义内容宽度
+      </div>
     </template>
   </c-dropdown>
 </template>
+
 <style scoped>
 .custom-width {
   width: 400px;
@@ -53,6 +58,7 @@ const show = ref(false)
 import { ref } from 'vue'
 const show = ref(false)
 </script>
+
 <template>
   <c-button
     label="点击收起/展开下拉"
@@ -65,10 +71,13 @@ const show = ref(false)
   >
     <h3>点击左边按钮收起/展开下拉</h3>
     <template #drop-content>
-      <div class="custom-width">自定义内容宽度</div>
+      <div class="custom-width">
+        自定义内容宽度
+      </div>
     </template>
   </c-dropdown>
 </template>
+
 <style scoped>
 .custom-width {
   width: 400px;

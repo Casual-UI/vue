@@ -21,8 +21,8 @@ pnpm install casual-ui-vue
 
 ```js
 import { createApp } from 'vue'
-import App from './App.vue'
 import CasualUIVue from '@casual-ui/vue' // 引入全局Vue3插件
+import App from './App.vue'
 import 'casual-ui-vue/dist/style.css' // 引入样式文件
 
 const app = createApp(App)
@@ -52,8 +52,9 @@ import 'casual-ui-vue/style.css'
 <script setup>
 import { CButton } from '@casual-ui/vue'
 </script>
+
 <template>
-  <c-button label="按钮" />
+  <CButton label="按钮" />
 </template>
 ```
 

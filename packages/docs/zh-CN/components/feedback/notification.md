@@ -39,6 +39,7 @@ const openWithCount = () => {
   })
 }
 </script>
+
 <template>
   <c-button label="打开通知" @click="openWithCount" />
 </template>
@@ -60,6 +61,7 @@ const openWithTheme = (theme) => {
   })
 }
 </script>
+
 <template>
   <div class="c-row c-items-center c-wrap c-gutter-md">
     <div>
@@ -96,9 +98,9 @@ const openWithTheme = (theme) => {
 <script setup>
 import {
   matArrowBack,
-  matArrowUpward,
-  matArrowForward,
   matArrowDownward,
+  matArrowForward,
+  matArrowUpward,
   matFullscreenExit,
 } from '@quasar/extras/material-icons/index'
 import { useNotifications } from '@casual-ui/vue'
@@ -114,6 +116,7 @@ const openWithPosition = (alignX, alignY) => {
   })
 }
 </script>
+
 <template>
   <div class="c-row c-gutter-sm">
     <div>
@@ -196,6 +199,7 @@ import { useNotifications } from '@casual-ui/vue'
 
 const { open } = useNotifications()
 </script>
+
 <template>
   <c-button
     label="打开通知"
@@ -221,7 +225,7 @@ import { useNotifications } from '@casual-ui/vue'
 
 const { open } = useNotifications()
 
-let close = ref(null)
+const close = ref(null)
 
 const onClick = () => {
   if (!close.value) {
@@ -231,12 +235,14 @@ const onClick = () => {
       timeout: 0,
       closeIcon: false,
     }).close
-  } else {
+  }
+  else {
     close.value()
     close.value = null
   }
 }
 </script>
+
 <template>
   <c-button
     :label="close ? '关闭通知' : '打开通知'"
@@ -283,6 +289,7 @@ const openWithDynamicContent = () => {
   }, 2000)
 }
 </script>
+
 <template>
   <c-button label="打开通知" @click="openWithDynamicContent" />
 </template>

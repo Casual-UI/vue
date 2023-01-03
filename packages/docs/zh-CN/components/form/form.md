@@ -29,6 +29,7 @@ const industryOptions = [
   { label: 'Transportation', value: 'Transportation' }
 ]
 </script>
+
 <template>
   <c-form>
     <c-form-item label="姓名">
@@ -99,6 +100,7 @@ const formItems = [
   }
 ]
 </script>
+
 <template>
   <c-form v-model="formData" :items="formItems" />
 </template>
@@ -154,6 +156,7 @@ const formItems = [
 const size = ref('md')
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center">
     <c-radio
@@ -162,7 +165,8 @@ const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
       v-model="size"
       :size="s"
       :label="s"
-      :value="s" />
+      :value="s"
+    />
   </div>
   <c-form v-model="formData" :items="formItems" :size="size" />
 </template>
@@ -218,6 +222,7 @@ const formItems = [
 const size = ref('md')
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center">
     <c-radio
@@ -226,7 +231,8 @@ const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
       v-model="size"
       :size="s"
       :label="s"
-      :value="s" />
+      :value="s"
+    />
   </div>
   <c-form v-model="formData" :items="formItems" :gutter-size="size" />
 </template>
@@ -317,6 +323,7 @@ const formItems = [
   }
 ]
 </script>
+
 <template>
   <c-form
     v-model="formData"
@@ -343,7 +350,7 @@ const formData = ref({
 
 const formItems = [
   { field: 'name', label: '姓名' },
- {
+  {
     label: '性别',
     field: 'gender',
     component: 'radio-group',
@@ -387,6 +394,7 @@ const formItems = [
 const col = ref(6)
 const spans = [2, 3, 4, 6, 12]
 </script>
+
 <template>
   <div class="c-row c-gutter-md c-items-center">
     <c-radio
@@ -421,7 +429,7 @@ const rule = v => (v ? false : '该项是必填的')
 
 ```js
 const asyncRule = v =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     setTimeout(() => {
       resolve(v ? false : '该项是必填的')
     }, 1000)
@@ -509,7 +517,7 @@ const formItems = [
     },
     rules: [
       // 异步验证
-      v => new Promise(resolve => {
+      v => new Promise((resolve) => {
         setTimeout(() => {
           resolve(v.length < 2 ? '请至少选择两项' : false)
         }, 3000)
@@ -533,6 +541,7 @@ const clearValidate = () => {
   form.value?.clearAll()
 }
 </script>
+
 <template>
   <c-form
     ref="form"
@@ -643,6 +652,7 @@ const clearAll = () => {
 }
 const validating = ref(false)
 </script>
+
 <template>
   <c-form
     ref="form"
@@ -657,7 +667,7 @@ const validating = ref(false)
         :style="{ color: hasError ? 'red' : 'inherit' }"
         @blur="validate"
         @focus="clearValidate"
-      />
+      >
     </template>
   </c-form>
   <div class="c-mt-xl">
@@ -753,7 +763,7 @@ const formItems = [
     field: 'customField',
     component: CustomInput,
     rules: [
-      v => {
+      (v) => {
         return v === 'custom value' ? false : '只能输入“custom value”'
       }
     ]
@@ -775,6 +785,7 @@ const clearAll = () => {
 }
 const validating = ref(false)
 </script>
+
 <template>
   <c-form
     ref="form"

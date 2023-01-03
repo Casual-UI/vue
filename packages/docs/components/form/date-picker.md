@@ -12,6 +12,7 @@ import { ref } from 'vue'
 const date = ref(null)
 const formattedValue = ref('')
 </script>
+
 <template>
   <c-date-picker
     v-model="date"
@@ -31,6 +32,7 @@ import { ref } from 'vue'
 const date1 = ref(null)
 const date2 = ref(new Date())
 </script>
+
 <template>
   <c-date-picker
     v-model="date1"
@@ -52,6 +54,7 @@ import { ref } from 'vue'
 const date = ref(null)
 const formattedValue = ref('')
 </script>
+
 <template>
   <div class="c-row c-items-center c-gutter-md c-wrap">
     <c-date-picker
@@ -97,6 +100,7 @@ import { ref } from 'vue'
 const dateRange = ref([null, null])
 const formattedRange = ref(['', ''])
 </script>
+
 <template>
   <c-date-picker
     v-model:dateRange="dateRange"
@@ -119,6 +123,7 @@ const formattedMonth = ref('')
 const year = ref(null)
 const formattedYear = ref('')
 </script>
+
 <template>
   <div class="c-row c-gutter-x-md">
     <div class="c-col-6">

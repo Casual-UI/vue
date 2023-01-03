@@ -19,6 +19,7 @@ const items = [
   { label: 'Grapes' },
 ]
 </script>
+
 <template>
   <c-list :items="items" />
 </template>
@@ -38,6 +39,7 @@ const items = [
 ]
 const size = ref('md')
 </script>
+
 <template>
   <div class="c-row c-items-center c-gutter-md c-wrap">
     <div
@@ -69,6 +71,7 @@ const items = [
   { label: 'Grapes' },
 ]
 </script>
+
 <template>
   <c-list
     :items="items"
@@ -91,6 +94,7 @@ const items = [
 ]
 const activeItem = ref('Banana')
 </script>
+
 <template>
   <c-list
     :items="items"
@@ -110,10 +114,10 @@ This is an example for using `c-info-item` as `item`
 import { ref } from 'vue'
 import {
   matCheck,
-  matSettingsPower,
-  matPersonAddAlt1,
   matOfflineBolt,
+  matPersonAddAlt1,
   matSettings,
+  matSettingsPower,
 } from '@quasar/extras/material-icons/index'
 const items = [
   { title: 'Notification', subtitle: 'Some notification description', icon: matOfflineBolt },
@@ -123,6 +127,7 @@ const items = [
 ]
 const activeItem = ref('')
 </script>
+
 <template>
   <c-list
     :items="items"
@@ -130,7 +135,7 @@ const activeItem = ref('')
     :active-fn="item => item.title === activeItem"
     @item-click="item => (activeItem = item.title)"
   >
-    <template #item="{ isActive, clickable, item }">
+    <template #item="{ isActive, item }">
       <c-info-item v-bind="item">
         <template
           v-if="isActive"
@@ -145,6 +150,7 @@ const activeItem = ref('')
     </template>
   </c-list>
 </template>
+
 <style
   scoped
   lang="scss"

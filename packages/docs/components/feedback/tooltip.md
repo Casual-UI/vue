@@ -32,10 +32,12 @@ const positions = [
   'left-bottom',
 ]
 </script>
+
 <template>
   <div class="tooltips">
     <c-tooltip
       v-for="p in positions"
+      :key="p"
       :content="`A message rom position ${p}`"
       :position="p"
     >
@@ -43,6 +45,7 @@ const positions = [
     </c-tooltip>
   </div>
 </template>
+
 <style scoped>
 .tooltips {
   display: grid;
@@ -79,6 +82,7 @@ const positions = [
     </template>
   </c-tooltip>
 </template>
+
 <style scoped>
 .custom-content {
   white-space: nowrap;
@@ -100,6 +104,7 @@ const toggleShow = () => {
   show.value = !show.value
 }
 </script>
+
 <template>
   <div class="popups">
     <c-tooltip content="Hello, world">
@@ -135,6 +140,7 @@ const toggleShow = () => {
     </div>
   </div>
 </template>
+
 <style scoped>
 .popups {
   display: flex;

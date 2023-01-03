@@ -18,8 +18,8 @@ const show = ref(false)
   />
 
   <CDrawer
-    title="Hi, there"
     v-model="show"
+    title="Hi, there"
   >
     Some drawer content
   </CDrawer>
@@ -33,9 +33,9 @@ const show = ref(false)
 import { ref } from 'vue'
 import {
   matArrowBack,
-  matArrowUpward,
-  matArrowForward,
   matArrowDownward,
+  matArrowForward,
+  matArrowUpward,
 } from '@quasar/extras/material-icons/index'
 
 const show = ref(false)
@@ -84,9 +84,9 @@ function openWithPosition(pos) {
   </div>
 
   <c-drawer
+    v-model="show"
     title="Hi, there"
     :position="position"
-    v-model="show"
   >
     I'm some drawer content
   </c-drawer>

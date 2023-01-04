@@ -7,6 +7,7 @@ import useInjectTheme from '../../usable/useInjectTheme'
 const props = defineProps<{
   /**
    * The theme color of ajax bar
+   * @zh 主题色
    * @default `'primary'`
    */
   theme?: CTheme

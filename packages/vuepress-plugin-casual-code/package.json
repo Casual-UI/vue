@@ -1,6 +1,6 @@
 {
   "name": "@casual-ui/vuepress-plugin-casual-code",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "private": true,
   "type": "module",
   "description": "The casual ui docs vuepress plugin for demo code",

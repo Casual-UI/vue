@@ -1,5 +1,13 @@
 # @casual-ui/vue
 
+## 0.0.15
+
+### Patch Changes
+
+- 5b12ba9: Bug fix: form item should leave extra space for the error tip that may show
+- Updated dependencies [5b12ba9]
+  - @casual-ui/vue@0.0.15
+
 ## 0.0.14
 
 ### Patch Changes

@@ -28,7 +28,7 @@ export default defineUserConfig({
     },
   },
   theme: defaultTheme({
-    logo: '/logo.svg',
+    logo: '/logo.png',
     locales: {
       '/': {
         navbar: [
@@ -294,7 +294,7 @@ export default defineUserConfig({
         },
       },
     },
-    logoDark: '/logo-dark.svg',
+    logoDark: '/logo.png',
     repo: 'https://github.com/Blackman99/casual-ui',
     repoLabel: 'Github',
     editLinkPattern: ':repo/edit/:branch/packages/vue/docs/:path',

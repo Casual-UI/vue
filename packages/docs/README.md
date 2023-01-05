@@ -1,7 +1,7 @@
 ---
 home: true
-heroImage: /logo.svg
-heroImageDark: /logo-dark.svg
+heroImage: /logo.png
+heroImageDark: /logo-dark.png
 actions:
   - text: Quick Start
     link: /guide/install/

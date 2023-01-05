@@ -6,7 +6,6 @@
   "description": "The casual ui docs vuepress plugin for demo code",
   "dependencies": {
     "@casual-ui/vue": "workspace:*",
-    "monaco-editor": "^0.33.0",
     "typedoc": "^0.22.15",
     "uid": "^2.0.0",
     "vue": "^3.2.31"

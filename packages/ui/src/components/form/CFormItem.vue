@@ -162,6 +162,7 @@ provide(clearValidateKey, clearValidate)
       `c-${labelDirection}`,
       isLabelVertical(labelDirection) ? 'c-items-start' : 'c-items-center',
       { 'c-form-item--has-error': hasError },
+      { 'c-form-item--maybe-error': field && rules && rules.length },
     ]"
   >
     <div

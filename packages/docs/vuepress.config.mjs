@@ -295,9 +295,9 @@ export default defineUserConfig({
       },
     },
     logoDark: '/logo.png',
-    repo: 'https://github.com/Blackman99/casual-ui',
+    repo: 'https://github.com/Casual-UI/vue',
     repoLabel: 'Github',
-    editLinkPattern: ':repo/edit/:branch/packages/vue/docs/:path',
+    editLinkPattern: ':repo/edit/:branch/packages/docs/:path',
   }),
   plugins: [
     shikiPlugin({

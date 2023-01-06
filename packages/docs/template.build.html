@@ -20,16 +20,16 @@
     }
   </style>
   <script>
-    const userMode = localStorage.getItem('vuepress-color-scheme');
-    const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode)) {
-      document.documentElement.classList.toggle('dark', true);
-    }
+    const userMode = localStorage.getItem('vuepress-color-scheme')
+const systemDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+if (userMode === 'dark' || (userMode !== 'light' && systemDarkMode))
+  document.documentElement.classList.toggle('dark', true)
+
   </script>
-  <link rel="shortcut icon" href="/logo.svg" type="image/x-icon">
+  <link rel="shortcut icon" href="/logo.png" type="image/x-icon">
   <script src="/monaco-editor/min/vs/loader.js"></script>
   <script>
-    require.config({paths: {vs: '/monaco-editor/min/vs'}})
+    require.config({ paths: { vs: '/monaco-editor/min/vs' } })
   </script>
   <!--vuepress-ssr-head-->
   <!--vuepress-ssr-resources-->

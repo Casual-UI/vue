@@ -78,12 +78,12 @@ export default defineUserConfig({
             text: 'More',
             children: [
               {
-                text: 'Casual UI - React',
-                link: 'https://casual-ui-react.donsen.site/',
+                text: 'Casual UI - Svelte',
+                link: 'https://svelte.casual-ui.site/',
               },
               {
-                text: 'Casual UI - Svelte',
-                link: 'https://casual-ui-svelte.donsen.site/',
+                text: 'Casual UI - React',
+                link: 'https://react.casual-ui.site/',
               },
             ],
           },
@@ -213,12 +213,12 @@ export default defineUserConfig({
             text: '更多',
             children: [
               {
-                text: 'Casual UI - React',
-                link: 'https://casual-ui-react.donsen.site/',
+                text: 'Casual UI - Svelte',
+                link: 'https://svelte.casual-ui.site/',
               },
               {
-                text: 'Casual UI - Svelte',
-                link: 'https://casual-ui-svelte.donsen.site/',
+                text: 'Casual UI - React',
+                link: 'https://react.casual-ui.site/',
               },
             ],
           },

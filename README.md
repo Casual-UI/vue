@@ -7,7 +7,7 @@ Include these parts:
 
 ## Online Docs & Demos
 
-[Casual UI - Vue](https://casual-ui-vue.donsen.site/)
+[Casual UI - Vue](https://vue.casual-ui.site/)
 
 ## Usage Guide
 

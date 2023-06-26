@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 .docz
 dist
+.history
 dist-ssr
 *.local
 *.log

@@ -1,6 +1,5 @@
 <script lang="ts">
-type Direction = 'left' | 'top' | 'right' | 'bottom'
-export type Position = Direction | `${Direction}-${Direction}`
+export type Position = `${'top' | 'right' | 'bottom' | 'left'}${`-${'start' | 'end'}` | ''}`
 </script>
 
 <script setup lang="ts">
@@ -45,6 +44,8 @@ defineEmits<{
 
 const innerShow = ref(props.show)
 const tooltipDom = ref<HTMLDivElement | null>(null)
+const triggerDom = ref<HTMLDivElement | null>(null)
+const arrowDom = ref<HTMLDivElement | null>(null)
 
 watch(
   () => props.show,
@@ -84,25 +85,21 @@ if (props.trigger === 'click') {
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
   >
-    <div class="c-tooltip--trigger-content">
+    <div ref="triggerDom" class="c-tooltip--trigger">
       <!--
         @slot The trigger content.
         @zh 默认内容，用于触发tooltip -->
       <slot />
     </div>
     <div
-      class="c-tooltip--popper-content-wrapper"
-      :class="[`c-tooltip--position-${position}`]"
+      class="c-tooltip--popper-content"
       @click.stop
     >
       <!--
         @slot The popup content. Will override the content prop.
         @zh 弹出层内容，如果设置了该插槽，会覆盖<code>content</code>属性 -->
-      <slot name="popup">
-        <div class="c-tooltip--popper-content">
-          {{ content }}
-        </div>
-      </slot>
+      <slot name="popup" />
+      <div ref="arrowDom" class="c-tooltip--arrow" />
     </div>
   </div>
 </template>

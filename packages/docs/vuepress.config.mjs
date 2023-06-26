@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-nocheck
 import path from 'path'
 import { defaultTheme, defineUserConfig } from 'vuepress'
@@ -381,6 +380,9 @@ export default defineUserConfig({
       plugins: [
         Unocss({ presets: [presetIcons(), presetAttributify(), presetUno()] }),
       ],
+      ssr: {
+        noExternal: ['@casual-ui/utils']
+      }
     },
   }),
 })

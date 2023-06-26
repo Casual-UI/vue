@@ -17,49 +17,40 @@ componentPath: popup/CTooltip
 
 ```vue live
 <script setup>
+import { ref } from 'vue'
+const pos = ref('top-start')
 const positions = [
-  'top-left',
+  'top-start',
   'top',
-  'top-right',
-  'right-top',
+  'top-end',
+  'right-start',
   'right',
-  'right-bottom',
-  'bottom-left',
+  'right-end',
+  'bottom-start',
   'bottom',
-  'bottom-right',
-  'left-top',
+  'bottom-end',
+  'left-start',
   'left',
-  'left-bottom',
-]
+  'left-end',
+].map(p => ({
+  label: p,
+  value: p
+}))
 </script>
 
 <template>
-  <div class="tooltips">
-    <c-tooltip
-      v-for="p in positions"
-      :key="p"
-      :content="`来自于位置${p}的tooltip信息`"
-      :position="p"
-    >
-      {{ p }}
+  <c-radio-group
+    :options="positions"
+    v-model="pos"
+  />
+  <div text-center py-8>
+    <c-tooltip :position="pos" :content="`我是一个来自于 ${pos} 位置的提示`">
+      <c-button label="Hover me" />
     </c-tooltip>
   </div>
 </template>
-
-<style scoped>
-.tooltips {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.tooltips > div {
-  line-height: 3em;
-  text-align: center;
-  background-color: var(--casual-primary);
-  color: #eee;
-}
-</style>
 ```
+
 
 ### 自定义内容
 

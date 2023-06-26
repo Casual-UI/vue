@@ -1,10 +1,8 @@
-<script lang="ts">
-export type Position = `${'top' | 'right' | 'bottom' | 'left'}${`-${'start' | 'end'}` | ''}`
-</script>
-
 <script setup lang="ts">
+import type { CTooltipPosition } from '@casual-ui/types'
 import { useClickOutside } from '@casual-ui/vue'
-import { ref, watch } from 'vue'
+import { recomputePos } from '@casual-ui/utils'
+import { nextTick, onMounted, reactive, ref, watch } from 'vue'
 
 const props = withDefaults(defineProps<{
   /**
@@ -16,7 +14,7 @@ const props = withDefaults(defineProps<{
    * The popup position.
    * @zh 弹出位置
    */
-  position?: Position
+  position?: CTooltipPosition
   /**
    * The trigger method.
    * @zh 触发方式
@@ -34,7 +32,7 @@ const props = withDefaults(defineProps<{
   show: false,
 })
 
-defineEmits<{
+const emit = defineEmits<{
   /**
    * Emit when the show status change.
    * @zh 手动触发时使用，用于<code>v-model:show</code>绑定
@@ -43,9 +41,14 @@ defineEmits<{
 }>()
 
 const innerShow = ref(props.show)
-const tooltipDom = ref<HTMLDivElement | null>(null)
-const triggerDom = ref<HTMLDivElement | null>(null)
-const arrowDom = ref<HTMLDivElement | null>(null)
+const pos = reactive({
+  left: '0',
+  top: '0'
+})
+const tooltipDom = ref<HTMLDivElement | undefined>()
+const contentDom = ref<HTMLDivElement | undefined>()
+const triggerDom = ref<HTMLDivElement | undefined>()
+const arrowDom = ref<HTMLDivElement | undefined>()
 
 watch(
   () => props.show,
@@ -53,6 +56,13 @@ watch(
     innerShow.value = newShow
   },
 )
+
+watch(innerShow, newInnerShow => {
+  emit('update:show', newInnerShow)
+  if (newInnerShow) {
+    nextTick(computePosition)
+  }
+})
 
 const onMouseEnter = () => {
   if (props.trigger === 'hover')
@@ -75,6 +85,21 @@ if (props.trigger === 'click') {
     },
   })
 }
+
+onMounted(computePosition)
+
+async function computePosition () {
+  const { left, top } = await recomputePos({
+    triggerDom: triggerDom.value,
+    contentDom: contentDom.value,
+    arrowDom: arrowDom.value,
+    placement: props.position
+  })
+  Object.assign(pos, {
+    left,
+    top,
+  })
+}
 </script>
 
 <template>
@@ -84,6 +109,10 @@ if (props.trigger === 'click') {
     :class="[{ 'c-tooltip--show': innerShow }]"
     @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
+    :style="{
+      '--c-tooltip-top': pos.top,
+      '--c-tooltip-left': pos.left,
+    }"
   >
     <div ref="triggerDom" class="c-tooltip--trigger">
       <!--
@@ -92,13 +121,16 @@ if (props.trigger === 'click') {
       <slot />
     </div>
     <div
-      class="c-tooltip--popper-content"
+      ref="contentDom"
+      class="c-tooltip--content"
       @click.stop
     >
       <!--
         @slot The popup content. Will override the content prop.
         @zh 弹出层内容，如果设置了该插槽，会覆盖<code>content</code>属性 -->
-      <slot name="popup" />
+      <slot name="popup">
+        {{ content }}
+      </slot>
       <div ref="arrowDom" class="c-tooltip--arrow" />
     </div>
   </div>

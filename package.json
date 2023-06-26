@@ -1,9 +1,9 @@
 {
   "license": "MIT",
   "devDependencies": {
-    "@casual-ui/eslint-config-vue": "^0.0.5",
-    "@changesets/cli": "^2.25.2",
-    "eslint": "^8.27.0"
+    "@casual-ui/eslint-config-vue": "^0.3.2",
+    "@changesets/cli": "^2.26.1",
+    "eslint": "^8.43.0"
   },
   "scripts": {
     "release": "cd packages/ui && pnpm build && cd ../.. && changeset publish"

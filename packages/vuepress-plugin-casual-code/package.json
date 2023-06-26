@@ -6,9 +6,9 @@
   "description": "The casual ui docs vuepress plugin for demo code",
   "dependencies": {
     "@casual-ui/vue": "workspace:*",
-    "typedoc": "^0.22.15",
-    "uid": "^2.0.0",
-    "vue": "^3.2.31"
+    "typedoc": "^0.24.8",
+    "uid": "^2.0.2",
+    "vue": "^3.3.4"
   },
   "main": "./src/index.js",
   "scripts": {},
@@ -16,11 +16,11 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@mdit-vue/plugin-frontmatter": "^0.11.1",
-    "@quasar/extras": "^1.13.4",
+    "@mdit-vue/plugin-frontmatter": "^0.12.0",
+    "@quasar/extras": "^1.16.4",
     "@vuepress/client": "2.0.0-beta.51",
     "markdown-it": "^13.0.1",
-    "vue-docgen-api": "^4.54.2"
+    "vue-docgen-api": "^4.73.0"
   },
   "peerDependencies": {
     "typedoc": "^0.22.15"

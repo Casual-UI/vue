@@ -1,5 +1,16 @@
 # @casual-ui/vue
 
+## 0.1.0
+
+### Minor Changes
+
+- deebefc: refactor: implement tooltip with floating-ui
+
+### Patch Changes
+
+- Updated dependencies [deebefc]
+  - @casual-ui/vue@0.1.0
+
 ## 0.0.15
 
 ### Patch Changes

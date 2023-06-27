@@ -10,7 +10,7 @@ import {
   useSizeThemeClass,
   useVModel,
 } from '@casual-ui/vue'
-import { matHighlightOff } from '@quasar/extras/material-icons/index'
+import { matHighlightOff } from '@quasar/extras/material-icons'
 import type { CSize, CTheme } from '@casual-ui/types'
 import useValidator from './useValidator'
 
@@ -162,14 +162,14 @@ const innerValue = useDefaultVModel(props, emit, {
 
 const inputDom = ref<HTMLInputElement | null>(null)
 
-const onFocus = () => {
+function onFocus() {
   if (props.clearValidateOnFocus)
     clearValidate()
 
   innerFocused.value = true
 }
 
-const onBlur = () => {
+function onBlur() {
   if (props.autoBlur)
     innerFocused.value = false
 
@@ -177,11 +177,11 @@ const onBlur = () => {
     validate(innerValue.value)
 }
 
-const focusInput = () => {
+function focusInput() {
   inputDom.value?.focus()
 }
 
-const onClearIconClick = () => {
+function onClearIconClick() {
   emit('update:modelValue', '')
   emit('clear')
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { CSize, CTheme } from '@casual-ui/types'
 import { CIcon, useInjectSize, useInjectTheme } from '@casual-ui/vue'
-import { matClose } from '@quasar/extras/material-icons/index'
+import { matClose } from '@quasar/extras/material-icons'
 
 const props = withDefaults(defineProps<{
   /**

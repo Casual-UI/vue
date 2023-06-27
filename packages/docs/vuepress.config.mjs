@@ -1,5 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import path from 'path'
+import path from 'node:path'
 import { defaultTheme, defineUserConfig } from 'vuepress'
 import casualCode from '@casual-ui/vuepress-plugin-casual-code'
 import docSearch from '@vuepress/plugin-docsearch'
@@ -381,8 +382,8 @@ export default defineUserConfig({
         Unocss({ presets: [presetIcons(), presetAttributify(), presetUno()] }),
       ],
       ssr: {
-        noExternal: ['@casual-ui/utils']
-      }
+        noExternal: ['@casual-ui/utils'],
+      },
     },
   }),
 })

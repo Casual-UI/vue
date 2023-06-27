@@ -19,7 +19,7 @@ componentPath: interact/CExpansion
 
 ```vue live
 <script setup>
-import { matPeople } from '@quasar/extras/material-icons/index'
+import { matPeople } from '@quasar/extras/material-icons'
 </script>
 
 <template>
@@ -53,7 +53,7 @@ import {
   matArrowCircleDown,
   matNaturePeople,
   matPeople,
-} from '@quasar/extras/material-icons/index.mjs'
+} from '@quasar/extras/material-icons'
 </script>
 
 <template>

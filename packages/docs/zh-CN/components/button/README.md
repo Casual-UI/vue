@@ -271,7 +271,7 @@ import {
   matBuild,
   matCoPresent,
   matDeviceHub,
-} from '@quasar/extras/material-icons/index'
+} from '@quasar/extras/material-icons'
 </script>
 
 <template>

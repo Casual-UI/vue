@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { matClose } from '@quasar/extras/material-icons/index'
+import { matClose } from '@quasar/extras/material-icons'
 import { CIcon, CPopup, useNotifications } from '@casual-ui/vue'
 
 const { closeByPositionGroupAndID, notifications } = useNotifications()

@@ -17,7 +17,7 @@ import {
 } from '@casual-ui/vue'
 import { computed, ref, toRefs, watch } from 'vue'
 import type { CSize } from '@casual-ui/types'
-import { matCalendarToday } from '@quasar/extras/material-icons/index'
+import { matCalendarToday } from '@quasar/extras/material-icons'
 import useValidator from '../useValidator'
 import useUnit from './useUnit'
 import defaultFormatter from './defaultFormatter'
@@ -207,11 +207,11 @@ const month = ref(innerValue.value?.getMonth() || new Date().getMonth())
 const yearRange = ref<[number, number]>([year.value, year.value + 11])
 const transitionName = ref('c-date-panel')
 const initialUnit = innerUnit.value
-const onDateSet = () => {
+function onDateSet() {
   if (props.hideOnSelect)
     show.value = false
 }
-const onUpdateUnit = (newUnit: Unit) => {
+function onUpdateUnit(newUnit: Unit) {
   if (newUnit === 'day') {
     transitionName.value = 'c-date-panel'
   }
@@ -230,7 +230,7 @@ const onUpdateUnit = (newUnit: Unit) => {
   }
   innerUnit.value = newUnit
 }
-const onMonthSet = (newDate: Date | null) => {
+function onMonthSet(newDate: Date | null) {
   month.value = newDate?.getMonth() || 0
   if (initialUnit === 'day') {
     onUpdateUnit('day')
@@ -239,7 +239,7 @@ const onMonthSet = (newDate: Date | null) => {
   onDateSet()
 }
 
-const onYearSet = (newDate: Date | null) => {
+function onYearSet(newDate: Date | null) {
   year.value = newDate?.getFullYear() || 0
   if (initialUnit === 'year') {
     onDateSet()
@@ -249,12 +249,12 @@ const onYearSet = (newDate: Date | null) => {
 }
 const datePickerContainer = ref<HTMLDivElement | null>(null)
 
-const onModelValueChange = (newValue: Date | null) => {
+function onModelValueChange(newValue: Date | null) {
   if (!newValue)
     validate(innerValue)
 }
 
-const handleClear = () => {
+function handleClear() {
   innerValue.value = null
   innerRange.value = [null, null]
   validate(innerValue)

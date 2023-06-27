@@ -96,7 +96,7 @@ import {
   matArrowForward,
   matArrowUpward,
   matFullscreenExit,
-} from '@quasar/extras/material-icons/index'
+} from '@quasar/extras/material-icons'
 import { ref } from 'vue'
 const show = ref(false)
 
@@ -194,7 +194,7 @@ const openWithPosition = (h, v) => {
 ```vue live
 <script setup>
 import { ref } from 'vue'
-import { matPeople } from '@quasar/extras/material-icons/index'
+import { matPeople } from '@quasar/extras/material-icons'
 const show = ref(false)
 </script>
 

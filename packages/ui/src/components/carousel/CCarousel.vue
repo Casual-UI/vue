@@ -19,7 +19,7 @@ import { computed, nextTick, onMounted, provide, ref, toRefs } from 'vue'
 import {
   outlinedNavigateBefore,
   outlinedNavigateNext,
-} from '@quasar/extras/material-icons-outlined/index'
+} from '@quasar/extras/material-icons-outlined'
 import CButton from '../basic/button/CButton.vue'
 import CIcon from '../basic/icon/CIcon.vue'
 

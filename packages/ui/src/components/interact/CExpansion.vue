@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue'
 import { CIcon } from '@casual-ui/vue'
-import { matKeyboardArrowDown } from '@quasar/extras/material-icons/index'
+import { matKeyboardArrowDown } from '@quasar/extras/material-icons'
 import { useDefaultVModel } from '../../usable/useVModel'
 
 const props = withDefaults(defineProps<{
@@ -46,7 +46,7 @@ const innerValue = ref(true)
 
 useDefaultVModel(props, emit)
 
-const onHeaderClick = () => {
+function onHeaderClick() {
   innerValue.value = !innerValue.value
 }
 
@@ -59,7 +59,7 @@ const realtimeBodyHeigh = computed(() =>
   innerValue.value ? initialBodyHeight.value : 0,
 )
 
-const setHeight = (h: number) => {
+function setHeight(h: number) {
   initialBodyHeight.value = `${h}px`
 }
 

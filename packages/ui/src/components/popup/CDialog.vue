@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CButton, CIcon, CPopup, useDefaultVModel } from '@casual-ui/vue'
-import { computed, onMounted, onUnmounted, toRefs } from 'vue'
-import { ionCloseOutline } from '@quasar/extras/ionicons-v5/index'
+import { computed, onMounted, onUnmounted } from 'vue'
+import { ionCloseOutline } from '@quasar/extras/ionicons-v5'
 import type { PositionGroup } from '@casual-ui/types'
 import usePosition from './usePosition'
 
@@ -141,7 +141,7 @@ const { provideHorizontalAlign, provideVerticalAlign } = usePosition(props)
 
 const innerValue = useDefaultVModel(props, emit)
 
-const listenKeyboard = (e: KeyboardEvent) => {
+function listenKeyboard(e: KeyboardEvent) {
   if (e.key === 'Escape' && innerValue.value && props.closeOnEsc)
     innerValue.value = false
 }

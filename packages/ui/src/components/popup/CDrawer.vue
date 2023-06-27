@@ -4,7 +4,7 @@ export type Direction = 'left' | 'top' | 'right' | 'bottom'
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ionCloseOutline } from '@quasar/extras/ionicons-v5/index'
+import { ionCloseOutline } from '@quasar/extras/ionicons-v5'
 import type { CPosition } from '@casual-ui/types'
 import { useDefaultVModel } from '../../usable/useVModel'
 import CDialog from './CDialog.vue'

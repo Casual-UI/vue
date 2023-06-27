@@ -36,7 +36,7 @@ import {
   matArrowDownward,
   matArrowForward,
   matArrowUpward,
-} from '@quasar/extras/material-icons/index'
+} from '@quasar/extras/material-icons'
 
 const show = ref(false)
 const position = ref('left')

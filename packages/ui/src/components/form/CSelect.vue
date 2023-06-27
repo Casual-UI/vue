@@ -23,7 +23,7 @@ import {
   useInjectSize,
   useVModel,
 } from '@casual-ui/vue'
-import { matKeyboardArrowDown } from '@quasar/extras/material-icons/index'
+import { matKeyboardArrowDown } from '@quasar/extras/material-icons'
 import { computed, nextTick, onMounted, ref, toRefs, watch } from 'vue'
 import useValidator from './useValidator'
 
@@ -159,7 +159,7 @@ const realPlaceholder = computed(() => {
   return (innerValue.value as any[]).length > 0 ? '' : props.placeholder
 })
 
-const onItemClick = (item: any) => {
+function onItemClick(item: any) {
   if (multiple.value) {
     const selectedValues = innerValue.value as Array<any>
     const idx = selectedValues.findIndex(v => v === item.value)
@@ -181,7 +181,7 @@ const isItemActive = computed(() => (item: any) => {
   return item.value === innerValue.value
 })
 
-const onClear = () => {
+function onClear() {
   if (multiple.value) {
     innerValue.value = []
     return
@@ -189,14 +189,14 @@ const onClear = () => {
   innerValue.value = ''
 }
 
-const onSelectClick = () => {
+function onSelectClick() {
   if (props.disabled)
     return
   if (multiple.value)
     focused.value = !focused.value
 }
 
-const onArrowClick = () => {
+function onArrowClick() {
   if (props.disabled)
     return
   if (!multiple.value)

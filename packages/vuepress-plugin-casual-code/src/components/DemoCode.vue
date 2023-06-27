@@ -2,8 +2,8 @@
 setup
 lang="ts"
 >
-import { ionCodeOutline } from '@quasar/extras/ionicons-v5/index'
-import { matPlayArrow } from '@quasar/extras/material-icons/index'
+import { ionCodeOutline } from '@quasar/extras/ionicons-v5'
+import { matPlayArrow } from '@quasar/extras/material-icons'
 import { computed, ref } from 'vue'
 import { usePageFrontmatter, usePageLang } from '@vuepress/client'
 import { CButton, CDialog, CExpansion, CIcon, CTooltip } from '@casual-ui/vue'
@@ -33,11 +33,11 @@ const sandbox = ref()
 
 let editor: any
 let iframe: any
-const run = () => {
+function run() {
   iframe.srcdoc = createSandboxApp(props.path, editor.getValue())
 }
 
-const onReplDialogOpened = () => {
+function onReplDialogOpened() {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   window.require(['vs/editor/editor.main'], () => {

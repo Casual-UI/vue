@@ -4,7 +4,7 @@ import {
   matKeyboardArrowRight,
   matKeyboardDoubleArrowLeft,
   matKeyboardDoubleArrowRight,
-} from '@quasar/extras/material-icons/index'
+} from '@quasar/extras/material-icons'
 import type { CSize } from '@casual-ui/types'
 import { useInjectSize } from '@casual-ui/vue'
 import { computed, toRefs } from 'vue'
@@ -38,7 +38,7 @@ const { provideSize: size } = useInjectSize(props)
 const { year, month, unit } = toRefs(props)
 
 // 获取当前年月对应的日期
-const getCurrentYearMonthDate = () => {
+function getCurrentYearMonthDate() {
   const d = new Date()
   d.setDate(1)
   d.setFullYear(year.value)
@@ -47,30 +47,30 @@ const getCurrentYearMonthDate = () => {
 }
 
 // 根据指定日期重新设置当前年月
-const resetYearMonth = (d: Date) => {
+function resetYearMonth(d: Date) {
   emit('update:year', d.getFullYear())
   emit('update:month', d.getMonth())
 }
 
-const toPrevMonth = () => {
+function toPrevMonth() {
   const d = getCurrentYearMonthDate()
   d.setMonth(d.getMonth() - 1)
   resetYearMonth(d)
 }
 
-const toNextMonth = () => {
+function toNextMonth() {
   const d = getCurrentYearMonthDate()
   d.setMonth(d.getMonth() + 1)
   resetYearMonth(d)
 }
 
-const toPrevYear = () => {
+function toPrevYear() {
   const d = getCurrentYearMonthDate()
   d.setFullYear(d.getFullYear() - 1)
   resetYearMonth(d)
 }
 
-const toNextYear = () => {
+function toNextYear() {
   const d = getCurrentYearMonthDate()
   d.setFullYear(d.getFullYear() + 1)
   resetYearMonth(d)
@@ -78,11 +78,11 @@ const toNextYear = () => {
 
 const { yearRange } = toRefs(props)
 
-const previousYearRange = () => {
+function previousYearRange() {
   emit('update:yearRange', [yearRange.value[0] - 12, yearRange.value[1] - 12])
 }
 
-const nextYearRange = () => {
+function nextYearRange() {
   emit('update:yearRange', [yearRange.value[0] + 12, yearRange.value[1] + 12])
 }
 
@@ -90,7 +90,7 @@ const { displayMonth } = useDisplayMonth(month)
 
 const isDay = computed(() => unit.value === 'day')
 const isMonth = computed(() => unit.value === 'month')
-const setUnit = (newUnit: Unit) => {
+function setUnit(newUnit: Unit) {
   if (!props.unitSwitchable)
     return
   emit('update:unit', newUnit)
